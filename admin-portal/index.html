@@ -1,64 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="msapplication-TileColor" content="#0E0E0E">
-    <meta name="template-color" content="#0E0E0E">
-    <link rel="manifest" href="manifest.json" crossorigin>
-    <meta name="msapplication-config" content="browserconfig.xml">
-    <meta name="description" content="Index page">
-    <meta name="keywords" content="index, page">
-    <meta name="author" content="">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/imgs/template/favicon.svg">
-    <link href="assets/css/style.css?version=4.1" rel="stylesheet">
-    <title>Jobbox Dashboard - Job Portal HTML Template </title>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="msapplication-TileColor" content="#0E0E0E" />
+    <meta name="template-color" content="#0E0E0E" />
+    <link rel="manifest" href="manifest.json" crossorigin />
+    <meta name="msapplication-config" content="browserconfig.xml" />
+    <meta name="description" content="Index page" />
+    <meta name="keywords" content="index, page" />
+    <meta name="author" content="" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="assets/imgs/template/favicon.svg"
+    />
+    <link href="assets/css/style.css?version=4.1" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/12.1.2/highcharts.js"></script>
+    <title>Jobbox Dashboard - Job Portal HTML Template</title>
   </head>
   <body>
     <div id="preloader-active">
       <div class="preloader d-flex align-items-center justify-content-center">
         <div class="preloader-inner position-relative">
-          <div class="text-center"><img src="assets/imgs/template/loading.gif" alt="jobBox"></div>
+          <div class="text-center">
+            <img src="assets/imgs/template/loading.gif" alt="jobBox" />
+          </div>
         </div>
       </div>
     </div>
-    <header class="header sticky-bar"> 
+    <header class="header sticky-bar">
       <div class="container">
         <div class="main-header">
           <div class="header-left">
-            <div class="header-logo"><a class="d-flex" href="index.html"><img alt="jobBox" src="assets/imgs/page/dashboard/logo.svg"></a></div><span class="btn btn-grey-small ml-10">Admin area</span>
+            <div class="header-logo">
+              <a class="d-flex" href="index.html"
+                ><img alt="jobBox" src="assets/imgs/page/dashboard/logo.svg"
+              /></a>
+            </div>
+            <span class="btn btn-grey-small ml-10">Admin area</span>
           </div>
-          <div class="header-search"> 
-            <div class="box-search"> 
+          <div class="header-search">
+            <div class="box-search">
               <form action="">
-                <input class="form-control input-search" type="text" name="keyword" placeholder="Search">
+                <input
+                  class="form-control input-search"
+                  type="text"
+                  name="keyword"
+                  placeholder="Search"
+                />
               </form>
             </div>
           </div>
-          <div class="header-menu d-none d-md-block">
+          <!-- <div class="header-menu d-none d-md-block">
             <ul> 
               <li>        <a href="http://wp.alithemes.com/html/jobbox/demos/index.html">Home </a></li>
               <li> <a href="http://wp.alithemes.com/html/jobbox/demos/page-about.html">About us </a></li>
               <li> <a href="http://wp.alithemes.com/html/jobbox/demos/page-contact.html">Contact</a></li>
             </ul>
-          </div>
+          </div> -->
           <div class="header-right">
-            <div class="block-signin"><a class="btn btn-default icon-edit hover-up" href="post-job.html">Post Job</a>
-              <div class="dropdown d-inline-block"><a class="btn btn-notify" id="dropdownNotify" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static"></a>
-                <ul class="dropdown-menu dropdown-menu-light dropdown-menu-end" aria-labelledby="dropdownNotify">
-                  <li><a class="dropdown-item active" href="#">10 notifications</a></li>
+            <div class="block-signin">
+              <a class="btn btn-default icon-edit hover-up" href="post-job.html"
+                >Post Job</a
+              >
+              <div class="dropdown d-inline-block">
+                <a
+                  class="btn btn-notify"
+                  id="dropdownNotify"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  data-bs-display="static"
+                ></a>
+                <ul
+                  class="dropdown-menu dropdown-menu-light dropdown-menu-end"
+                  aria-labelledby="dropdownNotify"
+                >
+                  <li>
+                    <a class="dropdown-item active" href="#"
+                      >10 notifications</a
+                    >
+                  </li>
                   <li><a class="dropdown-item" href="#">12 messages</a></li>
                   <li><a class="dropdown-item" href="#">20 replies</a></li>
                 </ul>
               </div>
-              <div class="member-login"><img alt="" src="assets/imgs/page/dashboard/profile.png">
-                <div class="info-member"> <strong class="color-brand-1">Steven Jobs</strong>
-                  <div class="dropdown"><a class="font-xs color-text-paragraph-2 icon-down" id="dropdownProfile" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">Super Admin</a>
-                    <ul class="dropdown-menu dropdown-menu-light dropdown-menu-end" aria-labelledby="dropdownProfile">
-                      <li><a class="dropdown-item" href="profile.html">Profiles</a></li>
-                      <li><a class="dropdown-item" href="my-resume.html">CV Manager</a></li>
-                      <li><a class="dropdown-item" href="login.html">Logout</a></li>
+              <div class="member-login">
+                <img alt="" src="assets/imgs/page/dashboard/profile.png" />
+                <div class="info-member">
+                  <strong class="color-brand-1">Steven Jobs</strong>
+                  <div class="dropdown">
+                    <a
+                      class="font-xs color-text-paragraph-2 icon-down"
+                      id="dropdownProfile"
+                      type="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                      data-bs-display="static"
+                      >Super Admin</a
+                    >
+                    <ul
+                      class="dropdown-menu dropdown-menu-light dropdown-menu-end"
+                      aria-labelledby="dropdownProfile"
+                    >
+                      <li>
+                        <a class="dropdown-item" href="profile.html"
+                          >Profiles</a
+                        >
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="my-resume.html"
+                          >CV Manager</a
+                        >
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="login.html">Logout</a>
+                      </li>
                     </ul>
                   </div>
                 </div>
@@ -68,39 +130,106 @@
         </div>
       </div>
     </header>
-    <div class="burger-icon burger-icon-white"><span class="burger-icon-top"></span><span class="burger-icon-mid"></span><span class="burger-icon-bottom"></span></div>
-    <div class="mobile-header-active mobile-header-wrapper-style perfect-scrollbar">
+    <div class="burger-icon burger-icon-white">
+      <span class="burger-icon-top"></span><span class="burger-icon-mid"></span
+      ><span class="burger-icon-bottom"></span>
+    </div>
+    <div
+      class="mobile-header-active mobile-header-wrapper-style perfect-scrollbar"
+    >
       <div class="mobile-header-wrapper-inner">
         <div class="mobile-header-content-area">
           <div class="perfect-scroll">
             <div class="mobile-search mobile-header-border mb-30">
               <form action="#">
-                <input type="text" placeholder="Search…"><i class="fi-rr-search"></i>
+                <input type="text" placeholder="Search…" /><i
+                  class="fi-rr-search"
+                ></i>
               </form>
             </div>
             <div class="mobile-menu-wrap mobile-header-border">
               <!-- mobile menu start-->
               <nav>
                 <ul class="main-menu">
-                  <li> <a class="dashboard2 active" href="index.html"><img src="assets/imgs/page/dashboard/dashboard.svg" alt="jobBox"><span class="name">Dashboard</span></a>
+                  <li>
+                    <a class="dashboard2 active" href="index.html"
+                      ><img
+                        src="assets/imgs/page/dashboard/dashboard.svg"
+                        alt="jobBox"
+                      /><span class="name">Dashboard</span></a
+                    >
                   </li>
-                  <li> <a class="dashboard2" href="candidates.html"><img src="assets/imgs/page/dashboard/candidates.svg" alt="jobBox"><span class="name">Candidates</span></a>
+                  <li>
+                    <a class="dashboard2" href="candidates.html"
+                      ><img
+                        src="assets/imgs/page/dashboard/candidates.svg"
+                        alt="jobBox"
+                      /><span class="name">Candidates</span></a
+                    >
                   </li>
-                  <li> <a class="dashboard2" href="recruiters.html"><img src="assets/imgs/page/dashboard/recruiters.svg" alt="jobBox"><span class="name">Recruiters</span></a>
+                  <li>
+                    <a class="dashboard2" href="recruiters.html"
+                      ><img
+                        src="assets/imgs/page/dashboard/recruiters.svg"
+                        alt="jobBox"
+                      /><span class="name">Recruiters</span></a
+                    >
                   </li>
-                  <li> <a class="dashboard2" href="my-job-grid.html"><img src="assets/imgs/page/dashboard/jobs.svg" alt="jobBox"><span class="name">My Jobs</span></a>
+                  <li>
+                    <a class="dashboard2" href="my-job-grid.html"
+                      ><img
+                        src="assets/imgs/page/dashboard/jobs.svg"
+                        alt="jobBox"
+                      /><span class="name">My Jobs</span></a
+                    >
                   </li>
-                  <li> <a class="dashboard2" href="my-tasks-list.html"><img src="assets/imgs/page/dashboard/tasks.svg" alt="jobBox"><span class="name">Tasks List</span></a>
+                  <li>
+                    <a class="dashboard2" href="my-tasks-list.html"
+                      ><img
+                        src="assets/imgs/page/dashboard/tasks.svg"
+                        alt="jobBox"
+                      /><span class="name">Tasks List</span></a
+                    >
                   </li>
-                  <li> <a class="dashboard2" href="profile.html"><img src="assets/imgs/page/dashboard/profiles.svg" alt="jobBox"><span class="name">My Profiles</span></a>
+                  <li>
+                    <a class="dashboard2" href="profile.html"
+                      ><img
+                        src="assets/imgs/page/dashboard/profiles.svg"
+                        alt="jobBox"
+                      /><span class="name">My Profiles</span></a
+                    >
                   </li>
-                  <li> <a class="dashboard2" href="my-resume.html"><img src="assets/imgs/page/dashboard/cv-manage.svg" alt="jobBox"><span class="name">CV Manage</span></a>
+                  <li>
+                    <a class="dashboard2" href="my-resume.html"
+                      ><img
+                        src="assets/imgs/page/dashboard/cv-manage.svg"
+                        alt="jobBox"
+                      /><span class="name">CV Manage</span></a
+                    >
                   </li>
-                  <li> <a class="dashboard2" href="settings.html"><img src="assets/imgs/page/dashboard/settings.svg" alt="jobBox"><span class="name">Setting</span></a>
+                  <li>
+                    <a class="dashboard2" href="settings.html"
+                      ><img
+                        src="assets/imgs/page/dashboard/settings.svg"
+                        alt="jobBox"
+                      /><span class="name">Setting</span></a
+                    >
                   </li>
-                  <li> <a class="dashboard2" href="authentication.html"><img src="assets/imgs/page/dashboard/authentication.svg" alt="jobBox"><span class="name">Authentication</span></a>
+                  <li>
+                    <a class="dashboard2" href="authentication.html"
+                      ><img
+                        src="assets/imgs/page/dashboard/authentication.svg"
+                        alt="jobBox"
+                      /><span class="name">Authentication</span></a
+                    >
                   </li>
-                  <li> <a class="dashboard2" href="login.html"><img src="assets/imgs/page/dashboard/logout.svg" alt="jobBox"><span class="name">Logout</span></a>
+                  <li>
+                    <a class="dashboard2" href="login.html"
+                      ><img
+                        src="assets/imgs/page/dashboard/logout.svg"
+                        alt="jobBox"
+                      /><span class="name">Logout</span></a
+                    >
                   </li>
                 </ul>
               </nav>
@@ -114,36 +243,105 @@
                 <li><a href="#">Go Pro</a></li>
                 <li><a href="page-signin.html">Sign Out</a></li>
               </ul>
-              <div class="mb-15 mt-15"> <a class="btn btn-default icon-edit hover-up" href="post-job.html">Post Job</a></div>
+              <div class="mb-15 mt-15">
+                <a
+                  class="btn btn-default icon-edit hover-up"
+                  href="post-job.html"
+                  >Post Job</a
+                >
+              </div>
             </div>
-            <div class="site-copyright">Copyright 2022 &copy; JobBox. <br>Designed by AliThemes.</div>
+            <div class="site-copyright">
+              Copyright 2022 &copy; JobBox. <br />Designed by AliThemes.
+            </div>
           </div>
         </div>
       </div>
     </div>
     <main class="main">
-      <div class="nav"><a class="btn btn-expanded"></a>
+      <div class="nav">
+        <a class="btn btn-expanded"></a>
         <nav class="nav-main-menu">
           <ul class="main-menu">
-            <li> <a class="dashboard2 active" href="index.html"><img src="assets/imgs/page/dashboard/dashboard.svg" alt="jobBox"><span class="name">Dashboard</span></a>
+            <li>
+              <a class="dashboard2 active" href="index.html"
+                ><img
+                  src="assets/imgs/page/dashboard/dashboard.svg"
+                  alt="jobBox"
+                /><span class="name">Dashboard</span></a
+              >
             </li>
-            <li> <a class="dashboard2" href="candidates.html"><img src="assets/imgs/page/dashboard/candidates.svg" alt="jobBox"><span class="name">Candidates</span></a>
+            <li>
+              <a class="dashboard2" href="candidates.html"
+                ><img
+                  src="assets/imgs/page/dashboard/candidates.svg"
+                  alt="jobBox"
+                /><span class="name">Candidates</span></a
+              >
             </li>
-            <li> <a class="dashboard2" href="recruiters.html"><img src="assets/imgs/page/dashboard/recruiters.svg" alt="jobBox"><span class="name">Recruiters</span></a>
+            <li>
+              <a class="dashboard2" href="recruiters.html"
+                ><img
+                  src="assets/imgs/page/dashboard/recruiters.svg"
+                  alt="jobBox"
+                /><span class="name">Recruiters</span></a
+              >
             </li>
-            <li> <a class="dashboard2" href="my-job-grid.html"><img src="assets/imgs/page/dashboard/jobs.svg" alt="jobBox"><span class="name">My Jobs</span></a>
+            <li>
+              <a class="dashboard2" href="my-job-grid.html"
+                ><img
+                  src="assets/imgs/page/dashboard/jobs.svg"
+                  alt="jobBox"
+                /><span class="name">My Jobs</span></a
+              >
             </li>
-            <li> <a class="dashboard2" href="my-tasks-list.html"><img src="assets/imgs/page/dashboard/tasks.svg" alt="jobBox"><span class="name">Tasks List</span></a>
+            <li>
+              <a class="dashboard2" href="my-tasks-list.html"
+                ><img
+                  src="assets/imgs/page/dashboard/tasks.svg"
+                  alt="jobBox"
+                /><span class="name">Tasks List</span></a
+              >
             </li>
-            <li> <a class="dashboard2" href="profile.html"><img src="assets/imgs/page/dashboard/profiles.svg" alt="jobBox"><span class="name">My Profiles</span></a>
+            <li>
+              <a class="dashboard2" href="profile.html"
+                ><img
+                  src="assets/imgs/page/dashboard/profiles.svg"
+                  alt="jobBox"
+                /><span class="name">My Profiles</span></a
+              >
             </li>
-            <li> <a class="dashboard2" href="my-resume.html"><img src="assets/imgs/page/dashboard/cv-manage.svg" alt="jobBox"><span class="name">CV Manage</span></a>
+            <li>
+              <a class="dashboard2" href="my-resume.html"
+                ><img
+                  src="assets/imgs/page/dashboard/cv-manage.svg"
+                  alt="jobBox"
+                /><span class="name">CV Manage</span></a
+              >
             </li>
-            <li> <a class="dashboard2" href="settings.html"><img src="assets/imgs/page/dashboard/settings.svg" alt="jobBox"><span class="name">Setting</span></a>
+            <li>
+              <a class="dashboard2" href="settings.html"
+                ><img
+                  src="assets/imgs/page/dashboard/settings.svg"
+                  alt="jobBox"
+                /><span class="name">Setting</span></a
+              >
             </li>
-            <li> <a class="dashboard2" href="authentication.html"><img src="assets/imgs/page/dashboard/authentication.svg" alt="jobBox"><span class="name">Authentication</span></a>
+            <li>
+              <a class="dashboard2" href="authentication.html"
+                ><img
+                  src="assets/imgs/page/dashboard/authentication.svg"
+                  alt="jobBox"
+                /><span class="name">Authentication</span></a
+              >
             </li>
-            <li> <a class="dashboard2" href="login.html"><img src="assets/imgs/page/dashboard/logout.svg" alt="jobBox"><span class="name">Logout</span></a>
+            <li>
+              <a class="dashboard2" href="login.html"
+                ><img
+                  src="assets/imgs/page/dashboard/logout.svg"
+                  alt="jobBox"
+                /><span class="name">Logout</span></a
+              >
             </li>
           </ul>
         </nav>
@@ -151,153 +349,442 @@
         <div class="box-profile-completed text-center mb-30">
           <div id="circle-staticstic-demo"></div>
           <h6 class="mb-10">Profile Completed</h6>
-          <p class="font-xs color-text-mutted">Please add detailed information to your profile. This will help you develop your career more quickly.</p>
+          <p class="font-xs color-text-mutted">
+            Please add detailed information to your profile. This will help you
+            develop your career more quickly.
+          </p>
         </div>
-        <div class="sidebar-border-bg mt-50"><span class="text-grey">WE ARE</span><span class="text-hiring">HIRING</span>
-          <p class="font-xxs color-text-paragraph mt-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto</p>
-          <div class="mt-15"><a class="btn btn-paragraph-2" href="#">Know More</a></div>
+        <div class="sidebar-border-bg mt-50">
+          <span class="text-grey">WE ARE</span
+          ><span class="text-hiring">HIRING</span>
+          <p class="font-xxs color-text-paragraph mt-5">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae
+            architecto
+          </p>
+          <div class="mt-15">
+            <a class="btn btn-paragraph-2" href="#">Know More</a>
+          </div>
         </div>
       </div>
       <div class="box-content">
         <div class="box-heading">
-          <div class="box-title"> 
+          <div class="box-title">
             <h3 class="mb-35">Dashboard</h3>
           </div>
-          <div class="box-breadcrumb"> 
+          <div class="box-breadcrumb">
             <div class="breadcrumbs">
-              <ul> 
-                <li> <a class="icon-home" href="index.html">Admin</a></li>
+              <ul>
+                <li><a class="icon-home" href="index.html">Admin</a></li>
                 <li><span>Dashboard</span></li>
               </ul>
             </div>
           </div>
         </div>
-        <div class="row"> 
+        <div class="time-filter">
+          <div class="filter-wrapper">
+            <button class="filter-btn active" data-period="day">
+              THIS DAY
+            </button>
+            <button class="filter-btn" data-period="week">THIS WEEK</button>
+            <button class="filter-btn" data-period="month">THIS MONTH</button>
+          </div>
+        </div>
+
+        <style>
+          .time-filter {
+            margin: 20px 0;
+          }
+
+          .filter-wrapper {
+            display: inline-flex;
+            background: #fff;
+            border: 1px solid #e0e6f7;
+            border-radius: 100px;
+            padding: 4px;
+          }
+
+          .filter-btn {
+            padding: 10px 24px;
+            border: none;
+            background: transparent;
+            color: #4f5e64;
+            font-weight: 500;
+            border-radius: 100px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+          }
+
+          .filter-btn:hover {
+            color: #3c65f5;
+          }
+
+          .filter-btn.active {
+            background: #3c65f5;
+            color: white;
+          }
+
+          .filter-btn::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s, height 0.3s;
+          }
+
+          .filter-btn:active::after {
+            width: 100px;
+            height: 100px;
+            opacity: 0;
+          }
+        </style>
+
+        <script>
+          document.addEventListener("DOMContentLoaded", function () {
+            const filterBtns = document.querySelectorAll(".filter-btn");
+
+            filterBtns.forEach((btn) => {
+              btn.addEventListener("click", function () {
+                // Remove active class from all buttons
+                filterBtns.forEach((b) => b.classList.remove("active"));
+
+                // Add active class to clicked button
+                this.classList.add("active");
+
+                // Get the time period from data attribute
+                const period = this.getAttribute("data-period");
+
+                // Add ripple effect
+                const ripple = document.createElement("div");
+                ripple.classList.add("ripple");
+                this.appendChild(ripple);
+
+                // Remove ripple after animation
+                setTimeout(() => {
+                  ripple.remove();
+                }, 1000);
+
+                // Example of filtering functionality
+                filterData(period);
+              });
+            });
+
+            // Example function to handle filtering
+            function filterData(period) {
+              console.log(`Filtering data for: ${period}`);
+              // Here you can add your logic to filter the dashboard data
+              // For example:
+              switch (period) {
+                case "day":
+                  // Update dashboard with daily data
+                  updateDashboard({
+                    applications: 34,
+                    jobsPosted: 9,
+                    hires: 4,
+                    offersSent: 32,
+                    interviews: 34,
+                  });
+                  break;
+                case "week":
+                  // Update dashboard with weekly data
+                  updateDashboard({
+                    applications: 180,
+                    jobsPosted: 45,
+                    hires: 20,
+                    offersSent: 156,
+                    interviews: 167,
+                  });
+                  break;
+                case "month":
+                  // Update dashboard with monthly data
+                  updateDashboard({
+                    applications: 720,
+                    jobsPosted: 180,
+                    hires: 80,
+                    offersSent: 624,
+                    interviews: 668,
+                  });
+                  break;
+              }
+            }
+
+            // Example function to update dashboard numbers
+            function updateDashboard(data) {
+              // Animate number changes
+              animateNumber("applications", data.applications);
+              animateNumber("jobsPosted", data.jobsPosted);
+              animateNumber("hires", data.hires);
+              animateNumber("offersSent", data.offersSent);
+              animateNumber("interviews", data.interviews);
+            }
+
+            // Function to animate number changes
+            function animateNumber(elementId, target) {
+              const element = document.getElementById(elementId);
+              if (!element) return;
+
+              const start = parseInt(element.textContent);
+              const duration = 1000; // 1 second
+              const steps = 60;
+              const increment = (target - start) / steps;
+              let current = start;
+              let step = 0;
+
+              const animation = setInterval(() => {
+                step++;
+                current += increment;
+                element.textContent = Math.round(current);
+
+                if (step >= steps) {
+                  element.textContent = target;
+                  clearInterval(animation);
+                }
+              }, duration / steps);
+            }
+          });
+        </script>
+        <div class="row">
           <div class="col-xxl-8 col-xl-7 col-lg-7">
             <div class="section-box">
-              <div class="row"> 
-                <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-4 col-sm-6"> 
+              <div class="row">
+                <div class="col">
                   <div class="card-style-1 hover-up">
-                    <div class="card-image"> <img src="assets/imgs/page/dashboard/computer.svg" alt="jobBox"></div>
-                    <div class="card-info"> 
+                    <div class="card-image">
+                      <img
+                        src="assets/imgs/page/dashboard/open-file.svg"
+                        alt="jobBox"
+                      />
+                    </div>
+                    <div class="card-info">
                       <div class="card-title">
-                        <h3>1568<span class="font-sm status up">25<span>%</span></span>
-                        </h3>
+                        <h3>34</h3>
                       </div>
-                      <p class="color-text-paragraph-2">Interview Schedules</p>
+                      <p class="color-text-paragraph-2">Applications</p>
                     </div>
                   </div>
                 </div>
-                <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-4 col-sm-6">
+                <div class="col">
                   <div class="card-style-1 hover-up">
-                    <div class="card-image"> <img src="assets/imgs/page/dashboard/bank.svg" alt="jobBox"></div>
-                    <div class="card-info"> 
+                    <div class="card-image">
+                      <img
+                        src="assets/imgs/page/dashboard/doc.svg"
+                        alt="jobBox"
+                      />
+                    </div>
+                    <div class="card-info">
                       <div class="card-title">
-                        <h3>284<span class="font-sm status up">5<span>%</span></span>
-                        </h3>
+                        <h3>19</h3>
                       </div>
-                      <p class="color-text-paragraph-2">Applied Jobs</p>
+                      <p class="color-text-paragraph-2">Jobs Posted</p>
                     </div>
                   </div>
                 </div>
-                <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-4 col-sm-6">
+                <div class="col">
                   <div class="card-style-1 hover-up">
-                    <div class="card-image"> <img src="assets/imgs/page/dashboard/lamp.svg" alt="jobBox"></div>
-                    <div class="card-info"> 
+                    <div class="card-image">
+                      <img
+                        src="assets/imgs/page/dashboard/man.svg"
+                        alt="jobBox"
+                      />
+                    </div>
+                    <div class="card-info">
                       <div class="card-title">
-                        <h3>136<span class="font-sm status up">12<span>%</span></span>
-                        </h3>
+                        <h3>24</h3>
                       </div>
-                      <p class="color-text-paragraph-2">Task Bids Won</p>
+                      <p class="color-text-paragraph-2">Hires</p>
                     </div>
                   </div>
                 </div>
-                <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-4 col-sm-6">
+                <div class="col">
                   <div class="card-style-1 hover-up">
-                    <div class="card-image"> <img src="assets/imgs/page/dashboard/headphone.svg" alt="jobBox"></div>
-                    <div class="card-info"> 
+                    <div class="card-image">
+                      <img
+                        src="assets/imgs/page/dashboard/look.svg"
+                        alt="jobBox"
+                      />
+                    </div>
+                    <div class="card-info">
                       <div class="card-title">
-                        <h3>985<span class="font-sm status up">5<span>%</span></span>
-                        </h3>
+                        <h3>32</h3>
                       </div>
-                      <p class="color-text-paragraph-2">Application Sent</p>
+                      <p class="color-text-paragraph-2">Offers Sent</p>
                     </div>
                   </div>
                 </div>
-                <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-4 col-sm-6">
+                <div class="col">
                   <div class="card-style-1 hover-up">
-                    <div class="card-image"> <img src="assets/imgs/page/dashboard/look.svg" alt="jobBox"></div>
-                    <div class="card-info"> 
-                      <div class="card-title">
-                        <h3>165<span class="font-sm status up">15<span>%</span></span>
-                        </h3>
-                      </div>
-                      <p class="color-text-paragraph-2">Profile Viewed</p>
+                    <div class="card-image">
+                      <img
+                        src="assets/imgs/page/dashboard/headphone.svg"
+                        alt="jobBox"
+                      />
                     </div>
-                  </div>
-                </div>
-                <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-4 col-sm-6">
-                  <div class="card-style-1 hover-up">
-                    <div class="card-image"> <img src="assets/imgs/page/dashboard/open-file.svg" alt="jobBox"></div>
-                    <div class="card-info"> 
+                    <div class="card-info">
                       <div class="card-title">
-                        <h3>2356<span class="font-sm status down">- 2%</span>
-                        </h3>
+                        <h3>34</h3>
                       </div>
-                      <p class="color-text-paragraph-2">New Messages</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-4 col-sm-6">
-                  <div class="card-style-1 hover-up">
-                    <div class="card-image"> <img src="assets/imgs/page/dashboard/doc.svg" alt="jobBox"></div>
-                    <div class="card-info"> 
-                      <div class="card-title">
-                        <h3>254<span class="font-sm status up">2<span>%</span></span>
-                        </h3>
-                      </div>
-                      <p class="color-text-paragraph-2">Articles Added</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-4 col-sm-6">
-                  <div class="card-style-1 hover-up">
-                    <div class="card-image"> <img src="assets/imgs/page/dashboard/man.svg" alt="jobBox"></div>
-                    <div class="card-info"> 
-                      <div class="card-title">
-                        <h3>548<span class="font-sm status up">48<span>%</span></span>
-                        </h3>
-                      </div>
-                      <p class="color-text-paragraph-2">CV Added</p>
+                      <p class="color-text-paragraph-2">Interviews</p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
             <div class="section-box">
-              <div class="container"> 
-                <div class="panel-white">
-                  <div class="panel-head"> 
-                    <h5>Vacancy Stats</h5><a class="menudrop" id="dropdownMenu2" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static"></a>
-                    <ul class="dropdown-menu dropdown-menu-light dropdown-menu-end" aria-labelledby="dropdownMenu2">
-                      <li><a class="dropdown-item active" href="#">Add new</a></li>
-                      <li><a class="dropdown-item" href="#">Settings</a></li>
-                      <li><a class="dropdown-item" href="#">Actions</a></li>
-                    </ul>
-                  </div>
-                  <div class="panel-body"> 
-                    <div id="chartdiv"></div>
-                  </div>
+              <div class="container-fluid p-0">
+                <div
+                  class="panel-white"
+                  style="
+                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                    border-radius: 8px;
+                    overflow: hidden;
+                  "
+                >
+                  <head>
+                    <title>Job Metrics Dashboard</title>
+                    <script src="https://code.highcharts.com/highcharts.js"></script>
+                    <style>
+                      #container {
+                        height: 400px;
+                        width: 100%; /* Removed max-width constraint */
+                        margin: 0; /* Removed auto margins */
+                      }
+                      .panel-white {
+                        padding: 20px; /* Add padding for proper spacing */
+                        background: #fff; /* Ensure white background */
+                        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+                        border-radius: 8px; /* Ensure consistent rounded corners */
+                        overflow: hidden; /* Prevent content overflow */
+                      }
+                      .container-fluid {
+                        margin: 0;
+                        padding: 0;
+                      }
+                    </style>
+                  </head>
+                  <div id="container"></div>
+
+                  <script>
+                    Highcharts.chart("container", {
+                      chart: {
+                        type: "column",
+                        style: {
+                          fontFamily: "Arial, sans-serif",
+                        },
+                      },
+                      title: {
+                        text: "Jobs by Category - Status Breakdown",
+                        style: {
+                          fontSize: "20px",
+                          fontWeight: "bold",
+                        },
+                      },
+                      xAxis: {
+                        categories: [
+                          "Development",
+                          "Design",
+                          "Marketing",
+                          "Data Science",
+                          "DevOps",
+                        ],
+                        labels: {
+                          style: {
+                            fontSize: "13px",
+                            color: "#66789c",
+                          },
+                        },
+                      },
+                      yAxis: {
+                        min: 0,
+                        title: {
+                          text: "Number of Jobs",
+                          style: {
+                            fontSize: "14px",
+                            color: "#66789c",
+                          },
+                        },
+                      },
+                      legend: {
+                        align: "right",
+                        verticalAlign: "top",
+                        backgroundColor: "#FFFFFF",
+                        borderColor: "#CCC",
+                        borderWidth: 1,
+                        shadow: false,
+                      },
+                      tooltip: {
+                        formatter: function () {
+                          return (
+                            "<b>" +
+                            this.x +
+                            "</b><br/>" +
+                            this.series.name +
+                            ": " +
+                            this.y +
+                            "<br/>" +
+                            "Total: " +
+                            this.point.stackTotal
+                          );
+                        },
+                      },
+                      plotOptions: {
+                        column: {
+                          stacking: "normal",
+                          borderRadius: 3,
+                          dataLabels: {
+                            enabled: true,
+                            color: "#FFFFFF",
+                            style: {
+                              textOutline: "none",
+                            },
+                          },
+                        },
+                      },
+                      series: [
+                        {
+                          name: "Active Jobs",
+                          data: [20, 15, 12, 18, 14],
+                          color: "#3C65F5",
+                        },
+                        {
+                          name: "Closed Jobs",
+                          data: [10, 8, 6, 9, 7],
+                          color: "#6678b6",
+                        },
+                      ],
+                      credits: {
+                        enabled: false,
+                      },
+                    });
+                  </script>
                 </div>
               </div>
             </div>
             <div class="section-box">
-              <div class="container"> 
+              <div class="container">
                 <div class="panel-white">
-                  <div class="panel-head"> 
-                    <h5>Latest Jobs</h5><a class="menudrop" id="dropdownMenu3" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static"></a>
-                    <ul class="dropdown-menu dropdown-menu-light dropdown-menu-end" aria-labelledby="dropdownMenu3">
-                      <li><a class="dropdown-item active" href="#">Add new</a></li>
+                  <div class="panel-head">
+                    <h5>Latest Jobs</h5>
+                    <a
+                      class="menudrop"
+                      id="dropdownMenu3"
+                      type="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                      data-bs-display="static"
+                    ></a>
+                    <ul
+                      class="dropdown-menu dropdown-menu-light dropdown-menu-end"
+                      aria-labelledby="dropdownMenu3"
+                    >
+                      <li>
+                        <a class="dropdown-item active" href="#">Add new</a>
+                      </li>
                       <li><a class="dropdown-item" href="#">Settings</a></li>
                       <li><a class="dropdown-item" href="#">Actions</a></li>
                     </ul>
@@ -305,209 +792,947 @@
                   <div class="panel-body">
                     <div class="card-style-2 hover-up">
                       <div class="card-head">
-                        <div class="card-image"> <img src="assets/imgs/page/dashboard/img1.png" alt="jobBox"></div>
-                        <div class="card-title"> 
-                          <h6>Senior Full Stack Engineer, Creator Success</h6><span class="job-type">Full time</span><span class="time-post">3mins ago</span><span class="location">New York, US</span>
+                        <div class="card-title">
+                          <h4>Senior Full Stack Engineer</h4>
+                          <span class="job-type">Full time</span>
+                          <span class="time-post">3 mins ago</span>
+                          <span class="location">Multan, Pakistan</span>
                         </div>
                       </div>
-                      <div class="card-tags"> <a class="btn btn-tag">Figma</a><a class="btn btn-tag">Adobe XD</a>
+                      <div class="card-tags">
+                        <a class="btn btn-tag">CSS</a>
+                        <a class="btn btn-tag">React</a>
+                        <a class="btn btn-tag">Javascript</a>
+                        <a class="btn btn-tag">HTML</a>
                       </div>
-                      <div class="card-price"><strong>$300</strong><span class="hour">/Hour</span></div>
+                      <div class="card-price">
+                        <strong>$300</strong><span class="hour">/Hour</span>
+                      </div>
+                      <div class="card-metrics">
+                        <div class="metric-item">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          >
+                            <path
+                              d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"
+                            />
+                            <circle cx="12" cy="12" r="3" />
+                          </svg>
+                          <span class="metric-value">2.2k</span>
+                          <span class="metric-label">Views</span>
+                        </div>
+                        <div class="metric-item">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          >
+                            <path d="M8 13v-1h1v1H8Z" />
+                            <path
+                              d="M8 4h8v12h-1v3H8v-3H7V4h1Zm7 11V5H9v10h6Z"
+                            />
+                          </svg>
+                          <span class="metric-value">145</span>
+                          <span class="metric-label">Clicks</span>
+                        </div>
+                        <div class="metric-item">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          >
+                            <path
+                              d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"
+                            />
+                            <circle cx="12" cy="7" r="4" />
+                          </svg>
+                          <span class="metric-value">34</span>
+                          <span class="metric-label">Applications</span>
+                        </div>
+                      </div>
                     </div>
                     <div class="card-style-2 hover-up">
                       <div class="card-head">
-                        <div class="card-image"> <img src="assets/imgs/page/dashboard/img2.png" alt="jobBox"></div>
-                        <div class="card-title"> 
-                          <h6>Senior Full Stack Engineer, Creator Success</h6><span class="job-type">Full time</span><span class="time-post">3mins ago</span><span class="location">Chicago, US</span>
+                        <div class="card-title">
+                          <h4>Technical Project Manager</h4>
+                          <span class="job-type">Part time</span>
+                          <span class="time-post">27 mins ago</span>
+                          <span class="location">Lahore, Pakistan</span>
                         </div>
                       </div>
-                      <div class="card-tags"> <a class="btn btn-tag">Figma</a><a class="btn btn-tag">Adobe XD</a><a class="btn btn-tag">PSD</a>
+                      <div class="card-tags">
+                        <a class="btn btn-tag">CSS</a>
+                        <a class="btn btn-tag">React</a>
+                        <a class="btn btn-tag">Javascript</a>
+                        <a class="btn btn-tag">HTML</a>
                       </div>
-                      <div class="card-price"><strong>$650</strong><span class="hour">/Hour</span></div>
+                      <div class="card-price">
+                        <strong>$240</strong><span class="hour">/Hour</span>
+                      </div>
+                      <div class="card-metrics">
+                        <div class="metric-item">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          >
+                            <path
+                              d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"
+                            />
+                            <circle cx="12" cy="12" r="3" />
+                          </svg>
+                          <span class="metric-value">24.1k</span>
+                          <span class="metric-label">Views</span>
+                        </div>
+                        <div class="metric-item">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          >
+                            <path d="M8 13v-1h1v1H8Z" />
+                            <path
+                              d="M8 4h8v12h-1v3H8v-3H7V4h1Zm7 11V5H9v10h6Z"
+                            />
+                          </svg>
+                          <span class="metric-value">230</span>
+                          <span class="metric-label">Clicks</span>
+                        </div>
+                        <div class="metric-item">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          >
+                            <path
+                              d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"
+                            />
+                            <circle cx="12" cy="7" r="4" />
+                          </svg>
+                          <span class="metric-value">54</span>
+                          <span class="metric-label">Applications</span>
+                        </div>
+                      </div>
                     </div>
+
                     <div class="card-style-2 hover-up">
                       <div class="card-head">
-                        <div class="card-image"> <img src="assets/imgs/page/dashboard/img3.png" alt="jobBox"></div>
-                        <div class="card-title"> 
-                          <h6>Lead Product/UX/UI Designer Role</h6><span class="job-type">Full time</span><span class="time-post">3mins ago</span><span class="location">Paris, France</span>
+                        <div class="card-title">
+                          <h4>Full Stack Developer</h4>
+                          <span class="job-type">Full time</span>
+                          <span class="time-post">2 hours ago</span>
+                          <span class="location">San Francisco, USA</span>
                         </div>
                       </div>
-                      <div class="card-tags"> <a class="btn btn-tag">Figma</a><a class="btn btn-tag">Adobe XD</a><a class="btn btn-tag">PSD</a>
+                      <div class="card-tags">
+                        <a class="btn btn-tag">Node.js</a>
+                        <a class="btn btn-tag">Express</a>
+                        <a class="btn btn-tag">MongoDB</a>
+                        <a class="btn btn-tag">Angular</a>
                       </div>
-                      <div class="card-price"><strong>$1200</strong><span class="hour">/Hour</span></div>
+                      <div class="card-price">
+                        <strong>$180</strong><span class="hour">/Hour</span>
+                      </div>
+                      <div class="card-metrics">
+                        <div class="metric-item">
+                          <span class="metric-value">15.3k</span>
+                          <span class="metric-label">Views</span>
+                        </div>
+                        <div class="metric-item">
+                          <span class="metric-value">450</span>
+                          <span class="metric-label">Clicks</span>
+                        </div>
+                        <div class="metric-item">
+                          <span class="metric-value">120</span>
+                          <span class="metric-label">Applications</span>
+                        </div>
+                      </div>
                     </div>
+
                     <div class="card-style-2 hover-up">
                       <div class="card-head">
-                        <div class="card-image"> <img src="assets/imgs/page/dashboard/img4.png" alt="jobBox"></div>
-                        <div class="card-title"> 
-                          <h6>Marketing Graphic Designer</h6><span class="job-type">Full time</span><span class="time-post">3mins ago</span><span class="location">Tokyto, Japan</span>
+                        <div class="card-title">
+                          <h4>Data Scientist</h4>
+                          <span class="job-type">Remote</span>
+                          <span class="time-post">3 days ago</span>
+                          <span class="location">Berlin, Germany</span>
                         </div>
                       </div>
-                      <div class="card-tags"> <a class="btn btn-tag">Figma</a><a class="btn btn-tag">Adobe XD</a><a class="btn btn-tag">PSD</a>
+                      <div class="card-tags">
+                        <a class="btn btn-tag">Python</a>
+                        <a class="btn btn-tag">TensorFlow</a>
+                        <a class="btn btn-tag">Pandas</a>
+                        <a class="btn btn-tag">AWS</a>
                       </div>
-                      <div class="card-price"><strong>$580</strong><span class="hour">/Hour</span></div>
+                      <div class="card-price">
+                        <strong>$300</strong><span class="hour">/Hour</span>
+                      </div>
+                      <div class="card-metrics">
+                        <div class="metric-item">
+                          <span class="metric-value">32.5k</span>
+                          <span class="metric-label">Views</span>
+                        </div>
+                        <div class="metric-item">
+                          <span class="metric-value">520</span>
+                          <span class="metric-label">Clicks</span>
+                        </div>
+                        <div class="metric-item">
+                          <span class="metric-value">78</span>
+                          <span class="metric-label">Applications</span>
+                        </div>
+                      </div>
                     </div>
+
                     <div class="card-style-2 hover-up">
                       <div class="card-head">
-                        <div class="card-image"> <img src="assets/imgs/page/dashboard/img5.png" alt="jobBox"></div>
-                        <div class="card-title"> 
-                          <h6>Director, Product Design - Creator</h6><span class="job-type">Full time</span><span class="time-post">3mins ago</span><span class="location">Ha Noi, Vietnam</span>
+                        <div class="card-title">
+                          <h4>DevOps Engineer</h4>
+                          <span class="job-type">Contract</span>
+                          <span class="time-post">1 week ago</span>
+                          <span class="location">Tokyo, Japan</span>
                         </div>
                       </div>
-                      <div class="card-tags"> <a class="btn btn-tag">Figma</a><a class="btn btn-tag">Adobe XD</a><a class="btn btn-tag">PSD</a>
+                      <div class="card-tags">
+                        <a class="btn btn-tag">Docker</a>
+                        <a class="btn btn-tag">Kubernetes</a>
+                        <a class="btn btn-tag">Terraform</a>
+                        <a class="btn btn-tag">CI/CD</a>
                       </div>
-                      <div class="card-price"><strong>$1500</strong><span class="hour">/Hour</span></div>
+                      <div class="card-price">
+                        <strong>$220</strong><span class="hour">/Hour</span>
+                      </div>
+                      <div class="card-metrics">
+                        <div class="metric-item">
+                          <span class="metric-value">28.1k</span>
+                          <span class="metric-label">Views</span>
+                        </div>
+                        <div class="metric-item">
+                          <span class="metric-value">320</span>
+                          <span class="metric-label">Clicks</span>
+                        </div>
+                        <div class="metric-item">
+                          <span class="metric-value">95</span>
+                          <span class="metric-label">Applications</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="card-style-2 hover-up">
+                      <div class="card-head">
+                        <div class="card-title">
+                          <h4>UI/UX Designer</h4>
+                          <span class="job-type">Freelance</span>
+                          <span class="time-post">5 hours ago</span>
+                          <span class="location">Toronto, Canada</span>
+                        </div>
+                      </div>
+                      <div class="card-tags">
+                        <a class="btn btn-tag">Figma</a>
+                        <a class="btn btn-tag">Sketch</a>
+                        <a class="btn btn-tag">Adobe XD</a>
+                        <a class="btn btn-tag">User Research</a>
+                      </div>
+                      <div class="card-price">
+                        <strong>$150</strong><span class="hour">/Hour</span>
+                      </div>
+                      <div class="card-metrics">
+                        <div class="metric-item">
+                          <span class="metric-value">19.7k</span>
+                          <span class="metric-label">Views</span>
+                        </div>
+                        <div class="metric-item">
+                          <span class="metric-value">180</span>
+                          <span class="metric-label">Clicks</span>
+                        </div>
+                        <div class="metric-item">
+                          <span class="metric-value">65</span>
+                          <span class="metric-label">Applications</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="card-style-2 hover-up">
+                      <div class="card-head">
+                        <div class="card-title">
+                          <h4>Blockchain Developer</h4>
+                          <span class="job-type">Remote</span>
+                          <span class="time-post">8 hours ago</span>
+                          <span class="location">Singapore</span>
+                        </div>
+                      </div>
+                      <div class="card-tags">
+                        <a class="btn btn-tag">Solidity</a>
+                        <a class="btn btn-tag">Web3.js</a>
+                        <a class="btn btn-tag">Smart Contracts</a>
+                        <a class="btn btn-tag">Ethereum</a>
+                      </div>
+                      <div class="card-price">
+                        <strong>$350</strong><span class="hour">/Hour</span>
+                      </div>
+                      <div class="card-metrics">
+                        <div class="metric-item">
+                          <span class="metric-value">45.2k</span>
+                          <span class="metric-label">Views</span>
+                        </div>
+                        <div class="metric-item">
+                          <span class="metric-value">610</span>
+                          <span class="metric-label">Clicks</span>
+                        </div>
+                        <div class="metric-item">
+                          <span class="metric-value">140</span>
+                          <span class="metric-label">Applications</span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+
+            <style>
+              .card-style-2 {
+                padding: 16px;
+                margin-bottom: 20px;
+              }
+
+              .card-title h4 {
+                font-size: clamp(16px, 2vw, 20px);
+                margin-bottom: 8px;
+              }
+
+              .card-tags {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+                margin: 12px 0;
+              }
+
+              .btn-tag {
+                margin: 0;
+                white-space: nowrap;
+              }
+
+              .card-metrics {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 16px;
+                padding: 16px 0;
+              }
+
+              @media (max-width: 768px) {
+                .card-head {
+                  flex-direction: column;
+                  gap: 8px;
+                }
+
+                .card-title span {
+                  margin-right: 8px;
+                  font-size: 12px;
+                }
+
+                .metric-item {
+                  min-width: calc(50% - 8px);
+                  justify-content: flex-start;
+                }
+
+                .card-price {
+                  margin: 12px 0;
+                }
+              }
+
+              @media (max-width: 480px) {
+                .metric-item {
+                  min-width: 100%;
+                }
+
+                .card-metrics {
+                  gap: 12px;
+                }
+
+                .btn-tag {
+                  font-size: 12px;
+                  padding: 4px 8px;
+                }
+              }
+
+              @media (hover: hover) {
+                .card-style-2:hover .metric-item {
+                  color: #3c65f5;
+                }
+              }
+              .card-metrics {
+                display: flex;
+                justify-content: flex-start;
+                gap: 24px;
+                padding: 16px 20px;
+                margin: 12px 0;
+              }
+
+              .metric-item {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                color: #4f5e64;
+              }
+
+              .metric-item svg {
+                color: #66789c;
+              }
+
+              .metric-value {
+                font-weight: 600;
+                font-size: 14px;
+              }
+
+              .metric-label {
+                color: #66789c;
+                font-size: 14px;
+              }
+
+              .card-style-2:hover .metric-item {
+                color: #3c65f5;
+              }
+
+              .card-style-2:hover .metric-item svg {
+                color: #3c65f5;
+              }
+            </style>
           </div>
+
           <div class="col-xxl-4 col-xl-5 col-lg-5">
             <div class="section-box">
-              <div class="container"> 
+              <div class="container">
                 <div class="panel-white">
-                  <div class="panel-head"> 
-                    <h5>Top Candidates</h5><a class="menudrop" id="dropdownMenu4" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static"></a>
-                    <ul class="dropdown-menu dropdown-menu-light dropdown-menu-end" aria-labelledby="dropdownMenu4">
-                      <li><a class="dropdown-item active" href="#">Add new</a></li>
+                  <div class="panel-head">
+                    <h5>Top Candidates</h5>
+                    <a
+                      class="menudrop"
+                      id="dropdownMenu4"
+                      type="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                      data-bs-display="static"
+                    ></a>
+                    <ul
+                      class="dropdown-menu dropdown-menu-light dropdown-menu-end"
+                      aria-labelledby="dropdownMenu4"
+                    >
+                      <li>
+                        <a class="dropdown-item active" href="#">Add new</a>
+                      </li>
                       <li><a class="dropdown-item" href="#">Settings</a></li>
                       <li><a class="dropdown-item" href="#">Actions</a></li>
                     </ul>
                   </div>
                   <div class="panel-body">
                     <div class="card-style-3 hover-up">
-                      <div class="card-image online"><img src="assets/imgs/page/dashboard/avata1.png" alt="jobBox"></div>
-                      <div class="card-title"> 
-                        <h6>Robert Fox</h6><span class="job-position">UI/UX Designer</span>
+                      <div class="card-image online">
+                        <img
+                          src="assets/imgs/page/dashboard/avata1.png"
+                          alt="jobBox"
+                        />
                       </div>
-                      <div class="card-location"> <span class="location">Chicago, US</span></div>
-                      <div class="card-rating"><img src="assets/imgs/page/dashboard/star.svg" alt="jobBox"> <img src="assets/imgs/page/dashboard/star.svg" alt="jobBox"> <img src="assets/imgs/page/dashboard/star.svg" alt="jobBox"> <img src="assets/imgs/page/dashboard/star.svg" alt="jobBox"> <img src="assets/imgs/page/dashboard/star.svg" alt="jobBox"> <span class="font-xs color-text-mutted">
-                           (65)</span></div>
+                      <div class="card-title">
+                        <h6>Robert Fox</h6>
+                        <span class="job-position">UI/UX Designer</span>
+                      </div>
+                      <div class="card-location">
+                        <span class="location">Chicago, US</span>
+                      </div>
+                      <div class="card-rating">
+                        <img
+                          src="assets/imgs/page/dashboard/star.svg"
+                          alt="jobBox"
+                        />
+                        <img
+                          src="assets/imgs/page/dashboard/star.svg"
+                          alt="jobBox"
+                        />
+                        <img
+                          src="assets/imgs/page/dashboard/star.svg"
+                          alt="jobBox"
+                        />
+                        <img
+                          src="assets/imgs/page/dashboard/star.svg"
+                          alt="jobBox"
+                        />
+                        <img
+                          src="assets/imgs/page/dashboard/star.svg"
+                          alt="jobBox"
+                        />
+                        <span class="font-xs color-text-mutted"> (65)</span>
+                      </div>
                     </div>
                     <div class="card-style-3 hover-up">
-                      <div class="card-image online"><img src="assets/imgs/page/dashboard/avata2.png" alt="jobBox"></div>
-                      <div class="card-title"> 
-                        <h6>Cody Fisher</h6><span class="job-position">Network Engineer</span>
+                      <div class="card-image online">
+                        <img
+                          src="assets/imgs/page/dashboard/avata2.png"
+                          alt="jobBox"
+                        />
                       </div>
-                      <div class="card-location"> <span class="location">New York, US</span></div>
-                      <div class="card-rating"><img src="assets/imgs/page/dashboard/star.svg" alt="jobBox"> <img src="assets/imgs/page/dashboard/star.svg" alt="jobBox"> <img src="assets/imgs/page/dashboard/star.svg" alt="jobBox"> <img src="assets/imgs/page/dashboard/star.svg" alt="jobBox"> <img src="assets/imgs/page/dashboard/star.svg" alt="jobBox"> <span class="font-xs color-text-mutted">
-                           (65)</span></div>
+                      <div class="card-title">
+                        <h6>Cody Fisher</h6>
+                        <span class="job-position">Network Engineer</span>
+                      </div>
+                      <div class="card-location">
+                        <span class="location">New York, US</span>
+                      </div>
+                      <div class="card-rating">
+                        <img
+                          src="assets/imgs/page/dashboard/star.svg"
+                          alt="jobBox"
+                        />
+                        <img
+                          src="assets/imgs/page/dashboard/star.svg"
+                          alt="jobBox"
+                        />
+                        <img
+                          src="assets/imgs/page/dashboard/star.svg"
+                          alt="jobBox"
+                        />
+                        <img
+                          src="assets/imgs/page/dashboard/star.svg"
+                          alt="jobBox"
+                        />
+                        <img
+                          src="assets/imgs/page/dashboard/star.svg"
+                          alt="jobBox"
+                        />
+                        <span class="font-xs color-text-mutted"> (65)</span>
+                      </div>
                     </div>
                     <div class="card-style-3 hover-up">
-                      <div class="card-image online"><img src="assets/imgs/page/dashboard/avata3.png" alt="jobBox"></div>
-                      <div class="card-title"> 
-                        <h6>Jane Cooper</h6><span class="job-position">Content Manager</span>
+                      <div class="card-image online">
+                        <img
+                          src="assets/imgs/page/dashboard/avata3.png"
+                          alt="jobBox"
+                        />
                       </div>
-                      <div class="card-location"> <span class="location">Chicago, US</span></div>
-                      <div class="card-rating"><img src="assets/imgs/page/dashboard/star.svg" alt="jobBox"> <img src="assets/imgs/page/dashboard/star.svg" alt="jobBox"> <img src="assets/imgs/page/dashboard/star.svg" alt="jobBox"> <img src="assets/imgs/page/dashboard/star.svg" alt="jobBox"> <img src="assets/imgs/page/dashboard/star.svg" alt="jobBox"> <span class="font-xs color-text-mutted">
-                           (65)</span></div>
+                      <div class="card-title">
+                        <h6>Jane Cooper</h6>
+                        <span class="job-position">Content Manager</span>
+                      </div>
+                      <div class="card-location">
+                        <span class="location">Chicago, US</span>
+                      </div>
+                      <div class="card-rating">
+                        <img
+                          src="assets/imgs/page/dashboard/star.svg"
+                          alt="jobBox"
+                        />
+                        <img
+                          src="assets/imgs/page/dashboard/star.svg"
+                          alt="jobBox"
+                        />
+                        <img
+                          src="assets/imgs/page/dashboard/star.svg"
+                          alt="jobBox"
+                        />
+                        <img
+                          src="assets/imgs/page/dashboard/star.svg"
+                          alt="jobBox"
+                        />
+                        <img
+                          src="assets/imgs/page/dashboard/star.svg"
+                          alt="jobBox"
+                        />
+                        <span class="font-xs color-text-mutted"> (65)</span>
+                      </div>
                     </div>
                     <div class="card-style-3 hover-up">
-                      <div class="card-image online"><img src="assets/imgs/page/dashboard/avata4.png" alt="jobBox"></div>
-                      <div class="card-title"> 
-                        <h6>Jerome Bell</h6><span class="job-position">Frontend Developer</span>
+                      <div class="card-image online">
+                        <img
+                          src="assets/imgs/page/dashboard/avata4.png"
+                          alt="jobBox"
+                        />
                       </div>
-                      <div class="card-location"> <span class="location">Chicago, US</span></div>
-                      <div class="card-rating"><img src="assets/imgs/page/dashboard/star.svg" alt="jobBox"> <img src="assets/imgs/page/dashboard/star.svg" alt="jobBox"> <img src="assets/imgs/page/dashboard/star.svg" alt="jobBox"> <img src="assets/imgs/page/dashboard/star.svg" alt="jobBox"> <img src="assets/imgs/page/dashboard/star.svg" alt="jobBox"> <span class="font-xs color-text-mutted">
-                           (65)</span></div>
+                      <div class="card-title">
+                        <h6>Jerome Bell</h6>
+                        <span class="job-position">Frontend Developer</span>
+                      </div>
+                      <div class="card-location">
+                        <span class="location">Chicago, US</span>
+                      </div>
+                      <div class="card-rating">
+                        <img
+                          src="assets/imgs/page/dashboard/star.svg"
+                          alt="jobBox"
+                        />
+                        <img
+                          src="assets/imgs/page/dashboard/star.svg"
+                          alt="jobBox"
+                        />
+                        <img
+                          src="assets/imgs/page/dashboard/star.svg"
+                          alt="jobBox"
+                        />
+                        <img
+                          src="assets/imgs/page/dashboard/star.svg"
+                          alt="jobBox"
+                        />
+                        <img
+                          src="assets/imgs/page/dashboard/star.svg"
+                          alt="jobBox"
+                        />
+                        <span class="font-xs color-text-mutted"> (65)</span>
+                      </div>
                     </div>
                     <div class="card-style-3 hover-up">
-                      <div class="card-image online"><img src="assets/imgs/page/dashboard/avata5.png" alt="jobBox"></div>
-                      <div class="card-title"> 
-                        <h6>Floyd Miles</h6><span class="job-position">NodeJS Dev</span>
+                      <div class="card-image online">
+                        <img
+                          src="assets/imgs/page/dashboard/avata5.png"
+                          alt="jobBox"
+                        />
                       </div>
-                      <div class="card-location"> <span class="location">Chicago, US</span></div>
-                      <div class="card-rating"><img src="assets/imgs/page/dashboard/star.svg" alt="jobBox"> <img src="assets/imgs/page/dashboard/star.svg" alt="jobBox"> <img src="assets/imgs/page/dashboard/star.svg" alt="jobBox"> <img src="assets/imgs/page/dashboard/star.svg" alt="jobBox"> <img src="assets/imgs/page/dashboard/star.svg" alt="jobBox"> <span class="font-xs color-text-mutted">
-                           (65)</span></div>
+                      <div class="card-title">
+                        <h6>Floyd Miles</h6>
+                        <span class="job-position">NodeJS Dev</span>
+                      </div>
+                      <div class="card-location">
+                        <span class="location">Chicago, US</span>
+                      </div>
+                      <div class="card-rating">
+                        <img
+                          src="assets/imgs/page/dashboard/star.svg"
+                          alt="jobBox"
+                        />
+                        <img
+                          src="assets/imgs/page/dashboard/star.svg"
+                          alt="jobBox"
+                        />
+                        <img
+                          src="assets/imgs/page/dashboard/star.svg"
+                          alt="jobBox"
+                        />
+                        <img
+                          src="assets/imgs/page/dashboard/star.svg"
+                          alt="jobBox"
+                        />
+                        <img
+                          src="assets/imgs/page/dashboard/star.svg"
+                          alt="jobBox"
+                        />
+                        <span class="font-xs color-text-mutted"> (65)</span>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
             <div class="section-box">
-              <div class="container"> 
+              <div class="container">
                 <div class="panel-white">
-                  <div class="panel-head"> 
-                    <h5>Top Recruiters</h5><a class="menudrop" id="dropdownMenu5" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static"></a>
-                    <ul class="dropdown-menu dropdown-menu-light dropdown-menu-end" aria-labelledby="dropdownMenu5">
-                      <li><a class="dropdown-item active" href="#">Add new</a></li>
+                  <div class="panel-head">
+                    <h5>Top Recruiters</h5>
+                    <a
+                      class="menudrop"
+                      id="dropdownMenu5"
+                      type="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                      data-bs-display="static"
+                    ></a>
+                    <ul
+                      class="dropdown-menu dropdown-menu-light dropdown-menu-end"
+                      aria-labelledby="dropdownMenu5"
+                    >
+                      <li>
+                        <a class="dropdown-item active" href="#">Add new</a>
+                      </li>
                       <li><a class="dropdown-item" href="#">Settings</a></li>
                       <li><a class="dropdown-item" href="#">Actions</a></li>
                     </ul>
                   </div>
                   <div class="panel-body">
-                    <div class="row"> 
+                    <div class="row">
                       <div class="col-lg-6 col-md-6 pr-5 pl-5">
                         <div class="card-style-4 hover-up">
                           <div class="d-flex">
-                            <div class="card-image"><img src="assets/imgs/page/dashboard/avata1.png" alt="jobBox"></div>
-                            <div class="card-title"> 
-                              <h6>Robert Fox</h6><img src="assets/imgs/page/dashboard/star.svg" alt="jobBox"> <img src="assets/imgs/page/dashboard/star.svg" alt="jobBox"> <img src="assets/imgs/page/dashboard/star.svg" alt="jobBox"> <img src="assets/imgs/page/dashboard/star-none.svg" alt="jobBox"> <img src="assets/imgs/page/dashboard/star-none.svg" alt="jobBox"> <span class="font-xs color-text-mutted">
-                                 (65)</span>
+                            <div class="card-image">
+                              <img
+                                src="assets/imgs/page/dashboard/avata1.png"
+                                alt="jobBox"
+                              />
+                            </div>
+                            <div class="card-title">
+                              <h6>Robert Fox</h6>
+                              <img
+                                src="assets/imgs/page/dashboard/star.svg"
+                                alt="jobBox"
+                              />
+                              <img
+                                src="assets/imgs/page/dashboard/star.svg"
+                                alt="jobBox"
+                              />
+                              <img
+                                src="assets/imgs/page/dashboard/star.svg"
+                                alt="jobBox"
+                              />
+                              <img
+                                src="assets/imgs/page/dashboard/star-none.svg"
+                                alt="jobBox"
+                              />
+                              <img
+                                src="assets/imgs/page/dashboard/star-none.svg"
+                                alt="jobBox"
+                              />
+                              <span class="font-xs color-text-mutted">
+                                (65)</span
+                              >
                             </div>
                           </div>
-                          <div class="card-location d-flex"><span class="location">Red, CA</span><span class="jobs-number">25 Open Jobs</span></div>
+                          <div class="card-location d-flex">
+                            <span class="location">Red, CA</span
+                            ><span class="jobs-number">25 Open Jobs</span>
+                          </div>
                         </div>
                       </div>
                       <div class="col-lg-6 col-md-6 pr-5 pl-5">
                         <div class="card-style-4 hover-up">
                           <div class="d-flex">
-                            <div class="card-image"><img src="assets/imgs/page/dashboard/avata2.png" alt="jobBox"></div>
-                            <div class="card-title"> 
-                              <h6>Cody Fisher</h6><img src="assets/imgs/page/dashboard/star.svg" alt="jobBox"> <img src="assets/imgs/page/dashboard/star.svg" alt="jobBox"> <img src="assets/imgs/page/dashboard/star.svg" alt="jobBox"> <img src="assets/imgs/page/dashboard/star-none.svg" alt="jobBox"> <img src="assets/imgs/page/dashboard/star-none.svg" alt="jobBox"> <span class="font-xs color-text-mutted">
-                                 (65)</span>
+                            <div class="card-image">
+                              <img
+                                src="assets/imgs/page/dashboard/avata2.png"
+                                alt="jobBox"
+                              />
+                            </div>
+                            <div class="card-title">
+                              <h6>Cody Fisher</h6>
+                              <img
+                                src="assets/imgs/page/dashboard/star.svg"
+                                alt="jobBox"
+                              />
+                              <img
+                                src="assets/imgs/page/dashboard/star.svg"
+                                alt="jobBox"
+                              />
+                              <img
+                                src="assets/imgs/page/dashboard/star.svg"
+                                alt="jobBox"
+                              />
+                              <img
+                                src="assets/imgs/page/dashboard/star-none.svg"
+                                alt="jobBox"
+                              />
+                              <img
+                                src="assets/imgs/page/dashboard/star-none.svg"
+                                alt="jobBox"
+                              />
+                              <span class="font-xs color-text-mutted">
+                                (65)</span
+                              >
                             </div>
                           </div>
-                          <div class="card-location d-flex"><span class="location">Chicago, US</span><span class="jobs-number">25 Open Jobs</span></div>
+                          <div class="card-location d-flex">
+                            <span class="location">Chicago, US</span
+                            ><span class="jobs-number">25 Open Jobs</span>
+                          </div>
                         </div>
                       </div>
                       <div class="col-lg-6 col-md-6 pr-5 pl-5">
                         <div class="card-style-4 hover-up">
                           <div class="d-flex">
-                            <div class="card-image"><img src="assets/imgs/page/dashboard/avata3.png" alt="jobBox"></div>
-                            <div class="card-title"> 
-                              <h6>Jane Cooper</h6><img src="assets/imgs/page/dashboard/star.svg" alt="jobBox"> <img src="assets/imgs/page/dashboard/star.svg" alt="jobBox"> <img src="assets/imgs/page/dashboard/star.svg" alt="jobBox"> <img src="assets/imgs/page/dashboard/star-none.svg" alt="jobBox"> <img src="assets/imgs/page/dashboard/star-none.svg" alt="jobBox"> <span class="font-xs color-text-mutted">
-                                 (65)</span>
+                            <div class="card-image">
+                              <img
+                                src="assets/imgs/page/dashboard/avata3.png"
+                                alt="jobBox"
+                              />
+                            </div>
+                            <div class="card-title">
+                              <h6>Jane Cooper</h6>
+                              <img
+                                src="assets/imgs/page/dashboard/star.svg"
+                                alt="jobBox"
+                              />
+                              <img
+                                src="assets/imgs/page/dashboard/star.svg"
+                                alt="jobBox"
+                              />
+                              <img
+                                src="assets/imgs/page/dashboard/star.svg"
+                                alt="jobBox"
+                              />
+                              <img
+                                src="assets/imgs/page/dashboard/star-none.svg"
+                                alt="jobBox"
+                              />
+                              <img
+                                src="assets/imgs/page/dashboard/star-none.svg"
+                                alt="jobBox"
+                              />
+                              <span class="font-xs color-text-mutted">
+                                (65)</span
+                              >
                             </div>
                           </div>
-                          <div class="card-location d-flex"><span class="location">Austin, TX</span><span class="jobs-number">25 Open Jobs</span></div>
+                          <div class="card-location d-flex">
+                            <span class="location">Austin, TX</span
+                            ><span class="jobs-number">25 Open Jobs</span>
+                          </div>
                         </div>
                       </div>
                       <div class="col-lg-6 col-md-6 pr-5 pl-5">
                         <div class="card-style-4 hover-up">
                           <div class="d-flex">
-                            <div class="card-image"><img src="assets/imgs/page/dashboard/avata4.png" alt="jobBox"></div>
-                            <div class="card-title"> 
-                              <h6>Jerome Bell</h6><img src="assets/imgs/page/dashboard/star.svg" alt="jobBox"> <img src="assets/imgs/page/dashboard/star.svg" alt="jobBox"> <img src="assets/imgs/page/dashboard/star.svg" alt="jobBox"> <img src="assets/imgs/page/dashboard/star-none.svg" alt="jobBox"> <img src="assets/imgs/page/dashboard/star-none.svg" alt="jobBox"> <span class="font-xs color-text-mutted">
-                                 (65)</span>
+                            <div class="card-image">
+                              <img
+                                src="assets/imgs/page/dashboard/avata4.png"
+                                alt="jobBox"
+                              />
+                            </div>
+                            <div class="card-title">
+                              <h6>Jerome Bell</h6>
+                              <img
+                                src="assets/imgs/page/dashboard/star.svg"
+                                alt="jobBox"
+                              />
+                              <img
+                                src="assets/imgs/page/dashboard/star.svg"
+                                alt="jobBox"
+                              />
+                              <img
+                                src="assets/imgs/page/dashboard/star.svg"
+                                alt="jobBox"
+                              />
+                              <img
+                                src="assets/imgs/page/dashboard/star-none.svg"
+                                alt="jobBox"
+                              />
+                              <img
+                                src="assets/imgs/page/dashboard/star-none.svg"
+                                alt="jobBox"
+                              />
+                              <span class="font-xs color-text-mutted">
+                                (65)</span
+                              >
                             </div>
                           </div>
-                          <div class="card-location d-flex"><span class="location">Remote</span><span class="jobs-number">25 Open Jobs</span></div>
+                          <div class="card-location d-flex">
+                            <span class="location">Remote</span
+                            ><span class="jobs-number">25 Open Jobs</span>
+                          </div>
                         </div>
                       </div>
                       <div class="col-lg-6 col-md-6 pr-5 pl-5">
                         <div class="card-style-4 hover-up">
                           <div class="d-flex">
-                            <div class="card-image"><img src="assets/imgs/page/dashboard/avata5.png" alt="jobBox"></div>
-                            <div class="card-title"> 
-                              <h6>Floyd Miles</h6><img src="assets/imgs/page/dashboard/star.svg" alt="jobBox"> <img src="assets/imgs/page/dashboard/star.svg" alt="jobBox"> <img src="assets/imgs/page/dashboard/star.svg" alt="jobBox"> <img src="assets/imgs/page/dashboard/star-none.svg" alt="jobBox"> <img src="assets/imgs/page/dashboard/star-none.svg" alt="jobBox"> <span class="font-xs color-text-mutted">
-                                 (65)</span>
+                            <div class="card-image">
+                              <img
+                                src="assets/imgs/page/dashboard/avata5.png"
+                                alt="jobBox"
+                              />
+                            </div>
+                            <div class="card-title">
+                              <h6>Floyd Miles</h6>
+                              <img
+                                src="assets/imgs/page/dashboard/star.svg"
+                                alt="jobBox"
+                              />
+                              <img
+                                src="assets/imgs/page/dashboard/star.svg"
+                                alt="jobBox"
+                              />
+                              <img
+                                src="assets/imgs/page/dashboard/star.svg"
+                                alt="jobBox"
+                              />
+                              <img
+                                src="assets/imgs/page/dashboard/star-none.svg"
+                                alt="jobBox"
+                              />
+                              <img
+                                src="assets/imgs/page/dashboard/star-none.svg"
+                                alt="jobBox"
+                              />
+                              <span class="font-xs color-text-mutted">
+                                (65)</span
+                              >
                             </div>
                           </div>
-                          <div class="card-location d-flex"><span class="location">Boston, US</span><span class="jobs-number">25 Open Jobs</span></div>
+                          <div class="card-location d-flex">
+                            <span class="location">Boston, US</span
+                            ><span class="jobs-number">25 Open Jobs</span>
+                          </div>
                         </div>
                       </div>
                       <div class="col-lg-6 col-md-6 pr-5 pl-5">
                         <div class="card-style-4 hover-up">
                           <div class="d-flex">
-                            <div class="card-image"><img src="assets/imgs/page/dashboard/avata1.png" alt="jobBox"></div>
-                            <div class="card-title"> 
-                              <h6>Devon Lane</h6><img src="assets/imgs/page/dashboard/star.svg" alt="jobBox"> <img src="assets/imgs/page/dashboard/star.svg" alt="jobBox"> <img src="assets/imgs/page/dashboard/star.svg" alt="jobBox"> <img src="assets/imgs/page/dashboard/star-none.svg" alt="jobBox"> <img src="assets/imgs/page/dashboard/star-none.svg" alt="jobBox"> <span class="font-xs color-text-mutted">
-                                 (65)</span>
+                            <div class="card-image">
+                              <img
+                                src="assets/imgs/page/dashboard/avata1.png"
+                                alt="jobBox"
+                              />
+                            </div>
+                            <div class="card-title">
+                              <h6>Devon Lane</h6>
+                              <img
+                                src="assets/imgs/page/dashboard/star.svg"
+                                alt="jobBox"
+                              />
+                              <img
+                                src="assets/imgs/page/dashboard/star.svg"
+                                alt="jobBox"
+                              />
+                              <img
+                                src="assets/imgs/page/dashboard/star.svg"
+                                alt="jobBox"
+                              />
+                              <img
+                                src="assets/imgs/page/dashboard/star-none.svg"
+                                alt="jobBox"
+                              />
+                              <img
+                                src="assets/imgs/page/dashboard/star-none.svg"
+                                alt="jobBox"
+                              />
+                              <span class="font-xs color-text-mutted">
+                                (65)</span
+                              >
                             </div>
                           </div>
-                          <div class="card-location d-flex"><span class="location">Chicago, US</span><span class="jobs-number">25 Open Jobs</span></div>
+                          <div class="card-location d-flex">
+                            <span class="location">Chicago, US</span
+                            ><span class="jobs-number">25 Open Jobs</span>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -516,22 +1741,35 @@
               </div>
             </div>
             <div class="section-box">
-              <div class="container"> 
+              <div class="container">
                 <div class="panel-white">
-                  <div class="panel-head"> 
-                    <h5>Queries by search</h5><a class="menudrop" id="dropdownMenu6" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static"></a>
-                    <ul class="dropdown-menu dropdown-menu-light dropdown-menu-end" aria-labelledby="dropdownMenu6">
-                      <li><a class="dropdown-item active" href="#">Add new</a></li>
+                  <div class="panel-head">
+                    <h5>Queries by search</h5>
+                    <a
+                      class="menudrop"
+                      id="dropdownMenu6"
+                      type="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                      data-bs-display="static"
+                    ></a>
+                    <ul
+                      class="dropdown-menu dropdown-menu-light dropdown-menu-end"
+                      aria-labelledby="dropdownMenu6"
+                    >
+                      <li>
+                        <a class="dropdown-item active" href="#">Add new</a>
+                      </li>
                       <li><a class="dropdown-item" href="#">Settings</a></li>
                       <li><a class="dropdown-item" href="#">Actions</a></li>
                     </ul>
                   </div>
                   <div class="panel-body">
                     <div class="card-style-5 hover-up">
-                      <div class="card-title"> 
+                      <div class="card-title">
                         <h6 class="font-sm">Developer</h6>
                       </div>
-                      <div class="card-progress"> 
+                      <div class="card-progress">
                         <div class="number font-sm">2635</div>
                         <div class="progress">
                           <div class="progress-bar" style="width: 100%"></div>
@@ -539,10 +1777,10 @@
                       </div>
                     </div>
                     <div class="card-style-5 hover-up">
-                      <div class="card-title"> 
+                      <div class="card-title">
                         <h6 class="font-sm">UI/Ux Designer</h6>
                       </div>
-                      <div class="card-progress"> 
+                      <div class="card-progress">
                         <div class="number font-sm">1658</div>
                         <div class="progress">
                           <div class="progress-bar" style="width: 90%"></div>
@@ -550,10 +1788,10 @@
                       </div>
                     </div>
                     <div class="card-style-5 hover-up">
-                      <div class="card-title"> 
+                      <div class="card-title">
                         <h6 class="font-sm">Marketing</h6>
                       </div>
-                      <div class="card-progress"> 
+                      <div class="card-progress">
                         <div class="number font-sm">1452</div>
                         <div class="progress">
                           <div class="progress-bar" style="width: 80%"></div>
@@ -561,10 +1799,10 @@
                       </div>
                     </div>
                     <div class="card-style-5 hover-up">
-                      <div class="card-title"> 
+                      <div class="card-title">
                         <h6 class="font-sm">Content manager</h6>
                       </div>
-                      <div class="card-progress"> 
+                      <div class="card-progress">
                         <div class="number font-sm">1325</div>
                         <div class="progress">
                           <div class="progress-bar" style="width: 70%"></div>
@@ -572,10 +1810,10 @@
                       </div>
                     </div>
                     <div class="card-style-5 hover-up">
-                      <div class="card-title"> 
+                      <div class="card-title">
                         <h6 class="font-sm">Ruby on rain</h6>
                       </div>
-                      <div class="card-progress"> 
+                      <div class="card-progress">
                         <div class="number font-sm">985</div>
                         <div class="progress">
                           <div class="progress-bar" style="width: 60%"></div>
@@ -583,10 +1821,10 @@
                       </div>
                     </div>
                     <div class="card-style-5 hover-up">
-                      <div class="card-title"> 
+                      <div class="card-title">
                         <h6 class="font-sm">Human hunter</h6>
                       </div>
-                      <div class="card-progress"> 
+                      <div class="card-progress">
                         <div class="number font-sm">920</div>
                         <div class="progress">
                           <div class="progress-bar" style="width: 50%"></div>
@@ -594,10 +1832,10 @@
                       </div>
                     </div>
                     <div class="card-style-5 hover-up">
-                      <div class="card-title"> 
+                      <div class="card-title">
                         <h6 class="font-sm">Finance</h6>
                       </div>
-                      <div class="card-progress"> 
+                      <div class="card-progress">
                         <div class="number font-sm">853</div>
                         <div class="progress">
                           <div class="progress-bar" style="width: 40%"></div>
@@ -612,21 +1850,71 @@
         </div>
         <div class="mt-10">
           <div class="section-box">
-            <div class="container"> 
+            <div class="container">
               <div class="panel-white pt-30 pb-30 pl-15 pr-15">
                 <div class="box-swiper">
                   <div class="swiper-container swiper-group-10">
                     <div class="swiper-wrapper">
-                      <div class="swiper-slide"> <img src="assets/imgs/page/dashboard/microsoft.svg" alt="jobBox"></div>
-                      <div class="swiper-slide"> <img src="assets/imgs/page/dashboard/sony.svg" alt="jobBox"></div>
-                      <div class="swiper-slide"> <img src="assets/imgs/page/dashboard/acer.svg" alt="jobBox"></div>
-                      <div class="swiper-slide"> <img src="assets/imgs/page/dashboard/nokia.svg" alt="jobBox"></div>
-                      <div class="swiper-slide"> <img src="assets/imgs/page/dashboard/asus.svg" alt="jobBox"></div>
-                      <div class="swiper-slide"> <img src="assets/imgs/page/dashboard/casio.svg" alt="jobBox"></div>
-                      <div class="swiper-slide"> <img src="assets/imgs/page/dashboard/dell.svg" alt="jobBox"></div>
-                      <div class="swiper-slide"> <img src="assets/imgs/page/dashboard/panasonic.svg" alt="jobBox"></div>
-                      <div class="swiper-slide"> <img src="assets/imgs/page/dashboard/vaio.svg" alt="jobBox"></div>
-                      <div class="swiper-slide"> <img src="assets/imgs/page/dashboard/sony.svg" alt="jobBox"></div>
+                      <div class="swiper-slide">
+                        <img
+                          src="assets/imgs/page/dashboard/microsoft.svg"
+                          alt="jobBox"
+                        />
+                      </div>
+                      <div class="swiper-slide">
+                        <img
+                          src="assets/imgs/page/dashboard/sony.svg"
+                          alt="jobBox"
+                        />
+                      </div>
+                      <div class="swiper-slide">
+                        <img
+                          src="assets/imgs/page/dashboard/acer.svg"
+                          alt="jobBox"
+                        />
+                      </div>
+                      <div class="swiper-slide">
+                        <img
+                          src="assets/imgs/page/dashboard/nokia.svg"
+                          alt="jobBox"
+                        />
+                      </div>
+                      <div class="swiper-slide">
+                        <img
+                          src="assets/imgs/page/dashboard/asus.svg"
+                          alt="jobBox"
+                        />
+                      </div>
+                      <div class="swiper-slide">
+                        <img
+                          src="assets/imgs/page/dashboard/casio.svg"
+                          alt="jobBox"
+                        />
+                      </div>
+                      <div class="swiper-slide">
+                        <img
+                          src="assets/imgs/page/dashboard/dell.svg"
+                          alt="jobBox"
+                        />
+                      </div>
+                      <div class="swiper-slide">
+                        <img
+                          src="assets/imgs/page/dashboard/panasonic.svg"
+                          alt="jobBox"
+                        />
+                      </div>
+                      <div class="swiper-slide">
+                        <img
+                          src="assets/imgs/page/dashboard/vaio.svg"
+                          alt="jobBox"
+                        />
+                      </div>
+                      <div class="swiper-slide">
+                        <img
+                          src="assets/imgs/page/dashboard/sony.svg"
+                          alt="jobBox"
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -639,7 +1927,22 @@
             <div class="box-footer">
               <div class="row">
                 <div class="col-md-6 col-sm-12 mb-25 text-center text-md-start">
-                  <p class="font-sm color-text-paragraph-2">© 2022 - <a class="color-brand-2" href="https://themeforest.net/item/jobbox-job-portal-html-bootstrap-5-template/39217891" target="_blank">JobBox </a>Dashboard <span> Made by  </span><a class="color-brand-2" href="http://alithemes.com" target="_blank"> AliThemes</a></p>
+                  <p class="font-sm color-text-paragraph-2">
+                    © 2022 -
+                    <a
+                      class="color-brand-2"
+                      href="https://themeforest.net/item/jobbox-job-portal-html-bootstrap-5-template/39217891"
+                      target="_blank"
+                      >JobBox </a
+                    >Dashboard <span> Made by </span
+                    ><a
+                      class="color-brand-2"
+                      href="http://alithemes.com"
+                      target="_blank"
+                    >
+                      AliThemes</a
+                    >
+                  </p>
                 </div>
                 <div class="col-md-6 col-sm-12 text-center text-md-end mb-25">
                   <ul class="menu-footer">
