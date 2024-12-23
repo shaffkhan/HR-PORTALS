@@ -43,18 +43,6 @@
             </div>
             <span class="btn btn-grey-small ml-10">Admin area</span>
           </div>
-          <!-- <div class="header-search">
-            <div class="box-search">
-              <form action="">
-                <input
-                  class="form-control input-search"
-                  type="text"
-                  name="keyword"
-                  placeholder="Search"
-                />
-              </form>
-            </div>
-          </div> -->
           <div class="header-right">
             <div class="block-signin">
               <a class="btn btn-default icon-edit hover-up" href="post-job.html"
@@ -278,6 +266,176 @@
         <div class="box-heading">
           <div class="box-title">
             <h3 class="mb-35">Manage Jobs</h3>
+
+            <div class="time-filter">
+              <div class="filter-wrapper">
+                <button class="filter-btn active" data-period="day">
+                  OPEN JOBS
+                </button>
+                <button class="filter-btn" data-period="week">
+                  CLOSED JOBS
+                </button>
+              </div>
+            </div>
+            <style>
+              .time-filter {
+                margin: 20px 0;
+              }
+
+              .filter-wrapper {
+                display: inline-flex;
+                background: #fff;
+                border: 1px solid #e0e6f7;
+                border-radius: 100px;
+                padding: 4px;
+              }
+
+              .filter-btn {
+                padding: 10px 24px;
+                border: none;
+                background: transparent;
+                color: #4f5e64;
+                font-weight: 500;
+                border-radius: 100px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                position: relative;
+                overflow: hidden;
+              }
+
+              .filter-btn:hover {
+                color: #3c65f5;
+              }
+
+              .filter-btn.active {
+                background: #3c65f5;
+                color: white;
+              }
+
+              .filter-btn::after {
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 0;
+                height: 0;
+                background: rgba(255, 255, 255, 0.2);
+                border-radius: 50%;
+                transform: translate(-50%, -50%);
+                transition: width 0.3s, height 0.3s;
+              }
+
+              .filter-btn:active::after {
+                width: 100px;
+                height: 100px;
+                opacity: 0;
+              }
+            </style>
+
+            <script>
+              document.addEventListener("DOMContentLoaded", function () {
+                const filterBtns = document.querySelectorAll(".filter-btn");
+
+                filterBtns.forEach((btn) => {
+                  btn.addEventListener("click", function () {
+                    // Remove active class from all buttons
+                    filterBtns.forEach((b) => b.classList.remove("active"));
+
+                    // Add active class to clicked button
+                    this.classList.add("active");
+
+                    // Get the time period from data attribute
+                    const period = this.getAttribute("data-period");
+
+                    // Add ripple effect
+                    const ripple = document.createElement("div");
+                    ripple.classList.add("ripple");
+                    this.appendChild(ripple);
+
+                    // Remove ripple after animation
+                    setTimeout(() => {
+                      ripple.remove();
+                    }, 1000);
+
+                    // Example of filtering functionality
+                    filterData(period);
+                  });
+                });
+
+                // Example function to handle filtering
+                function filterData(period) {
+                  console.log(`Filtering data for: ${period}`);
+                  // Here you can add your logic to filter the dashboard data
+                  // For example:
+                  switch (period) {
+                    case "day":
+                      // Update dashboard with daily data
+                      updateDashboard({
+                        applications: 34,
+                        jobsPosted: 9,
+                        hires: 4,
+                        offersSent: 32,
+                        interviews: 34,
+                      });
+                      break;
+                    case "week":
+                      // Update dashboard with weekly data
+                      updateDashboard({
+                        applications: 180,
+                        jobsPosted: 45,
+                        hires: 20,
+                        offersSent: 156,
+                        interviews: 167,
+                      });
+                      break;
+                    case "month":
+                      // Update dashboard with monthly data
+                      updateDashboard({
+                        applications: 720,
+                        jobsPosted: 180,
+                        hires: 80,
+                        offersSent: 624,
+                        interviews: 668,
+                      });
+                      break;
+                  }
+                }
+
+                // Example function to update dashboard numbers
+                function updateDashboard(data) {
+                  // Animate number changes
+                  animateNumber("applications", data.applications);
+                  animateNumber("jobsPosted", data.jobsPosted);
+                  animateNumber("hires", data.hires);
+                  animateNumber("offersSent", data.offersSent);
+                  animateNumber("interviews", data.interviews);
+                }
+
+                // Function to animate number changes
+                function animateNumber(elementId, target) {
+                  const element = document.getElementById(elementId);
+                  if (!element) return;
+
+                  const start = parseInt(element.textContent);
+                  const duration = 1000; // 1 second
+                  const steps = 60;
+                  const increment = (target - start) / steps;
+                  let current = start;
+                  let step = 0;
+
+                  const animation = setInterval(() => {
+                    step++;
+                    current += increment;
+                    element.textContent = Math.round(current);
+
+                    if (step >= steps) {
+                      element.textContent = target;
+                      clearInterval(animation);
+                    }
+                  }, duration / steps);
+                }
+              });
+            </script>
           </div>
           <div class="box-breadcrumb">
             <div class="breadcrumbs">
@@ -295,147 +453,160 @@
                 <div class="panel-white mb-30">
                   <div class="box-padding">
                     <div class="box-filters-job">
-                      <div class="row">
-                        <div class="col-xl-6 col-lg-5">
-                          <span
-                            class="font-sm text-showing color-text-paragraph"
-                            >Showing 41-60 of 944 jobs</span
-                          >
+                      <div class="row align-items-center pb-3">
+                        <div class="col-lg-6">
+                          <div class="header-search">
+                            <div class="box-search">
+                              <form action="">
+                                <input
+                                  class="form-control input-search"
+                                  type="text"
+                                  name="keyword"
+                                  placeholder="Search"
+                                />
+                              </form>
+                            </div>
+                          </div>
                         </div>
-                        <div class="col-xl-6 col-lg-7 text-lg-end mt-sm-15">
-                          <div class="display-flex2">
-                            <div class="box-border mr-10">
-                              <span class="text-sortby">Show:</span>
-                              <div class="dropdown dropdown-sort">
-                                <button
-                                  class="btn dropdown-toggle"
-                                  id="dropdownSort"
-                                  type="button"
-                                  data-bs-toggle="dropdown"
-                                  aria-expanded="false"
-                                  data-bs-display="static"
-                                >
-                                  <span>12</span
-                                  ><i class="fi-rr-angle-small-down"></i>
-                                </button>
-                                <ul
-                                  class="dropdown-menu dropdown-menu-light"
-                                  aria-labelledby="dropdownSort"
-                                >
-                                  <li>
-                                    <a class="dropdown-item active" href="#"
-                                      >10</a
-                                    >
-                                  </li>
-                                  <li>
-                                    <a class="dropdown-item" href="#">12</a>
-                                  </li>
-                                  <li>
-                                    <a class="dropdown-item" href="#">20</a>
-                                  </li>
-                                </ul>
-                              </div>
+                        <div
+                          class="col-lg-6 d-flex justify-content-end align-items-center"
+                        >
+                          <div class="box-border mr-10">
+                            <span class="text-sortby">Show:</span>
+                            <div class="dropdown dropdown-sort">
+                              <button
+                                class="btn dropdown-toggle"
+                                id="dropdownSort"
+                                type="button"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                                data-bs-display="static"
+                              >
+                                <span>12</span>
+                                <i class="fi-rr-angle-small-down"></i>
+                              </button>
+                              <ul
+                                class="dropdown-menu dropdown-menu-light"
+                                aria-labelledby="dropdownSort"
+                              >
+                                <li>
+                                  <a class="dropdown-item active" href="#"
+                                    >10</a
+                                  >
+                                </li>
+                                <li>
+                                  <a class="dropdown-item" href="#">12</a>
+                                </li>
+                                <li>
+                                  <a class="dropdown-item" href="#">20</a>
+                                </li>
+                              </ul>
                             </div>
-                            <div class="box-border">
-                              <span class="text-sortby">Sort by:</span>
-                              <div class="dropdown dropdown-sort">
-                                <button
-                                  class="btn dropdown-toggle"
-                                  id="dropdownSort2"
-                                  type="button"
-                                  data-bs-toggle="dropdown"
-                                  aria-expanded="false"
-                                  data-bs-display="static"
-                                >
-                                  <span>Newest Post</span
-                                  ><i class="fi-rr-angle-small-down"></i>
-                                </button>
-                                <ul
-                                  class="dropdown-menu dropdown-menu-light"
-                                  aria-labelledby="dropdownSort2"
-                                >
-                                  <li>
-                                    <a class="dropdown-item active" href="#"
-                                      >Newest Post</a
-                                    >
-                                  </li>
-                                  <li>
-                                    <a class="dropdown-item" href="#"
-                                      >Oldest Post</a
-                                    >
-                                  </li>
-                                  <li>
-                                    <a class="dropdown-item" href="#"
-                                      >Rating Post</a
-                                    >
-                                  </li>
-                                </ul>
-                              </div>
+                          </div>
+                          <div class="box-border mr-10">
+                            <span class="text-sortby">Sort by:</span>
+                            <div class="dropdown dropdown-sort">
+                              <button
+                                class="btn dropdown-toggle"
+                                id="dropdownSort2"
+                                type="button"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                                data-bs-display="static"
+                              >
+                                <span>Newest Post</span>
+                                <i class="fi-rr-angle-small-down"></i>
+                              </button>
+                              <ul
+                                class="dropdown-menu dropdown-menu-light"
+                                aria-labelledby="dropdownSort2"
+                              >
+                                <li>
+                                  <a class="dropdown-item active" href="#"
+                                    >Newest Post</a
+                                  >
+                                </li>
+                                <li>
+                                  <a class="dropdown-item" href="#"
+                                    >Oldest Post</a
+                                  >
+                                </li>
+                                <li>
+                                  <a class="dropdown-item" href="#"
+                                    >Rating Post</a
+                                  >
+                                </li>
+                              </ul>
                             </div>
-                            <div class="box-view-type">
-                              <a class="view-type" href="my-job-list.html"
-                                ><img
-                                  src="assets/imgs/template/icons/icon-list.svg"
-                                  alt="jobBox" /></a
-                              ><a class="view-type" href="my-job-grid.html"
-                                ><img
-                                  src="assets/imgs/template/icons/icon-grid-hover.svg"
-                                  alt="jobBox"
-                              /></a>
-                            </div>
+                          </div>
+                          <div class="box-view-type">
+                            <a class="view-type" href="my-job-list.html">
+                              <img
+                                src="assets/imgs/template/icons/icon-list.svg"
+                                alt="jobBox"
+                              />
+                            </a>
+                            <a class="view-type" href="my-job-grid.html">
+                              <img
+                                src="assets/imgs/template/icons/icon-grid-hover.svg"
+                                alt="jobBox"
+                              />
+                            </a>
                           </div>
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12">
-                        <div class="card-grid-2 hover-up">
-                          <div class="card-grid-2-image-left">
-                            <span class="flash"></span>
-                            <div class="image-box">
-                              <img
-                                src="assets/imgs/brands/brand-1.png"
-                                alt="jobBox"
-                              />
-                            </div>
-                            <div class="right-info">
-                              <a class="name-job" href="company-details.html"
-                                >LinkedIn</a
-                              ><span class="location-small">New York, US</span>
-                            </div>
-                          </div>
+                        <div class="d-flex card-grid-2 hover-up">
                           <div class="card-block-info">
-                            <h6>
-                              <a href="job-details.html"
-                                >UI / UX Designer fulltime</a
-                              >
-                            </h6>
+                            <h4 class="mt-3">
+                              <a href="job-details.html">UI / UX Designer</a>
+                              <a class="btn btn-tag complete ml-5">Completed</a>
+                            </h4>
+                            <!-- Job Type -->
                             <div class="mt-5">
-                              <span class="card-briefcase">Fulltime</span
-                              ><span class="card-time"
-                                >4<span> minutes ago</span></span
-                              >
+                              <span class="card-briefcase">Fulltime</span>
                             </div>
+                            <!-- Job Description -->
                             <p class="font-sm color-text-paragraph mt-15">
-                              Lorem ipsum dolor sit amet, consectetur
-                              adipisicing elit. Recusandae architecto eveniet,
-                              dolor quo repellendus pariatur
+                              Seeking a talented UI/UX designer to craft
+                              seamless user experiences for web and mobile
+                              platforms. Collaborate with cross-functional teams
+                              to turn ideas into intuitive interfaces.
                             </p>
+                            <!-- Skills -->
                             <div class="mt-30">
                               <a
                                 class="btn btn-grey-small mr-5"
                                 href="jobs-grid.html"
                                 >Adobe XD</a
-                              ><a
+                              >
+                              <a
                                 class="btn btn-grey-small mr-5"
                                 href="jobs-grid.html"
                                 >Figma</a
-                              ><a
+                              >
+                              <a
                                 class="btn btn-grey-small mr-5"
                                 href="jobs-grid.html"
                                 >Photoshop</a
                               >
                             </div>
+                            <div
+                              class="mt-20 d-flex justify-content-between text-muted"
+                            >
+                              <span><i class="fi-rr-eye"></i> 120 Views</span>
+                              <span
+                                ><i class="fi-rr-mouse-pointer"></i> 30
+                                Clicks</span
+                              >
+                              <span
+                                ><i class="fi-rr-user"></i> 15
+                                Applications</span
+                              >
+                            </div>
+                            <!-- Pricing and Details -->
                             <div class="card-2-bottom mt-30">
                               <div class="row">
                                 <div class="col-lg-7 col-7">
@@ -448,7 +619,7 @@
                                     data-bs-toggle="modal"
                                     data-bs-target="#ModalApplyJobForm"
                                   >
-                                    Apply now
+                                    View Details
                                   </div>
                                 </div>
                               </div>
@@ -1146,520 +1317,6 @@
                               <div class="row">
                                 <div class="col-lg-7 col-7">
                                   <span class="card-text-price">$250</span
-                                  ><span class="text-muted">/Hour</span>
-                                </div>
-                                <div class="col-lg-5 col-5 text-end">
-                                  <div
-                                    class="btn btn-apply-now"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#ModalApplyJobForm"
-                                  >
-                                    Apply now
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12">
-                        <div class="card-grid-2 hover-up">
-                          <div class="card-grid-2-image-left">
-                            <span class="flash"></span>
-                            <div class="image-box">
-                              <img
-                                src="assets/imgs/brands/brand-5.png"
-                                alt="jobBox"
-                              />
-                            </div>
-                            <div class="right-info">
-                              <a class="name-job" href="company-details.html"
-                                >Linkedin</a
-                              ><span class="location-small">New York, US</span>
-                            </div>
-                          </div>
-                          <div class="card-block-info">
-                            <h6>
-                              <a href="job-details.html"
-                                >React Native Web Developer</a
-                              >
-                            </h6>
-                            <div class="mt-5">
-                              <span class="card-briefcase">Fulltime</span
-                              ><span class="card-time"
-                                >4<span> minutes ago</span></span
-                              >
-                            </div>
-                            <p class="font-sm color-text-paragraph mt-15">
-                              Lorem ipsum dolor sit amet, consectetur
-                              adipisicing elit. Recusandae architecto eveniet,
-                              dolor quo repellendus pariatur
-                            </p>
-                            <div class="mt-30">
-                              <a
-                                class="btn btn-grey-small mr-5"
-                                href="jobs-grid.html"
-                                >Angular</a
-                              >
-                            </div>
-                            <div class="card-2-bottom mt-30">
-                              <div class="row">
-                                <div class="col-lg-7 col-7">
-                                  <span class="card-text-price">$500</span
-                                  ><span class="text-muted">/Hour</span>
-                                </div>
-                                <div class="col-lg-5 col-5 text-end">
-                                  <div
-                                    class="btn btn-apply-now"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#ModalApplyJobForm"
-                                  >
-                                    Apply now
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12">
-                        <div class="card-grid-2 hover-up">
-                          <div class="card-grid-2-image-left">
-                            <span class="flash"></span>
-                            <div class="image-box">
-                              <img
-                                src="assets/imgs/brands/brand-6.png"
-                                alt="jobBox"
-                              />
-                            </div>
-                            <div class="right-info">
-                              <a class="name-job" href="company-details.html"
-                                >Quora JSC</a
-                              ><span class="location-small">New York, US</span>
-                            </div>
-                          </div>
-                          <div class="card-block-info">
-                            <h6>
-                              <a href="job-details.html"
-                                >Senior System Engineer</a
-                              >
-                            </h6>
-                            <div class="mt-5">
-                              <span class="card-briefcase">Part time</span
-                              ><span class="card-time"
-                                >5<span> minutes ago</span></span
-                              >
-                            </div>
-                            <p class="font-sm color-text-paragraph mt-15">
-                              Lorem ipsum dolor sit amet, consectetur
-                              adipisicing elit. Recusandae architecto eveniet,
-                              dolor quo repellendus pariatur.
-                            </p>
-                            <div class="mt-30">
-                              <a
-                                class="btn btn-grey-small mr-5"
-                                href="job-details.html"
-                                >PHP</a
-                              ><a
-                                class="btn btn-grey-small mr-5"
-                                href="job-details.html"
-                                >Android</a
-                              >
-                            </div>
-                            <div class="card-2-bottom mt-30">
-                              <div class="row">
-                                <div class="col-lg-7 col-7">
-                                  <span class="card-text-price">$800</span
-                                  ><span class="text-muted">/Hour</span>
-                                </div>
-                                <div class="col-lg-5 col-5 text-end">
-                                  <div
-                                    class="btn btn-apply-now"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#ModalApplyJobForm"
-                                  >
-                                    Apply now
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12">
-                        <div class="card-grid-2 hover-up">
-                          <div class="card-grid-2-image-left">
-                            <span class="flash"></span>
-                            <div class="image-box">
-                              <img
-                                src="assets/imgs/brands/brand-7.png"
-                                alt="jobBox"
-                              />
-                            </div>
-                            <div class="right-info">
-                              <a class="name-job" href="company-details.html"
-                                >Nintendo</a
-                              ><span class="location-small">New York, US</span>
-                            </div>
-                          </div>
-                          <div class="card-block-info">
-                            <h6>
-                              <a href="job-details.html">Products Manager</a>
-                            </h6>
-                            <div class="mt-5">
-                              <span class="card-briefcase">Full time</span
-                              ><span class="card-time"
-                                >6<span> minutes ago</span></span
-                              >
-                            </div>
-                            <p class="font-sm color-text-paragraph mt-15">
-                              Lorem ipsum dolor sit amet, consectetur
-                              adipisicing elit. Recusandae architecto eveniet,
-                              dolor quo repellendus pariatur.
-                            </p>
-                            <div class="mt-30">
-                              <a
-                                class="btn btn-grey-small mr-5"
-                                href="job-details.html"
-                                >ASP .Net</a
-                              ><a
-                                class="btn btn-grey-small mr-5"
-                                href="job-details.html"
-                                >Figma</a
-                              >
-                            </div>
-                            <div class="card-2-bottom mt-30">
-                              <div class="row">
-                                <div class="col-lg-7 col-7">
-                                  <span class="card-text-price">$250</span
-                                  ><span class="text-muted">/Hour</span>
-                                </div>
-                                <div class="col-lg-5 col-5 text-end">
-                                  <div
-                                    class="btn btn-apply-now"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#ModalApplyJobForm"
-                                  >
-                                    Apply now
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12">
-                        <div class="card-grid-2 hover-up">
-                          <div class="card-grid-2-image-left">
-                            <span class="flash"></span>
-                            <div class="image-box">
-                              <img
-                                src="assets/imgs/brands/brand-8.png"
-                                alt="jobBox"
-                              />
-                            </div>
-                            <div class="right-info">
-                              <a class="name-job" href="company-details.html"
-                                >Periscope</a
-                              ><span class="location-small">New York, US</span>
-                            </div>
-                          </div>
-                          <div class="card-block-info">
-                            <h6>
-                              <a href="job-details.html"
-                                >Lead Quality Control QA</a
-                              >
-                            </h6>
-                            <div class="mt-5">
-                              <span class="card-briefcase">Full time</span
-                              ><span class="card-time"
-                                >6<span> minutes ago</span></span
-                              >
-                            </div>
-                            <p class="font-sm color-text-paragraph mt-15">
-                              Lorem ipsum dolor sit amet, consectetur
-                              adipisicing elit. Recusandae architecto eveniet,
-                              dolor quo repellendus pariatur.
-                            </p>
-                            <div class="mt-30">
-                              <a
-                                class="btn btn-grey-small mr-5"
-                                href="job-details.html"
-                                >iOS</a
-                              ><a
-                                class="btn btn-grey-small mr-5"
-                                href="job-details.html"
-                                >Laravel</a
-                              ><a
-                                class="btn btn-grey-small mr-5"
-                                href="job-details.html"
-                                >Golang</a
-                              >
-                            </div>
-                            <div class="card-2-bottom mt-30">
-                              <div class="row">
-                                <div class="col-lg-7 col-7">
-                                  <span class="card-text-price">$250</span
-                                  ><span class="text-muted">/Hour</span>
-                                </div>
-                                <div class="col-lg-5 col-5 text-end">
-                                  <div
-                                    class="btn btn-apply-now"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#ModalApplyJobForm"
-                                  >
-                                    Apply now
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12">
-                        <div class="card-grid-2 hover-up">
-                          <div class="card-grid-2-image-left">
-                            <span class="flash"></span>
-                            <div class="image-box">
-                              <img
-                                src="assets/imgs/brands/brand-1.png"
-                                alt="jobBox"
-                              />
-                            </div>
-                            <div class="right-info">
-                              <a class="name-job" href="company-details.html"
-                                >LinkedIn</a
-                              ><span class="location-small">New York, US</span>
-                            </div>
-                          </div>
-                          <div class="card-block-info">
-                            <h6>
-                              <a href="job-details.html"
-                                >UI / UX Designer fulltime</a
-                              >
-                            </h6>
-                            <div class="mt-5">
-                              <span class="card-briefcase">Fulltime</span
-                              ><span class="card-time"
-                                >4<span> minutes ago</span></span
-                              >
-                            </div>
-                            <p class="font-sm color-text-paragraph mt-15">
-                              Lorem ipsum dolor sit amet, consectetur
-                              adipisicing elit. Recusandae architecto eveniet,
-                              dolor quo repellendus pariatur
-                            </p>
-                            <div class="mt-30">
-                              <a
-                                class="btn btn-grey-small mr-5"
-                                href="jobs-grid.html"
-                                >Adobe XD</a
-                              ><a
-                                class="btn btn-grey-small mr-5"
-                                href="jobs-grid.html"
-                                >Figma</a
-                              ><a
-                                class="btn btn-grey-small mr-5"
-                                href="jobs-grid.html"
-                                >Photoshop</a
-                              >
-                            </div>
-                            <div class="card-2-bottom mt-30">
-                              <div class="row">
-                                <div class="col-lg-7 col-7">
-                                  <span class="card-text-price">$500</span
-                                  ><span class="text-muted">/Hour</span>
-                                </div>
-                                <div class="col-lg-5 col-5 text-end">
-                                  <div
-                                    class="btn btn-apply-now"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#ModalApplyJobForm"
-                                  >
-                                    Apply now
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12">
-                        <div class="card-grid-2 hover-up">
-                          <div class="card-grid-2-image-left">
-                            <span class="flash"></span>
-                            <div class="image-box">
-                              <img
-                                src="assets/imgs/brands/brand-2.png"
-                                alt="jobBox"
-                              />
-                            </div>
-                            <div class="right-info">
-                              <a class="name-job" href="company-details.html"
-                                >Adobe Ilustrator</a
-                              ><span class="location-small">New York, US</span>
-                            </div>
-                          </div>
-                          <div class="card-block-info">
-                            <h6>
-                              <a href="job-details.html">Full Stack Engineer</a>
-                            </h6>
-                            <div class="mt-5">
-                              <span class="card-briefcase">Part time</span
-                              ><span class="card-time"
-                                >5<span> minutes ago</span></span
-                              >
-                            </div>
-                            <p class="font-sm color-text-paragraph mt-15">
-                              Lorem ipsum dolor sit amet, consectetur
-                              adipisicing elit. Recusandae architecto eveniet,
-                              dolor quo repellendus pariatur.
-                            </p>
-                            <div class="mt-30">
-                              <a
-                                class="btn btn-grey-small mr-5"
-                                href="jobs-grid.html"
-                                >React</a
-                              ><a
-                                class="btn btn-grey-small mr-5"
-                                href="jobs-grid.html"
-                                >NodeJS</a
-                              >
-                            </div>
-                            <div class="card-2-bottom mt-30">
-                              <div class="row">
-                                <div class="col-lg-7 col-7">
-                                  <span class="card-text-price">$800</span
-                                  ><span class="text-muted">/Hour</span>
-                                </div>
-                                <div class="col-lg-5 col-5 text-end">
-                                  <div
-                                    class="btn btn-apply-now"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#ModalApplyJobForm"
-                                  >
-                                    Apply now
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12">
-                        <div class="card-grid-2 hover-up">
-                          <div class="card-grid-2-image-left">
-                            <span class="flash"></span>
-                            <div class="image-box">
-                              <img
-                                src="assets/imgs/brands/brand-1.png"
-                                alt="jobBox"
-                              />
-                            </div>
-                            <div class="right-info">
-                              <a class="name-job" href="company-details.html"
-                                >LinkedIn</a
-                              ><span class="location-small">New York, US</span>
-                            </div>
-                          </div>
-                          <div class="card-block-info">
-                            <h6>
-                              <a href="job-details.html"
-                                >UI / UX Designer fulltime</a
-                              >
-                            </h6>
-                            <div class="mt-5">
-                              <span class="card-briefcase">Fulltime</span
-                              ><span class="card-time"
-                                >4<span> minutes ago</span></span
-                              >
-                            </div>
-                            <p class="font-sm color-text-paragraph mt-15">
-                              Lorem ipsum dolor sit amet, consectetur
-                              adipisicing elit. Recusandae architecto eveniet,
-                              dolor quo repellendus pariatur
-                            </p>
-                            <div class="mt-30">
-                              <a
-                                class="btn btn-grey-small mr-5"
-                                href="jobs-grid.html"
-                                >Adobe XD</a
-                              ><a
-                                class="btn btn-grey-small mr-5"
-                                href="jobs-grid.html"
-                                >Figma</a
-                              ><a
-                                class="btn btn-grey-small mr-5"
-                                href="jobs-grid.html"
-                                >Photoshop</a
-                              >
-                            </div>
-                            <div class="card-2-bottom mt-30">
-                              <div class="row">
-                                <div class="col-lg-7 col-7">
-                                  <span class="card-text-price">$500</span
-                                  ><span class="text-muted">/Hour</span>
-                                </div>
-                                <div class="col-lg-5 col-5 text-end">
-                                  <div
-                                    class="btn btn-apply-now"
-                                    data-bs-toggle="modal"
-                                    data-bs-target="#ModalApplyJobForm"
-                                  >
-                                    Apply now
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12">
-                        <div class="card-grid-2 hover-up">
-                          <div class="card-grid-2-image-left">
-                            <span class="flash"></span>
-                            <div class="image-box">
-                              <img
-                                src="assets/imgs/brands/brand-2.png"
-                                alt="jobBox"
-                              />
-                            </div>
-                            <div class="right-info">
-                              <a class="name-job" href="company-details.html"
-                                >Adobe Ilustrator</a
-                              ><span class="location-small">New York, US</span>
-                            </div>
-                          </div>
-                          <div class="card-block-info">
-                            <h6>
-                              <a href="job-details.html">Full Stack Engineer</a>
-                            </h6>
-                            <div class="mt-5">
-                              <span class="card-briefcase">Part time</span
-                              ><span class="card-time"
-                                >5<span> minutes ago</span></span
-                              >
-                            </div>
-                            <p class="font-sm color-text-paragraph mt-15">
-                              Lorem ipsum dolor sit amet, consectetur
-                              adipisicing elit. Recusandae architecto eveniet,
-                              dolor quo repellendus pariatur.
-                            </p>
-                            <div class="mt-30">
-                              <a
-                                class="btn btn-grey-small mr-5"
-                                href="jobs-grid.html"
-                                >React</a
-                              ><a
-                                class="btn btn-grey-small mr-5"
-                                href="jobs-grid.html"
-                                >NodeJS
-                              </a>
-                            </div>
-                            <div class="card-2-bottom mt-30">
-                              <div class="row">
-                                <div class="col-lg-7 col-7">
-                                  <span class="card-text-price">$800</span
                                   ><span class="text-muted">/Hour</span>
                                 </div>
                                 <div class="col-lg-5 col-5 text-end">
