@@ -678,9 +678,9 @@
                         },
                       },
                       title: {
-                        text: "Jobs by Category - Status Breakdown",
+                        text: "Posted Jobs by Category - Status Breakdown",
                         style: {
-                          fontSize: "20px",
+                          fontSize: "18px",
                           fontWeight: "bold",
                         },
                       },
@@ -760,6 +760,169 @@
                       credits: {
                         enabled: false,
                       },
+                    });
+                  </script>
+                </div>
+              </div>
+            </div>
+            <div class="section-box">
+              <div
+                class="container-fluid"
+                style="padding: 0; width: 100%; margin: 0"
+              >
+                <div
+                  class="panel-white"
+                  style="
+                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                    border-radius: 8px;
+                    overflow: hidden;
+                    width: 100%;
+                  "
+                >
+                  <div
+                    id="chart-container"
+                    style="
+                      width: 100%;
+                      height: 75vh;
+                      max-height: 400px;
+                      margin: 0;
+                    "
+                  ></div>
+
+                  <script>
+                    document.addEventListener("DOMContentLoaded", function () {
+                      // Function to handle resize
+                      function handleResize() {
+                        const chart = Highcharts.charts[0];
+                        if (chart) {
+                          chart.setSize(
+                            document.getElementById("chart-container")
+                              .offsetWidth,
+                            document.getElementById("chart-container")
+                              .offsetHeight,
+                            false
+                          );
+                        }
+                      }
+
+                      // Add resize listener
+                      window.addEventListener("resize", handleResize);
+
+                      const data = [
+                        { date: "2023-01-01", avgHiringTime: 6 },
+                        { date: "2023-02-01", avgHiringTime: 3 },
+                        { date: "2023-03-01", avgHiringTime: 8 },
+                        { date: "2023-04-01", avgHiringTime: 11 },
+                        { date: "2023-05-01", avgHiringTime: 4 },
+                        { date: "2023-06-01", avgHiringTime: 8 },
+                        { date: "2023-07-01", avgHiringTime: 4 },
+                        { date: "2023-08-01", avgHiringTime: 12 },
+                        { date: "2023-09-01", avgHiringTime: 5 },
+                        { date: "2023-10-01", avgHiringTime: 7 },
+                        { date: "2023-11-01", avgHiringTime: 9 },
+                        { date: "2023-12-01", avgHiringTime: 2 },
+                      ];
+
+                      const rollingAverageData = data.map(
+                        (point, index, array) => {
+                          if (index < 2)
+                            return [new Date(point.date).getTime(), null];
+                          const sum = array
+                            .slice(index - 2, index + 1)
+                            .reduce((acc, curr) => acc + curr.avgHiringTime, 0);
+                          return [
+                            new Date(point.date).getTime(),
+                            Math.round((sum / 3) * 10) / 10,
+                          ];
+                        }
+                      );
+
+                      Highcharts.chart("chart-container", {
+                        chart: {
+                          type: "line",
+                          reflow: true,
+                          style: {
+                            fontFamily:
+                              '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+                          },
+                        },
+                        title: {
+                          text: "Hiring Velocity - Average Time from Application to Hire",
+                          style: {
+                            fontSize: "18px",
+                            fontWeight: "bold",
+                          },
+                        },
+                        xAxis: {
+                          type: "datetime",
+                          title: {
+                            text: "Time",
+                          },
+                          labels: {
+                            style: {
+                              fontSize: "12px",
+                            },
+                          },
+                        },
+                        yAxis: {
+                          title: {
+                            text: "Average Hiring Time (days)",
+                          },
+                          labels: {
+                            style: {
+                              fontSize: "12px",
+                            },
+                          },
+                        },
+                        tooltip: {
+                          headerFormat: "<b>{point.x:%B %Y}</b><br>",
+                          pointFormat: "{series.name}: {point.y:.1f} days",
+                          style: {
+                            fontSize: "12px",
+                          },
+                        },
+                        plotOptions: {
+                          series: {
+                            marker: {
+                              enabled: true,
+                            },
+                          },
+                        },
+                        responsive: {
+                          rules: [
+                            {
+                              condition: {
+                                maxWidth: 500,
+                              },
+                              chartOptions: {
+                                legend: {
+                                  layout: "horizontal",
+                                  align: "center",
+                                  verticalAlign: "bottom",
+                                },
+                              },
+                            },
+                          ],
+                        },
+                        series: [
+                          {
+                            name: "Average Hiring Time",
+                            data: data.map((point) => [
+                              new Date(point.date).getTime(),
+                              point.avgHiringTime,
+                            ]),
+                            type: "line",
+                            color: "#3C65F5",
+                          },
+                          {
+                            name: "3-Month Rolling Average",
+                            data: rollingAverageData,
+                            type: "line",
+                            color: "#434348",
+                            dashStyle: "ShortDash",
+                          },
+                        ],
+                      });
                     });
                   </script>
                 </div>
@@ -1242,10 +1405,10 @@
               <div class="container">
                 <div class="panel-white">
                   <div class="panel-head">
-                    <h5>Top Candidates</h5>
+                    <h5>Applications on Job Posts</h5>
                     <a
                       class="menudrop"
-                      id="dropdownMenu4"
+                      id="dropdownMenu6"
                       type="button"
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
@@ -1253,204 +1416,102 @@
                     ></a>
                     <ul
                       class="dropdown-menu dropdown-menu-light dropdown-menu-end"
-                      aria-labelledby="dropdownMenu4"
+                      aria-labelledby="dropdownMenu6"
                     >
                       <li>
-                        <a class="dropdown-item active" href="#">Add new</a>
+                        <a class="dropdown-item active" href="#"
+                          >Sort by High to Low</a
+                        >
                       </li>
-                      <li><a class="dropdown-item" href="#">Settings</a></li>
-                      <li><a class="dropdown-item" href="#">Actions</a></li>
+                      <li>
+                        <a class="dropdown-item" href="#"
+                          >Sort by Low to High</a
+                        >
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="#">Sort By Newest</a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item" href="#">Sort By Oldest</a>
+                      </li>
                     </ul>
                   </div>
                   <div class="panel-body">
-                    <div class="card-style-3 hover-up">
-                      <div class="card-image online">
-                        <img
-                          src="assets/imgs/page/dashboard/avata1.png"
-                          alt="jobBox"
-                        />
-                      </div>
+                    <div class="card-style-5 hover-up">
                       <div class="card-title">
-                        <h6>Robert Fox</h6>
-                        <span class="job-position">UI/UX Designer</span>
+                        <h6 class="font-sm">Senior Full Stack Engineer</h6>
                       </div>
-                      <div class="card-location">
-                        <span class="location">Chicago, US</span>
-                      </div>
-                      <div class="card-rating">
-                        <img
-                          src="assets/imgs/page/dashboard/star.svg"
-                          alt="jobBox"
-                        />
-                        <img
-                          src="assets/imgs/page/dashboard/star.svg"
-                          alt="jobBox"
-                        />
-                        <img
-                          src="assets/imgs/page/dashboard/star.svg"
-                          alt="jobBox"
-                        />
-                        <img
-                          src="assets/imgs/page/dashboard/star.svg"
-                          alt="jobBox"
-                        />
-                        <img
-                          src="assets/imgs/page/dashboard/star.svg"
-                          alt="jobBox"
-                        />
-                        <span class="font-xs color-text-mutted"> (65)</span>
+                      <div class="card-progress">
+                        <div class="number font-sm">635</div>
+                        <div class="progress">
+                          <div class="progress-bar" style="width: 100%"></div>
+                        </div>
                       </div>
                     </div>
-                    <div class="card-style-3 hover-up">
-                      <div class="card-image online">
-                        <img
-                          src="assets/imgs/page/dashboard/avata2.png"
-                          alt="jobBox"
-                        />
-                      </div>
+                    <div class="card-style-5 hover-up">
                       <div class="card-title">
-                        <h6>Cody Fisher</h6>
-                        <span class="job-position">Network Engineer</span>
+                        <h6 class="font-sm">Technical Project Manager</h6>
                       </div>
-                      <div class="card-location">
-                        <span class="location">New York, US</span>
-                      </div>
-                      <div class="card-rating">
-                        <img
-                          src="assets/imgs/page/dashboard/star.svg"
-                          alt="jobBox"
-                        />
-                        <img
-                          src="assets/imgs/page/dashboard/star.svg"
-                          alt="jobBox"
-                        />
-                        <img
-                          src="assets/imgs/page/dashboard/star.svg"
-                          alt="jobBox"
-                        />
-                        <img
-                          src="assets/imgs/page/dashboard/star.svg"
-                          alt="jobBox"
-                        />
-                        <img
-                          src="assets/imgs/page/dashboard/star.svg"
-                          alt="jobBox"
-                        />
-                        <span class="font-xs color-text-mutted"> (65)</span>
+                      <div class="card-progress">
+                        <div class="number font-sm">558</div>
+                        <div class="progress">
+                          <div class="progress-bar" style="width: 90%"></div>
+                        </div>
                       </div>
                     </div>
-                    <div class="card-style-3 hover-up">
-                      <div class="card-image online">
-                        <img
-                          src="assets/imgs/page/dashboard/avata3.png"
-                          alt="jobBox"
-                        />
-                      </div>
+                    <div class="card-style-5 hover-up">
                       <div class="card-title">
-                        <h6>Jane Cooper</h6>
-                        <span class="job-position">Content Manager</span>
+                        <h6 class="font-sm">Full Stack Developer</h6>
                       </div>
-                      <div class="card-location">
-                        <span class="location">Chicago, US</span>
-                      </div>
-                      <div class="card-rating">
-                        <img
-                          src="assets/imgs/page/dashboard/star.svg"
-                          alt="jobBox"
-                        />
-                        <img
-                          src="assets/imgs/page/dashboard/star.svg"
-                          alt="jobBox"
-                        />
-                        <img
-                          src="assets/imgs/page/dashboard/star.svg"
-                          alt="jobBox"
-                        />
-                        <img
-                          src="assets/imgs/page/dashboard/star.svg"
-                          alt="jobBox"
-                        />
-                        <img
-                          src="assets/imgs/page/dashboard/star.svg"
-                          alt="jobBox"
-                        />
-                        <span class="font-xs color-text-mutted"> (65)</span>
+                      <div class="card-progress">
+                        <div class="number font-sm">452</div>
+                        <div class="progress">
+                          <div class="progress-bar" style="width: 80%"></div>
+                        </div>
                       </div>
                     </div>
-                    <div class="card-style-3 hover-up">
-                      <div class="card-image online">
-                        <img
-                          src="assets/imgs/page/dashboard/avata4.png"
-                          alt="jobBox"
-                        />
-                      </div>
+                    <div class="card-style-5 hover-up">
                       <div class="card-title">
-                        <h6>Jerome Bell</h6>
-                        <span class="job-position">Frontend Developer</span>
+                        <h6 class="font-sm">Data Scientist</h6>
                       </div>
-                      <div class="card-location">
-                        <span class="location">Chicago, US</span>
-                      </div>
-                      <div class="card-rating">
-                        <img
-                          src="assets/imgs/page/dashboard/star.svg"
-                          alt="jobBox"
-                        />
-                        <img
-                          src="assets/imgs/page/dashboard/star.svg"
-                          alt="jobBox"
-                        />
-                        <img
-                          src="assets/imgs/page/dashboard/star.svg"
-                          alt="jobBox"
-                        />
-                        <img
-                          src="assets/imgs/page/dashboard/star.svg"
-                          alt="jobBox"
-                        />
-                        <img
-                          src="assets/imgs/page/dashboard/star.svg"
-                          alt="jobBox"
-                        />
-                        <span class="font-xs color-text-mutted"> (65)</span>
+                      <div class="card-progress">
+                        <div class="number font-sm">325</div>
+                        <div class="progress">
+                          <div class="progress-bar" style="width: 70%"></div>
+                        </div>
                       </div>
                     </div>
-                    <div class="card-style-3 hover-up">
-                      <div class="card-image online">
-                        <img
-                          src="assets/imgs/page/dashboard/avata5.png"
-                          alt="jobBox"
-                        />
-                      </div>
+                    <div class="card-style-5 hover-up">
                       <div class="card-title">
-                        <h6>Floyd Miles</h6>
-                        <span class="job-position">NodeJS Dev</span>
+                        <h6 class="font-sm">DevOps Engineer</h6>
                       </div>
-                      <div class="card-location">
-                        <span class="location">Chicago, US</span>
+                      <div class="card-progress">
+                        <div class="number font-sm">285</div>
+                        <div class="progress">
+                          <div class="progress-bar" style="width: 60%"></div>
+                        </div>
                       </div>
-                      <div class="card-rating">
-                        <img
-                          src="assets/imgs/page/dashboard/star.svg"
-                          alt="jobBox"
-                        />
-                        <img
-                          src="assets/imgs/page/dashboard/star.svg"
-                          alt="jobBox"
-                        />
-                        <img
-                          src="assets/imgs/page/dashboard/star.svg"
-                          alt="jobBox"
-                        />
-                        <img
-                          src="assets/imgs/page/dashboard/star.svg"
-                          alt="jobBox"
-                        />
-                        <img
-                          src="assets/imgs/page/dashboard/star.svg"
-                          alt="jobBox"
-                        />
-                        <span class="font-xs color-text-mutted"> (65)</span>
+                    </div>
+                    <div class="card-style-5 hover-up">
+                      <div class="card-title">
+                        <h6 class="font-sm">UI/UX Designer</h6>
+                      </div>
+                      <div class="card-progress">
+                        <div class="number font-sm">120</div>
+                        <div class="progress">
+                          <div class="progress-bar" style="width: 50%"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-style-5 hover-up">
+                      <div class="card-title">
+                        <h6 class="font-sm">Blockchain Developer</h6>
+                      </div>
+                      <div class="card-progress">
+                        <div class="number font-sm">93</div>
+                        <div class="progress">
+                          <div class="progress-bar" style="width: 40%"></div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -1461,7 +1522,7 @@
               <div class="container">
                 <div class="panel-white">
                   <div class="panel-head">
-                    <h5>Top Recruiters</h5>
+                    <h5>Top Applicants</h5>
                     <a
                       class="menudrop"
                       id="dropdownMenu5"
@@ -1483,7 +1544,7 @@
                   </div>
                   <div class="panel-body">
                     <div class="row">
-                      <div class="col-lg-6 col-md-6 pr-5 pl-5">
+                      <div class="col-lg-12 col-md-6 pr-5 pl-5">
                         <div class="card-style-4 hover-up">
                           <div class="d-flex">
                             <div class="card-image">
@@ -1493,39 +1554,21 @@
                               />
                             </div>
                             <div class="card-title">
-                              <h6>Robert Fox</h6>
-                              <img
-                                src="assets/imgs/page/dashboard/star.svg"
-                                alt="jobBox"
-                              />
-                              <img
-                                src="assets/imgs/page/dashboard/star.svg"
-                                alt="jobBox"
-                              />
-                              <img
-                                src="assets/imgs/page/dashboard/star.svg"
-                                alt="jobBox"
-                              />
-                              <img
-                                src="assets/imgs/page/dashboard/star-none.svg"
-                                alt="jobBox"
-                              />
-                              <img
-                                src="assets/imgs/page/dashboard/star-none.svg"
-                                alt="jobBox"
-                              />
-                              <span class="font-xs color-text-mutted">
-                                (65)</span
+                              <h6>Ali Hamza</h6>
+                              <span class="font-xs color-text-mutted"
+                                >Technical Score: 90/100</span
                               >
                             </div>
                           </div>
                           <div class="card-location d-flex">
-                            <span class="location">Red, CA</span
-                            ><span class="jobs-number">25 Open Jobs</span>
+                            <span class="location">Karachi, PK</span>
+                            <span class="jobs-number"
+                              >Applied for Senior Full Stack Engineer</span
+                            >
                           </div>
                         </div>
                       </div>
-                      <div class="col-lg-6 col-md-6 pr-5 pl-5">
+                      <div class="col-lg-12 col-md-6 pr-5 pl-5">
                         <div class="card-style-4 hover-up">
                           <div class="d-flex">
                             <div class="card-image">
@@ -1535,39 +1578,21 @@
                               />
                             </div>
                             <div class="card-title">
-                              <h6>Cody Fisher</h6>
-                              <img
-                                src="assets/imgs/page/dashboard/star.svg"
-                                alt="jobBox"
-                              />
-                              <img
-                                src="assets/imgs/page/dashboard/star.svg"
-                                alt="jobBox"
-                              />
-                              <img
-                                src="assets/imgs/page/dashboard/star.svg"
-                                alt="jobBox"
-                              />
-                              <img
-                                src="assets/imgs/page/dashboard/star-none.svg"
-                                alt="jobBox"
-                              />
-                              <img
-                                src="assets/imgs/page/dashboard/star-none.svg"
-                                alt="jobBox"
-                              />
-                              <span class="font-xs color-text-mutted">
-                                (65)</span
+                              <h6>Emaan Shafiq</h6>
+                              <span class="font-xs color-text-mutted"
+                                >Technical Score: 85/100</span
                               >
                             </div>
                           </div>
                           <div class="card-location d-flex">
-                            <span class="location">Chicago, US</span
-                            ><span class="jobs-number">25 Open Jobs</span>
+                            <span class="location">Lahore, PK</span>
+                            <span class="jobs-number"
+                              >Applied for Technical Project Manager</span
+                            >
                           </div>
                         </div>
                       </div>
-                      <div class="col-lg-6 col-md-6 pr-5 pl-5">
+                      <div class="col-lg-12 col-md-6 pr-5 pl-5">
                         <div class="card-style-4 hover-up">
                           <div class="d-flex">
                             <div class="card-image">
@@ -1577,39 +1602,21 @@
                               />
                             </div>
                             <div class="card-title">
-                              <h6>Jane Cooper</h6>
-                              <img
-                                src="assets/imgs/page/dashboard/star.svg"
-                                alt="jobBox"
-                              />
-                              <img
-                                src="assets/imgs/page/dashboard/star.svg"
-                                alt="jobBox"
-                              />
-                              <img
-                                src="assets/imgs/page/dashboard/star.svg"
-                                alt="jobBox"
-                              />
-                              <img
-                                src="assets/imgs/page/dashboard/star-none.svg"
-                                alt="jobBox"
-                              />
-                              <img
-                                src="assets/imgs/page/dashboard/star-none.svg"
-                                alt="jobBox"
-                              />
-                              <span class="font-xs color-text-mutted">
-                                (65)</span
+                              <h6>Mehwish</h6>
+                              <span class="font-xs color-text-mutted"
+                                >Technical Score: 88/100</span
                               >
                             </div>
                           </div>
                           <div class="card-location d-flex">
-                            <span class="location">Austin, TX</span
-                            ><span class="jobs-number">25 Open Jobs</span>
+                            <span class="location">Islamabad, PK</span>
+                            <span class="jobs-number"
+                              >Applied for Full Stack Developer</span
+                            >
                           </div>
                         </div>
                       </div>
-                      <div class="col-lg-6 col-md-6 pr-5 pl-5">
+                      <div class="col-lg-12 col-md-6 pr-5 pl-5">
                         <div class="card-style-4 hover-up">
                           <div class="d-flex">
                             <div class="card-image">
@@ -1619,39 +1626,21 @@
                               />
                             </div>
                             <div class="card-title">
-                              <h6>Jerome Bell</h6>
-                              <img
-                                src="assets/imgs/page/dashboard/star.svg"
-                                alt="jobBox"
-                              />
-                              <img
-                                src="assets/imgs/page/dashboard/star.svg"
-                                alt="jobBox"
-                              />
-                              <img
-                                src="assets/imgs/page/dashboard/star.svg"
-                                alt="jobBox"
-                              />
-                              <img
-                                src="assets/imgs/page/dashboard/star-none.svg"
-                                alt="jobBox"
-                              />
-                              <img
-                                src="assets/imgs/page/dashboard/star-none.svg"
-                                alt="jobBox"
-                              />
-                              <span class="font-xs color-text-mutted">
-                                (65)</span
+                              <h6>Muhammad Talha</h6>
+                              <span class="font-xs color-text-mutted"
+                                >Technical Score: 92/100</span
                               >
                             </div>
                           </div>
                           <div class="card-location d-flex">
-                            <span class="location">Remote</span
-                            ><span class="jobs-number">25 Open Jobs</span>
+                            <span class="location">Karachi, PK</span>
+                            <span class="jobs-number"
+                              >Applied for Data Scientist</span
+                            >
                           </div>
                         </div>
                       </div>
-                      <div class="col-lg-6 col-md-6 pr-5 pl-5">
+                      <div class="col-lg-12 col-md-6 pr-5 pl-5">
                         <div class="card-style-4 hover-up">
                           <div class="d-flex">
                             <div class="card-image">
@@ -1661,39 +1650,21 @@
                               />
                             </div>
                             <div class="card-title">
-                              <h6>Floyd Miles</h6>
-                              <img
-                                src="assets/imgs/page/dashboard/star.svg"
-                                alt="jobBox"
-                              />
-                              <img
-                                src="assets/imgs/page/dashboard/star.svg"
-                                alt="jobBox"
-                              />
-                              <img
-                                src="assets/imgs/page/dashboard/star.svg"
-                                alt="jobBox"
-                              />
-                              <img
-                                src="assets/imgs/page/dashboard/star-none.svg"
-                                alt="jobBox"
-                              />
-                              <img
-                                src="assets/imgs/page/dashboard/star-none.svg"
-                                alt="jobBox"
-                              />
-                              <span class="font-xs color-text-mutted">
-                                (65)</span
+                              <h6>Abdullah</h6>
+                              <span class="font-xs color-text-mutted"
+                                >Technical Score: 78/100</span
                               >
                             </div>
                           </div>
                           <div class="card-location d-flex">
-                            <span class="location">Boston, US</span
-                            ><span class="jobs-number">25 Open Jobs</span>
+                            <span class="location">Rawalpindi, PK</span>
+                            <span class="jobs-number"
+                              >Applied for DevOps Engineer</span
+                            >
                           </div>
                         </div>
                       </div>
-                      <div class="col-lg-6 col-md-6 pr-5 pl-5">
+                      <div class="col-lg-12 col-md-6 pr-5 pl-5">
                         <div class="card-style-4 hover-up">
                           <div class="d-flex">
                             <div class="card-image">
@@ -1704,216 +1675,18 @@
                             </div>
                             <div class="card-title">
                               <h6>Devon Lane</h6>
-                              <img
-                                src="assets/imgs/page/dashboard/star.svg"
-                                alt="jobBox"
-                              />
-                              <img
-                                src="assets/imgs/page/dashboard/star.svg"
-                                alt="jobBox"
-                              />
-                              <img
-                                src="assets/imgs/page/dashboard/star.svg"
-                                alt="jobBox"
-                              />
-                              <img
-                                src="assets/imgs/page/dashboard/star-none.svg"
-                                alt="jobBox"
-                              />
-                              <img
-                                src="assets/imgs/page/dashboard/star-none.svg"
-                                alt="jobBox"
-                              />
-                              <span class="font-xs color-text-mutted">
-                                (65)</span
+                              <span class="font-xs color-text-mutted"
+                                >Technical Score: 80/100</span
                               >
                             </div>
                           </div>
                           <div class="card-location d-flex">
-                            <span class="location">Chicago, US</span
-                            ><span class="jobs-number">25 Open Jobs</span>
+                            <span class="location">Multan, PK</span>
+                            <span class="jobs-number"
+                              >Applied for UI/UX Designer</span
+                            >
                           </div>
                         </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="section-box">
-              <div class="container">
-                <div class="panel-white">
-                  <div class="panel-head">
-                    <h5>Queries by search</h5>
-                    <a
-                      class="menudrop"
-                      id="dropdownMenu6"
-                      type="button"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
-                      data-bs-display="static"
-                    ></a>
-                    <ul
-                      class="dropdown-menu dropdown-menu-light dropdown-menu-end"
-                      aria-labelledby="dropdownMenu6"
-                    >
-                      <li>
-                        <a class="dropdown-item active" href="#">Add new</a>
-                      </li>
-                      <li><a class="dropdown-item" href="#">Settings</a></li>
-                      <li><a class="dropdown-item" href="#">Actions</a></li>
-                    </ul>
-                  </div>
-                  <div class="panel-body">
-                    <div class="card-style-5 hover-up">
-                      <div class="card-title">
-                        <h6 class="font-sm">Developer</h6>
-                      </div>
-                      <div class="card-progress">
-                        <div class="number font-sm">2635</div>
-                        <div class="progress">
-                          <div class="progress-bar" style="width: 100%"></div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="card-style-5 hover-up">
-                      <div class="card-title">
-                        <h6 class="font-sm">UI/Ux Designer</h6>
-                      </div>
-                      <div class="card-progress">
-                        <div class="number font-sm">1658</div>
-                        <div class="progress">
-                          <div class="progress-bar" style="width: 90%"></div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="card-style-5 hover-up">
-                      <div class="card-title">
-                        <h6 class="font-sm">Marketing</h6>
-                      </div>
-                      <div class="card-progress">
-                        <div class="number font-sm">1452</div>
-                        <div class="progress">
-                          <div class="progress-bar" style="width: 80%"></div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="card-style-5 hover-up">
-                      <div class="card-title">
-                        <h6 class="font-sm">Content manager</h6>
-                      </div>
-                      <div class="card-progress">
-                        <div class="number font-sm">1325</div>
-                        <div class="progress">
-                          <div class="progress-bar" style="width: 70%"></div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="card-style-5 hover-up">
-                      <div class="card-title">
-                        <h6 class="font-sm">Ruby on rain</h6>
-                      </div>
-                      <div class="card-progress">
-                        <div class="number font-sm">985</div>
-                        <div class="progress">
-                          <div class="progress-bar" style="width: 60%"></div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="card-style-5 hover-up">
-                      <div class="card-title">
-                        <h6 class="font-sm">Human hunter</h6>
-                      </div>
-                      <div class="card-progress">
-                        <div class="number font-sm">920</div>
-                        <div class="progress">
-                          <div class="progress-bar" style="width: 50%"></div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="card-style-5 hover-up">
-                      <div class="card-title">
-                        <h6 class="font-sm">Finance</h6>
-                      </div>
-                      <div class="card-progress">
-                        <div class="number font-sm">853</div>
-                        <div class="progress">
-                          <div class="progress-bar" style="width: 40%"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="mt-10">
-          <div class="section-box">
-            <div class="container">
-              <div class="panel-white pt-30 pb-30 pl-15 pr-15">
-                <div class="box-swiper">
-                  <div class="swiper-container swiper-group-10">
-                    <div class="swiper-wrapper">
-                      <div class="swiper-slide">
-                        <img
-                          src="assets/imgs/page/dashboard/microsoft.svg"
-                          alt="jobBox"
-                        />
-                      </div>
-                      <div class="swiper-slide">
-                        <img
-                          src="assets/imgs/page/dashboard/sony.svg"
-                          alt="jobBox"
-                        />
-                      </div>
-                      <div class="swiper-slide">
-                        <img
-                          src="assets/imgs/page/dashboard/acer.svg"
-                          alt="jobBox"
-                        />
-                      </div>
-                      <div class="swiper-slide">
-                        <img
-                          src="assets/imgs/page/dashboard/nokia.svg"
-                          alt="jobBox"
-                        />
-                      </div>
-                      <div class="swiper-slide">
-                        <img
-                          src="assets/imgs/page/dashboard/asus.svg"
-                          alt="jobBox"
-                        />
-                      </div>
-                      <div class="swiper-slide">
-                        <img
-                          src="assets/imgs/page/dashboard/casio.svg"
-                          alt="jobBox"
-                        />
-                      </div>
-                      <div class="swiper-slide">
-                        <img
-                          src="assets/imgs/page/dashboard/dell.svg"
-                          alt="jobBox"
-                        />
-                      </div>
-                      <div class="swiper-slide">
-                        <img
-                          src="assets/imgs/page/dashboard/panasonic.svg"
-                          alt="jobBox"
-                        />
-                      </div>
-                      <div class="swiper-slide">
-                        <img
-                          src="assets/imgs/page/dashboard/vaio.svg"
-                          alt="jobBox"
-                        />
-                      </div>
-                      <div class="swiper-slide">
-                        <img
-                          src="assets/imgs/page/dashboard/sony.svg"
-                          alt="jobBox"
-                        />
                       </div>
                     </div>
                   </div>
