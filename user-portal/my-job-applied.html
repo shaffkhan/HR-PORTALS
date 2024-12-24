@@ -161,11 +161,11 @@
                     >
                   </li>
                   <li>
-                    <a class="dashboard2" href="index.html"
+                    <a class="dashboard2" href="appointments.html"
                       ><img
                         src="assets/imgs/page/dashboard/dashboard.svg"
                         alt="jobBox"
-                      /><span class="name">Appointment Scheduling</span></a
+                      /><span class="name">Appointments</span></a
                     >
                   </li>
                   <li>
@@ -265,11 +265,11 @@
               >
             </li>
             <li>
-              <a class="dashboard2" href="index.html"
+              <a class="dashboard2" href="appointments.html"
                 ><img
                   src="assets/imgs/page/dashboard/dashboard.svg"
                   alt="jobBox"
-                /><span class="name">Appointment Scheduling</span></a
+                /><span class="name">Appointments</span></a
               >
             </li>
             <li>
@@ -310,183 +310,13 @@
       <div class="box-content">
         <div class="box-heading">
           <div class="box-title">
-            <h3 class="mb-35">My Jobs</h3>
-
-            <div class="time-filter">
-              <div class="filter-wrapper">
-                <button class="filter-btn active" data-period="day">
-                  JOBS POSTED
-                </button>
-                <button class="filter-btn" data-period="week">
-                  JOBS APPLIED
-                </button>
-              </div>
-            </div>
-            <style>
-              .time-filter {
-                margin: 20px 0;
-              }
-
-              .filter-wrapper {
-                display: inline-flex;
-                background: #fff;
-                border: 1px solid #e0e6f7;
-                border-radius: 100px;
-                padding: 4px;
-              }
-
-              .filter-btn {
-                padding: 10px 24px;
-                border: none;
-                background: transparent;
-                color: #4f5e64;
-                font-weight: 500;
-                border-radius: 100px;
-                cursor: pointer;
-                transition: all 0.3s ease;
-                position: relative;
-                overflow: hidden;
-              }
-
-              .filter-btn:hover {
-                color: #3c65f5;
-              }
-
-              .filter-btn.active {
-                background: #3c65f5;
-                color: white;
-              }
-
-              .filter-btn::after {
-                content: "";
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                width: 0;
-                height: 0;
-                background: rgba(255, 255, 255, 0.2);
-                border-radius: 50%;
-                transform: translate(-50%, -50%);
-                transition: width 0.3s, height 0.3s;
-              }
-
-              .filter-btn:active::after {
-                width: 100px;
-                height: 100px;
-                opacity: 0;
-              }
-            </style>
-
-            <script>
-              document.addEventListener("DOMContentLoaded", function () {
-                const filterBtns = document.querySelectorAll(".filter-btn");
-
-                filterBtns.forEach((btn) => {
-                  btn.addEventListener("click", function () {
-                    // Remove active class from all buttons
-                    filterBtns.forEach((b) => b.classList.remove("active"));
-
-                    // Add active class to clicked button
-                    this.classList.add("active");
-
-                    // Get the time period from data attribute
-                    const period = this.getAttribute("data-period");
-
-                    // Add ripple effect
-                    const ripple = document.createElement("div");
-                    ripple.classList.add("ripple");
-                    this.appendChild(ripple);
-
-                    // Remove ripple after animation
-                    setTimeout(() => {
-                      ripple.remove();
-                    }, 1000);
-
-                    // Example of filtering functionality
-                    filterData(period);
-                  });
-                });
-
-                // Example function to handle filtering
-                function filterData(period) {
-                  console.log(`Filtering data for: ${period}`);
-                  // Here you can add your logic to filter the dashboard data
-                  // For example:
-                  switch (period) {
-                    case "day":
-                      // Update dashboard with daily data
-                      updateDashboard({
-                        applications: 34,
-                        jobsPosted: 9,
-                        hires: 4,
-                        offersSent: 32,
-                        interviews: 34,
-                      });
-                      break;
-                    case "week":
-                      // Update dashboard with weekly data
-                      updateDashboard({
-                        applications: 180,
-                        jobsPosted: 45,
-                        hires: 20,
-                        offersSent: 156,
-                        interviews: 167,
-                      });
-                      break;
-                    case "month":
-                      // Update dashboard with monthly data
-                      updateDashboard({
-                        applications: 720,
-                        jobsPosted: 180,
-                        hires: 80,
-                        offersSent: 624,
-                        interviews: 668,
-                      });
-                      break;
-                  }
-                }
-
-                // Example function to update dashboard numbers
-                function updateDashboard(data) {
-                  // Animate number changes
-                  animateNumber("applications", data.applications);
-                  animateNumber("jobsPosted", data.jobsPosted);
-                  animateNumber("hires", data.hires);
-                  animateNumber("offersSent", data.offersSent);
-                  animateNumber("interviews", data.interviews);
-                }
-
-                // Function to animate number changes
-                function animateNumber(elementId, target) {
-                  const element = document.getElementById(elementId);
-                  if (!element) return;
-
-                  const start = parseInt(element.textContent);
-                  const duration = 1000; // 1 second
-                  const steps = 60;
-                  const increment = (target - start) / steps;
-                  let current = start;
-                  let step = 0;
-
-                  const animation = setInterval(() => {
-                    step++;
-                    current += increment;
-                    element.textContent = Math.round(current);
-
-                    if (step >= steps) {
-                      element.textContent = target;
-                      clearInterval(animation);
-                    }
-                  }, duration / steps);
-                }
-              });
-            </script>
+            <h3 class="mb-35">Recent Jobs</h3>
           </div>
           <div class="box-breadcrumb">
             <div class="breadcrumbs">
               <ul>
-                <li><a class="icon-home" href="index.html">Admin</a></li>
-                <li><span>My Jobs</span></li>
+                <li><a class="icon-home" href="index.html">User</a></li>
+                <li><span>Recent Jobs</span></li>
               </ul>
             </div>
           </div>
