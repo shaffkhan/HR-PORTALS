@@ -314,13 +314,13 @@
             <div class="time-filter">
               <div class="filter-wrapper">
                 <button class="filter-btn active" data-period="day">
-                  CHATBOT INTERVIEWS
+                  TECHNICAL ASSESSMENT
                 </button>
                 <button class="filter-btn" data-period="week">
-                  VIRTUAL INTERVIEWS
+                  SPEECH AND PERSONALITY ASSESSMENT
                 </button>
-                <button class="filter-btn" data-period="week">
-                  PHYSICAL INTERVIEWS
+                <button class="filter-btn" data-period="appointments">
+                  APPOINTMENTS
                 </button>
               </div>
             </div>
@@ -338,12 +338,13 @@
               }
 
               .filter-btn {
-                padding: 10px 24px;
+                padding: 5px 12px;
                 border: none;
                 background: transparent;
                 color: #4f5e64;
                 font-weight: 500;
-                border-radius: 100px;
+                gap: 70px;
+                border-radius: 130px;
                 cursor: pointer;
                 transition: all 0.3s ease;
                 position: relative;
@@ -382,6 +383,8 @@
             <script>
               document.addEventListener("DOMContentLoaded", function () {
                 const filterBtns = document.querySelectorAll(".filter-btn");
+                const actionButtons =
+                  document.querySelectorAll(".actionButton");
 
                 filterBtns.forEach((btn) => {
                   btn.addEventListener("click", function () {
@@ -394,94 +397,30 @@
                     // Get the time period from data attribute
                     const period = this.getAttribute("data-period");
 
-                    // Add ripple effect
-                    const ripple = document.createElement("div");
-                    ripple.classList.add("ripple");
-                    this.appendChild(ripple);
-
-                    // Remove ripple after animation
-                    setTimeout(() => {
-                      ripple.remove();
-                    }, 1000);
+                    // Update all action buttons' text based on active filter
+                    actionButtons.forEach((actionButton) => {
+                      if (period === "appointments") {
+                        actionButton.textContent = "Set Appointment";
+                      } else {
+                        actionButton.textContent = "Start";
+                      }
+                    });
 
                     // Example of filtering functionality
                     filterData(period);
                   });
                 });
 
-                // Example function to handle filtering
                 function filterData(period) {
                   console.log(`Filtering data for: ${period}`);
-                  // Here you can add your logic to filter the dashboard data
-                  // For example:
-                  switch (period) {
-                    case "day":
-                      // Update dashboard with daily data
-                      updateDashboard({
-                        applications: 34,
-                        jobsPosted: 9,
-                        hires: 4,
-                        offersSent: 32,
-                        interviews: 34,
-                      });
-                      break;
-                    case "week":
-                      // Update dashboard with weekly data
-                      updateDashboard({
-                        applications: 180,
-                        jobsPosted: 45,
-                        hires: 20,
-                        offersSent: 156,
-                        interviews: 167,
-                      });
-                      break;
-                    case "month":
-                      // Update dashboard with monthly data
-                      updateDashboard({
-                        applications: 720,
-                        jobsPosted: 180,
-                        hires: 80,
-                        offersSent: 624,
-                        interviews: 668,
-                      });
-                      break;
-                  }
-                }
-
-                // Example function to update dashboard numbers
-                function updateDashboard(data) {
-                  // Animate number changes
-                  animateNumber("applications", data.applications);
-                  animateNumber("jobsPosted", data.jobsPosted);
-                  animateNumber("hires", data.hires);
-                  animateNumber("offersSent", data.offersSent);
-                  animateNumber("interviews", data.interviews);
-                }
-
-                // Function to animate number changes
-                function animateNumber(elementId, target) {
-                  const element = document.getElementById(elementId);
-                  if (!element) return;
-
-                  const start = parseInt(element.textContent);
-                  const duration = 1000; // 1 second
-                  const steps = 60;
-                  const increment = (target - start) / steps;
-                  let current = start;
-                  let step = 0;
-
-                  const animation = setInterval(() => {
-                    step++;
-                    current += increment;
-                    element.textContent = Math.round(current);
-
-                    if (step >= steps) {
-                      element.textContent = target;
-                      clearInterval(animation);
-                    }
-                  }, duration / steps);
+                  // Add your filtering logic here
                 }
               });
+
+              function openModal() {
+                console.log("Modal opened");
+                // Logic for opening a modal
+              }
             </script>
           </div>
           <div class="box-breadcrumb">
@@ -615,72 +554,17 @@
                             <div class="card-style-2 hover-up">
                               <div class="card-head">
                                 <div class="card-title">
-                                  <h4>Senior Full Stack Engineer</h4>
-                                  <span class="job-type">Full time</span>
-                                  <span class="time-post">3 mins ago</span>
-                                  <span class="location">Multan, Pakistan</span>
-                                </div>
-                              </div>
-                              <div class="card-tags">
-                                <a class="btn btn-tag">CSS</a>
-                                <a class="btn btn-tag">React</a>
-                                <a class="btn btn-tag">Javascript</a>
-                                <a class="btn btn-tag">HTML</a>
-                              </div>
-                              <div class="card-price">
-                                <strong>$300</strong
-                                ><span class="hour">/Hour</span>
-                              </div>
-                              <div class="card-metrics">
-                                <div class="metric-item">
-                                  <span class="metric-value">85%</span>
-                                  <span class="metric-label">Skill Match</span>
-                                </div>
-                                <div class="metric-item">
-                                  <span class="metric-value">50+</span>
-                                  <span class="metric-label">Applications</span>
-                                </div>
-                                <div class="metric-item">
-                                  <span class="metric-value">65%</span>
-                                  <span class="metric-label"
-                                    >Interview Success Rate</span
-                                  >
-                                </div>
-                              </div>
-                              <div class="card-actions">
-                                <button
-                                  class="btn btn-primary"
-                                  style="margin-top: 20px"
-                                  onclick="openModal()"
-                                >
-                                  Start Chat Interview
-                                </button>
-                              </div>
-                            </div>
-                            <div class="card-style-2 hover-up">
-                              <div class="card-head">
-                                <div class="card-title">
                                   <h4>Backend Developer</h4>
                                   <span class="job-type">Part time</span>
                                   <span class="time-post">10 mins ago</span>
                                   <span class="location">Lahore, Pakistan</span>
                                 </div>
                               </div>
-                              <div class="card-tags">
-                                <a class="btn btn-tag">Python</a>
-                                <a class="btn btn-tag">Django</a>
-                                <a class="btn btn-tag">SQL</a>
-                                <a class="btn btn-tag">REST APIs</a>
-                              </div>
                               <div class="card-price">
                                 <strong>$250</strong
                                 ><span class="hour">/Hour</span>
                               </div>
                               <div class="card-metrics">
-                                <div class="metric-item">
-                                  <span class="metric-value">69%</span>
-                                  <span class="metric-label">Skill Match</span>
-                                </div>
                                 <div class="metric-item">
                                   <span class="metric-value">40-50</span>
                                   <span class="metric-label">Applications</span>
@@ -694,15 +578,14 @@
                               </div>
                               <div class="card-actions">
                                 <button
-                                  class="btn btn-primary"
+                                  class="btn btn-primary actionButton"
                                   style="margin-top: 20px"
                                   onclick="openModal()"
                                 >
-                                  Start Chat Interview
+                                  Start
                                 </button>
                               </div>
                             </div>
-
                             <div class="card-style-2 hover-up">
                               <div class="card-head">
                                 <div class="card-title">
@@ -714,21 +597,11 @@
                                   >
                                 </div>
                               </div>
-                              <div class="card-tags">
-                                <a class="btn btn-tag">Python</a>
-                                <a class="btn btn-tag">TensorFlow</a>
-                                <a class="btn btn-tag">Pandas</a>
-                                <a class="btn btn-tag">Statistics</a>
-                              </div>
                               <div class="card-price">
                                 <strong>$500</strong
                                 ><span class="hour">/Hour</span>
                               </div>
                               <div class="card-metrics">
-                                <div class="metric-item">
-                                  <span class="metric-value">34%</span>
-                                  <span class="metric-label">Skill Match</span>
-                                </div>
                                 <div class="metric-item">
                                   <span class="metric-value">10-20</span>
                                   <span class="metric-label">Applications</span>
@@ -742,11 +615,11 @@
                               </div>
                               <div class="card-actions">
                                 <button
-                                  class="btn btn-primary"
+                                  class="btn btn-primary actionButton"
                                   style="margin-top: 20px"
                                   onclick="openModal()"
                                 >
-                                  Start Chat Interview
+                                  Start
                                 </button>
                               </div>
                             </div>
@@ -762,21 +635,11 @@
                                   >
                                 </div>
                               </div>
-                              <div class="card-tags">
-                                <a class="btn btn-tag">Figma</a>
-                                <a class="btn btn-tag">Sketch</a>
-                                <a class="btn btn-tag">Prototyping</a>
-                                <a class="btn btn-tag">Wireframing</a>
-                              </div>
                               <div class="card-price">
                                 <strong>$200</strong
                                 ><span class="hour">/Hour</span>
                               </div>
                               <div class="card-metrics">
-                                <div class="metric-item">
-                                  <span class="metric-value">99%</span>
-                                  <span class="metric-label">Skill Match</span>
-                                </div>
                                 <div class="metric-item">
                                   <span class="metric-value">30-40</span>
                                   <span class="metric-label">Applications</span>
@@ -790,11 +653,11 @@
                               </div>
                               <div class="card-actions">
                                 <button
-                                  class="btn btn-primary"
+                                  class="btn btn-primary actionButton"
                                   style="margin-top: 20px"
                                   onclick="openModal()"
                                 >
-                                  Start Chat Interview
+                                  Start
                                 </button>
                               </div>
                             </div>
@@ -810,21 +673,11 @@
                                   >
                                 </div>
                               </div>
-                              <div class="card-tags">
-                                <a class="btn btn-tag">Flutter</a>
-                                <a class="btn btn-tag">Swift</a>
-                                <a class="btn btn-tag">Kotlin</a>
-                                <a class="btn btn-tag">Dart</a>
-                              </div>
                               <div class="card-price">
                                 <strong>$350</strong
                                 ><span class="hour">/Hour</span>
                               </div>
                               <div class="card-metrics">
-                                <div class="metric-item">
-                                  <span class="metric-value">78%</span>
-                                  <span class="metric-label">Skill Match</span>
-                                </div>
                                 <div class="metric-item">
                                   <span class="metric-value">50+</span>
                                   <span class="metric-label">Applications</span>
@@ -838,11 +691,11 @@
                               </div>
                               <div class="card-actions">
                                 <button
-                                  class="btn btn-primary"
+                                  class="btn btn-primary actionButton"
                                   style="margin-top: 20px"
                                   onclick="openModal()"
                                 >
-                                  Start Chat Interview
+                                  Start
                                 </button>
                               </div>
                             </div>
@@ -856,21 +709,11 @@
                                   <span class="location">Quetta, Pakistan</span>
                                 </div>
                               </div>
-                              <div class="card-tags">
-                                <a class="btn btn-tag">AWS</a>
-                                <a class="btn btn-tag">Azure</a>
-                                <a class="btn btn-tag">Kubernetes</a>
-                                <a class="btn btn-tag">Docker</a>
-                              </div>
                               <div class="card-price">
                                 <strong>$400</strong
                                 ><span class="hour">/Hour</span>
                               </div>
                               <div class="card-metrics">
-                                <div class="metric-item">
-                                  <span class="metric-value">82%</span>
-                                  <span class="metric-label">Skill Match</span>
-                                </div>
                                 <div class="metric-item">
                                   <span class="metric-value">50+</span>
                                   <span class="metric-label">Applications</span>
@@ -884,11 +727,11 @@
                               </div>
                               <div class="card-actions">
                                 <button
-                                  class="btn btn-primary"
+                                  class="btn btn-primary actionButton"
                                   style="margin-top: 20px"
                                   onclick="openModal()"
                                 >
-                                  Start Chat Interview
+                                  Start
                                 </button>
                               </div>
                             </div>
@@ -904,13 +747,6 @@
                         .card-title h4 {
                           font-size: clamp(25px, 2vw, 20px);
                           margin-bottom: 8px;
-                        }
-
-                        .card-tags {
-                          display: flex;
-                          flex-wrap: wrap;
-                          gap: 8px;
-                          margin: 12px 0;
                         }
 
                         .btn-tag {
