@@ -21,6 +21,208 @@
     />
     <link href="assets/css/style.css?version=4.1" rel="stylesheet" />
     <title>Login - Job Portal HTML Template</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interview Chat Interface</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+        background: #f9fafb;
+      }
+
+      .main {
+        min-height: 60vh;
+        padding: 20px;
+        justify-content: center;
+      }
+
+      .panel-white {
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        height: calc(90vh - 60px);
+        position: relative;
+      }
+
+      .chat-container {
+        display: flex;
+        height: 100%;
+      }
+
+      /* Progress Bar Styles */
+      .progress-bar {
+        width: 300px;
+        padding: 20px;
+        border-right: 5px solid #e5e7eb;
+        background: #fff;
+      }
+
+      .progress-steps {
+        position: relative;
+        padding-left: 33px;
+      }
+
+      .progress-line {
+        position: absolute;
+        left: 12px;
+        top: 0;
+        width: 6px;
+        height: 80%;
+        background: #e5e7eb;
+      }
+
+      .progress-line-filled {
+        position: absolute;
+        left: 12px;
+        top: 0;
+        width: 6px;
+        height: 0%;
+        background: #3b82f6;
+        transition: height 0.5s ease;
+      }
+
+      .progress-step {
+        position: relative;
+        margin-bottom: 40px;
+        opacity: 0.5;
+        transition: opacity 0.3s ease;
+      }
+
+      .progress-step.active {
+        opacity: 1;
+      }
+
+      .progress-step::before {
+        content: "";
+        position: absolute;
+        left: -30px;
+        top: 0;
+        width: 24px;
+        height: 24px;
+        background: white;
+        border: 2px solid #e5e7eb;
+        border-radius: 50%;
+        z-index: 1;
+      }
+
+      .progress-step.active::before {
+        border-color: #3b82f6;
+        background: #3b82f6;
+      }
+
+      .progress-step-label {
+        font-size: 14px;
+        font-weight: 500;
+        color: #374151;
+      }
+
+      /* Chat Area Styles */
+      .chat-area {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        overflow-y: auto;
+      }
+
+      .chat-messages {
+        flex: 1;
+        overflow-y: auto;
+        padding: 20px 0px;
+      }
+
+      .message {
+        max-width: 80%;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: flex-start;
+      }
+
+      .message.bot {
+        margin-right: auto;
+      }
+
+      .message.user {
+        margin-left: auto;
+        flex-direction: row-reverse;
+      }
+
+      .message-avatar {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        margin: 0 12px;
+        background: #e5e7eb;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .message-content {
+        background: #f3f4f6;
+        padding: 12px 16px;
+        border-radius: 12px;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      .message.user .message-content {
+        background: #3b82f6;
+        color: white;
+      }
+
+      .chat-input {
+        margin-top: 20px;
+        padding: 20px;
+        border-top: 1px solid #e5e7eb;
+      }
+
+      .input-group {
+        display: flex;
+        gap: 10px;
+      }
+
+      .message-input {
+        flex: 1;
+        padding: 12px;
+        border: 1px solid #e5e7eb;
+        border-radius: 6px;
+        font-size: 14px;
+        outline: none;
+      }
+
+      .send-button {
+        padding: 12px 24px;
+        background: #3b82f6;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .send-button:hover {
+        background: #2563eb;
+      }
+
+      .bot-icon {
+        width: 24px;
+        height: 24px;
+      }
+
+      .user-icon {
+        width: 24px;
+        height: 24px;
+        fill: #9ca3af;
+      }
+    </style>
   </head>
   <body>
     <div id="preloader-active">
@@ -41,46 +243,10 @@
                 ><img alt="jobBox" src="assets/imgs/page/dashboard/logo.svg"
               /></a>
             </div>
-            <span class="btn btn-grey-small ml-10">Admin area</span>
-          </div>
-          <div class="header-search">
-            <div class="box-search">
-              <form action="">
-                <input
-                  class="form-control input-search"
-                  type="text"
-                  name="keyword"
-                  placeholder="Search"
-                />
-              </form>
-            </div>
-          </div>
-          <div class="header-menu d-none d-md-block">
-            <ul>
-              <li>
-                <a href="http://wp.alithemes.com/html/jobbox/demos/index.html"
-                  >Home
-                </a>
-              </li>
-              <li>
-                <a
-                  href="http://wp.alithemes.com/html/jobbox/demos/page-about.html"
-                  >About us
-                </a>
-              </li>
-              <li>
-                <a
-                  href="http://wp.alithemes.com/html/jobbox/demos/page-contact.html"
-                  >Contact</a
-                >
-              </li>
-            </ul>
+            <span class="btn btn-grey-small ml-10">User Portal</span>
           </div>
           <div class="header-right">
             <div class="block-signin">
-              <a class="btn btn-default icon-edit hover-up" href="post-job.html"
-                >Post Job</a
-              >
               <div class="dropdown d-inline-block">
                 <a
                   class="btn btn-notify"
@@ -256,277 +422,71 @@
       </div>
     </div>
     <main class="main">
-      <div class="nav">
-        <a class="btn btn-expanded"></a>
-        <nav>
-          <ul class="main-menu">
-            <li>
-              <a class="dashboard2" href="index.html"
-                ><img
-                  src="assets/imgs/page/dashboard/dashboard.svg"
-                  alt="jobBox"
-                /><span class="name">Dashboard</span></a
-              >
-            </li>
-            <li>
-              <a class="dashboard2" href="my-job-list.html"
-                ><img
-                  src="assets/imgs/page/dashboard/recruiters.svg"
-                  alt="jobBox"
-                /><span class="name">My Interviews</span></a
-              >
-            </li>
-            <li>
-              <a class="dashboard2" href="my-job-applied.html"
-                ><img
-                  src="assets/imgs/page/dashboard/jobs.svg"
-                  alt="jobBox"
-                /><span class="name">Recent Jobs</span></a
-              >
-            </li>
-            <li>
-              <a class="dashboard2" href="my-job-grid.html"
-                ><img
-                  src="assets/imgs/page/dashboard/jobs.svg"
-                  alt="jobBox"
-                /><span class="name">Applied Jobs</span></a
-              >
-            </li>
-            <li>
-              <a class="dashboard2" href="my-resume.html"
-                ><img
-                  src="assets/imgs/page/dashboard/cv-manage.svg"
-                  alt="jobBox"
-                /><span class="name">CV Manager</span></a
-              >
-            </li>
-            <li>
-              <a class="dashboard2" href="profile.html"
-                ><img
-                  src="assets/imgs/page/dashboard/profiles.svg"
-                  alt="jobBox"
-                /><span class="name">My Profile</span></a
-              >
-            </li>
-            <li>
-              <a class="dashboard2" href="settings.html"
-                ><img
-                  src="assets/imgs/page/dashboard/settings.svg"
-                  alt="jobBox"
-                /><span class="name">Setting</span></a
-              >
-            </li>
-            <li>
-              <a class="dashboard2" href="login.html"
-                ><img
-                  src="assets/imgs/page/dashboard/logout.svg"
-                  alt="jobBox"
-                /><span class="name">Logout</span></a
-              >
-            </li>
-          </ul>
-        </nav>
-        <div class="border-bottom mb-20 mt-20"></div>
-        <div class="box-profile-completed text-center mb-30">
-          <div id="circle-staticstic-demo"></div>
-          <h6 class="mb-10">Profile Completed</h6>
-          <p class="font-xs color-text-mutted">
-            Please add detailed information to your profile. This will help you
-            develop your career more quickly.
-          </p>
-        </div>
-        <div class="sidebar-border-bg mt-50">
-          <span class="text-grey">WE ARE</span
-          ><span class="text-hiring">HIRING</span>
-          <p class="font-xxs color-text-paragraph mt-5">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae
-            architecto
-          </p>
-          <div class="mt-15">
-            <a class="btn btn-paragraph-2" href="#">Know More</a>
-          </div>
-        </div>
-      </div>
-      <div class="box-content">
-        <div class="box-heading">
-          <div class="box-title">
-            <h3 class="mb-35">Login</h3>
-          </div>
-          <div class="box-breadcrumb">
-            <div class="breadcrumbs">
-              <ul>
-                <li><a class="icon-home" href="index.html">Admin</a></li>
-                <li><span>Login</span></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="section-box">
-              <div class="container">
-                <div class="panel-white mb-30">
-                  <div class="box-padding">
-                    <div class="login-register">
-                      <div class="row login-register-cover pb-250">
-                        <div class="col-lg-4 col-md-6 col-sm-12 mx-auto">
-                          <div class="form-login-cover">
-                            <div class="text-center">
-                              <p class="font-sm text-brand-2">Welcome back!</p>
-                              <h2 class="mt-10 mb-5 text-brand-1">
-                                Member Login
-                              </h2>
-                              <p class="font-sm text-muted mb-30">
-                                Access to all features. No credit card required.
-                              </p>
-                              <button class="btn social-login hover-up mb-20">
-                                <img
-                                  src="assets/imgs/template/icons/icon-google.svg"
-                                  alt="jobbox"
-                                /><strong>Sign in with Google</strong>
-                              </button>
-                              <div class="divider-text-center">
-                                <span>Or continue with</span>
-                              </div>
-                            </div>
-                            <form
-                              class="login-register text-start mt-20"
-                              action="#"
-                            >
-                              <div class="form-group">
-                                <label class="form-label" for="input-1"
-                                  >Username or Email address *</label
-                                >
-                                <input
-                                  class="form-control"
-                                  id="input-1"
-                                  type="text"
-                                  required=""
-                                  name="fullname"
-                                  placeholder="Steven Job"
-                                />
-                              </div>
-                              <div class="form-group">
-                                <label class="form-label" for="input-4"
-                                  >Password *</label
-                                >
-                                <input
-                                  class="form-control"
-                                  id="input-4"
-                                  type="password"
-                                  required=""
-                                  name="password"
-                                  placeholder="************"
-                                />
-                              </div>
-                              <div
-                                class="login_footer form-group d-flex justify-content-between"
-                              >
-                                <label class="cb-container">
-                                  <input type="checkbox" /><span
-                                    class="text-small"
-                                    >Remenber me</span
-                                  ><span class="checkmark"></span> </label
-                                ><a class="text-muted" href="#"
-                                  >Forgot Password</a
-                                >
-                              </div>
-                              <div class="form-group">
-                                <button
-                                  class="btn btn-brand-1 hover-up w-100"
-                                  type="submit"
-                                  name="login"
-                                >
-                                  Login
-                                </button>
-                              </div>
-                              <div class="text-muted text-center">
-                                Don't have an Account?
-                                <a href="register.html">Sign up</a>
-                              </div>
-                            </form>
-                          </div>
-                          <div class="img-2">
-                            <img
-                              src="assets/imgs/page/login-register/img-3.svg"
-                              alt="JobBox"
-                            />
-                          </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="section-box">
+            <div class="container">
+              <div class="panel-white mb-30">
+                <div class="chat-container">
+                  <!-- Progress Bar -->
+                  <div class="progress-bar">
+                    <div class="progress-steps">
+                      <div class="progress-line"></div>
+                      <div class="progress-line-filled"></div>
+                      <div class="progress-step active">
+                        <div class="progress-step-label">
+                          Technical Skills Assessment
+                        </div>
+                      </div>
+                      <div class="progress-step">
+                        <div class="progress-step-label">
+                          Psychological Assessment
+                        </div>
+                      </div>
+                      <div class="progress-step">
+                        <div class="progress-step-label">
+                          Role-Specific Assessment
+                        </div>
+                      </div>
+                      <div class="progress-step">
+                        <div class="progress-step-label">
+                          Soft Skills Evaluation
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="mt-10">
-          <div class="section-box">
-            <div class="container">
-              <div class="panel-white pt-30 pb-30 pl-15 pr-15">
-                <div class="box-swiper">
-                  <div class="swiper-container swiper-group-10">
-                    <div class="swiper-wrapper">
-                      <div class="swiper-slide">
-                        <img
-                          src="assets/imgs/page/dashboard/microsoft.svg"
-                          alt="jobBox"
+
+                  <!-- Chat Area -->
+                  <div class="chat-area">
+                    <div class="chat-messages" id="chatMessages">
+                      <!-- Messages will be added here dynamically -->
+                    </div>
+                    <div class="chat-input">
+                      <div class="input-group">
+                        <input
+                          type="text"
+                          class="message-input"
+                          id="messageInput"
+                          placeholder="Type your message here..."
                         />
-                      </div>
-                      <div class="swiper-slide">
-                        <img
-                          src="assets/imgs/page/dashboard/sony.svg"
-                          alt="jobBox"
-                        />
-                      </div>
-                      <div class="swiper-slide">
-                        <img
-                          src="assets/imgs/page/dashboard/acer.svg"
-                          alt="jobBox"
-                        />
-                      </div>
-                      <div class="swiper-slide">
-                        <img
-                          src="assets/imgs/page/dashboard/nokia.svg"
-                          alt="jobBox"
-                        />
-                      </div>
-                      <div class="swiper-slide">
-                        <img
-                          src="assets/imgs/page/dashboard/asus.svg"
-                          alt="jobBox"
-                        />
-                      </div>
-                      <div class="swiper-slide">
-                        <img
-                          src="assets/imgs/page/dashboard/casio.svg"
-                          alt="jobBox"
-                        />
-                      </div>
-                      <div class="swiper-slide">
-                        <img
-                          src="assets/imgs/page/dashboard/dell.svg"
-                          alt="jobBox"
-                        />
-                      </div>
-                      <div class="swiper-slide">
-                        <img
-                          src="assets/imgs/page/dashboard/panasonic.svg"
-                          alt="jobBox"
-                        />
-                      </div>
-                      <div class="swiper-slide">
-                        <img
-                          src="assets/imgs/page/dashboard/vaio.svg"
-                          alt="jobBox"
-                        />
-                      </div>
-                      <div class="swiper-slide">
-                        <img
-                          src="assets/imgs/page/dashboard/sony.svg"
-                          alt="jobBox"
-                        />
+                        <button class="send-button" onclick="sendMessage()">
+                          <svg
+                            width="20"
+                            height="20"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            src=""
+                          >
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon
+                              points="22 2 15 22 11 13 2 9 22 2"
+                            ></polygon>
+                          </svg>
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -535,151 +495,118 @@
             </div>
           </div>
         </div>
-        <div
-          class="modal fade"
-          id="ModalApplyJobForm"
-          tabindex="-1"
-          aria-hidden="true"
-        >
-          <div class="modal-dialog modal-lg">
-            <div class="modal-content apply-job-form">
-              <button
-                class="btn-close"
-                type="button"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-              <div class="modal-body pl-30 pr-30 pt-50">
-                <div class="text-center">
-                  <p class="font-sm text-brand-2">Job Application</p>
-                  <h2 class="mt-10 mb-5 text-brand-1 text-capitalize">
-                    Start your career today
-                  </h2>
-                  <p class="font-sm text-muted mb-30">
-                    Please fill in your information and send it to the employer.
-                  </p>
-                </div>
-                <form class="login-register text-start mt-20 pb-30" action="#">
-                  <div class="form-group">
-                    <label class="form-label" for="input-1">Full Name *</label>
-                    <input
-                      class="form-control"
-                      id="input-1"
-                      type="text"
-                      required=""
-                      name="fullname"
-                      placeholder="Steven Job"
-                    />
-                  </div>
-                  <div class="form-group">
-                    <label class="form-label" for="input-2">Email *</label>
-                    <input
-                      class="form-control"
-                      id="input-2"
-                      type="email"
-                      required=""
-                      name="emailaddress"
-                      placeholder="stevenjob@gmail.com"
-                    />
-                  </div>
-                  <div class="form-group">
-                    <label class="form-label" for="number"
-                      >Contact Number *</label
-                    >
-                    <input
-                      class="form-control"
-                      id="number"
-                      type="text"
-                      required=""
-                      name="phone"
-                      placeholder="(+01) 234 567 89"
-                    />
-                  </div>
-                  <div class="form-group">
-                    <label class="form-label" for="des">Description</label>
-                    <input
-                      class="form-control"
-                      id="des"
-                      type="text"
-                      required=""
-                      name="Description"
-                      placeholder="Your description..."
-                    />
-                  </div>
-                  <div class="form-group">
-                    <label class="form-label" for="file">Upload Resume</label>
-                    <input
-                      class="form-control"
-                      id="file"
-                      name="resume"
-                      type="file"
-                    />
-                  </div>
-                  <div
-                    class="login_footer form-group d-flex justify-content-between"
-                  >
-                    <label class="cb-container">
-                      <input type="checkbox" /><span class="text-small"
-                        >Agree our terms and policy</span
-                      ><span class="checkmark"></span> </label
-                    ><a class="text-muted" href="page-contact.html"
-                      >Lean more</a
-                    >
-                  </div>
-                  <div class="form-group">
-                    <button
-                      class="btn btn-default hover-up w-100"
-                      type="submit"
-                      name="login"
-                    >
-                      Apply Job
-                    </button>
-                  </div>
-                  <div class="text-muted text-center">
-                    Do you need support?
-                    <a href="page-contact.html">Contact Us</a>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-        <footer class="footer mt-20">
-          <div class="container">
-            <div class="box-footer">
-              <div class="row">
-                <div class="col-md-6 col-sm-12 mb-25 text-center text-md-start">
-                  <p class="font-sm color-text-paragraph-2">
-                    © 2022 -
-                    <a
-                      class="color-brand-2"
-                      href="https://themeforest.net/item/jobbox-job-portal-html-bootstrap-5-template/39217891"
-                      target="_blank"
-                      >JobBox </a
-                    >Dashboard <span> Made by </span
-                    ><a
-                      class="color-brand-2"
-                      href="http://alithemes.com"
-                      target="_blank"
-                    >
-                      AliThemes</a
-                    >
-                  </p>
-                </div>
-                <div class="col-md-6 col-sm-12 text-center text-md-end mb-25">
-                  <ul class="menu-footer">
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Careers</a></li>
-                    <li><a href="#">Policy</a></li>
-                    <li><a href="#">Contact</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </footer>
       </div>
     </main>
+    <script>
+      let currentQuestion = 0;
+      let currentStage = 0;
+
+      const questions = [
+        // Technical Skills Assessment
+        "What programming languages are you most proficient in?",
+        "Can you describe a challenging technical project you've worked on?",
+        // Psychological Assessment
+        "How do you handle stress in a work environment?",
+        "What motivates you to perform your best at work?",
+        // Role-Specific Assessment
+        "What experience do you have with agile development methodologies?",
+        "How do you approach debugging complex issues?",
+        // Soft Skills Evaluation
+        "How do you handle conflicts in a team setting?",
+        "Describe your approach to communication with team members.",
+      ];
+
+      const stages = [
+        "Technical Skills Assessment",
+        "Psychological Assessment",
+        "Role-Specific Assessment",
+        "Soft Skills Evaluation",
+      ];
+
+      function updateProgress() {
+        const progressLine = document.querySelector(".progress-line-filled");
+        const progress = (currentQuestion / questions.length) * 100;
+        progressLine.style.height = `${progress}%`;
+
+        // Update active stage
+        const newStage = Math.floor(currentQuestion / 2);
+        if (newStage !== currentStage && newStage < stages.length) {
+          document.querySelectorAll(".progress-step").forEach((step, index) => {
+            if (index <= newStage) {
+              step.classList.add("active");
+            } else {
+              step.classList.remove("active");
+            }
+          });
+          currentStage = newStage;
+        }
+      }
+
+      function addMessage(content, isUser = false) {
+        const messagesContainer = document.getElementById("chatMessages");
+        const messageDiv = document.createElement("div");
+        messageDiv.className = `message ${isUser ? "user" : "bot"}`;
+
+        const avatar = document.createElement("div");
+        avatar.className = "message-avatar";
+        avatar.innerHTML = isUser
+          ? '<svg class="user-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>'
+          : '<svg class="bot-icon" viewBox="0 0 24 24" fill="#3b82f6"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>';
+
+        const messageContent = document.createElement("div");
+        messageContent.className = "message-content";
+        messageContent.textContent = content;
+
+        messageDiv.appendChild(avatar);
+        messageDiv.appendChild(messageContent);
+        messagesContainer.appendChild(messageDiv);
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+      }
+
+      function askNextQuestion() {
+        if (currentQuestion < questions.length) {
+          setTimeout(() => {
+            addMessage(questions[currentQuestion]);
+            updateProgress();
+          }, 500);
+        } else {
+          setTimeout(() => {
+            addMessage(
+              "Thank you for completing the interview! We'll be in touch soon."
+            );
+          }, 500);
+        }
+      }
+
+      function sendMessage() {
+        const input = document.getElementById("messageInput");
+        const message = input.value.trim();
+
+        if (message) {
+          addMessage(message, true);
+          input.value = "";
+          currentQuestion++;
+          askNextQuestion();
+        }
+      }
+
+      // Handle enter key
+      document
+        .getElementById("messageInput")
+        .addEventListener("keypress", function (e) {
+          if (e.key === "Enter") {
+            sendMessage();
+          }
+        });
+
+      // Start the chat
+      window.onload = function () {
+        addMessage(
+          "Welcome to the interview! Let's begin with some questions about your background."
+        );
+        askNextQuestion();
+      };
+    </script>
     <script src="assets/js/vendor/modernizr-3.6.0.min.js"></script>
     <script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
     <script src="assets/js/vendor/jquery-migrate-3.3.0.min.js"></script>
