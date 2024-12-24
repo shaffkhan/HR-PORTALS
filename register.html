@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="msapplication-TileColor" content="#0E0E0E" />
+    <meta name="template-color" content="#0E0E0E" />
+    <link rel="manifest" href="manifest.json" crossorigin />
+    <meta name="msapplication-config" content="browserconfig.xml" />
+    <meta name="description" content="Index page" />
+    <meta name="keywords" content="index, page" />
+    <meta name="author" content="" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="assets/imgs/template/favicon.svg"
+    />
+    <link href="assets/css/style.css?version=4.1" rel="stylesheet" />
+    <title>Sign Up - Job Portal HTML Template</title>
+  </head>
+  <body>
+    <div class="box-content p-0">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="container">
+            <div class="panel-white">
+              <div class="box-padding">
+                <div class="login-register">
+                  <div class="row login-register-cover">
+                    <div class="col-lg-4 col-md-6 col-sm-12 mx-auto">
+                      <div class="form-login-cover m-0">
+                        <div class="text-center">
+                          <p class="font-sm text-brand-2">Register</p>
+                          <h2 class="mt-10 mb-5 text-brand-1">
+                            Start for free Today
+                          </h2>
+                          <p class="font-sm text-muted mb-30">
+                            Access to all features. No credit card required.
+                          </p>
+                          <div class="time-filter">
+                            <div class="filter-wrapper">
+                              <button
+                                class="filter-btn active"
+                                data-period="day"
+                              >
+                                User
+                              </button>
+                              <button class="filter-btn" data-period="week">
+                                Admin
+                              </button>
+                            </div>
+                          </div>
+                          <style>
+                            .time-filter {
+                              margin: 20px 0;
+                            }
+
+                            .filter-wrapper {
+                              display: inline-flex;
+                              background: #fff;
+                              border: 1px solid #e0e6f7;
+                              border-radius: 100px;
+                              padding: 4px;
+                            }
+
+                            .filter-btn {
+                              padding: 10px 24px;
+                              border: none;
+                              background: transparent;
+                              color: #4f5e64;
+                              font-weight: 500;
+                              border-radius: 100px;
+                              cursor: pointer;
+                              transition: all 0.3s ease;
+                              position: relative;
+                              overflow: hidden;
+                            }
+
+                            .filter-btn:hover {
+                              color: #3c65f5;
+                            }
+
+                            .filter-btn.active {
+                              background: #3c65f5;
+                              color: white;
+                            }
+
+                            .filter-btn::after {
+                              content: "";
+                              position: absolute;
+                              top: 50%;
+                              left: 50%;
+                              width: 0;
+                              height: 0;
+                              background: rgba(255, 255, 255, 0.2);
+                              border-radius: 50%;
+                              transform: translate(-50%, -50%);
+                              transition: width 0.3s, height 0.3s;
+                            }
+
+                            .filter-btn:active::after {
+                              width: 100px;
+                              height: 100px;
+                              opacity: 0;
+                            }
+                          </style>
+
+                          <script>
+                            document.addEventListener(
+                              "DOMContentLoaded",
+                              function () {
+                                const filterBtns =
+                                  document.querySelectorAll(".filter-btn");
+
+                                filterBtns.forEach((btn) => {
+                                  btn.addEventListener("click", function () {
+                                    // Remove active class from all buttons
+                                    filterBtns.forEach((b) =>
+                                      b.classList.remove("active")
+                                    );
+
+                                    // Add active class to clicked button
+                                    this.classList.add("active");
+
+                                    // Get the time period from data attribute
+                                    const period =
+                                      this.getAttribute("data-period");
+
+                                    // Add ripple effect
+                                    const ripple =
+                                      document.createElement("div");
+                                    ripple.classList.add("ripple");
+                                    this.appendChild(ripple);
+
+                                    // Remove ripple after animation
+                                    setTimeout(() => {
+                                      ripple.remove();
+                                    }, 1000);
+
+                                    // Example of filtering functionality
+                                    filterData(period);
+                                  });
+                                });
+
+                                // Example function to handle filtering
+                                function filterData(period) {
+                                  console.log(`Filtering data for: ${period}`);
+                                  // Here you can add your logic to filter the dashboard data
+                                  // For example:
+                                  switch (period) {
+                                    case "day":
+                                      // Update dashboard with daily data
+                                      updateDashboard({
+                                        applications: 34,
+                                        jobsPosted: 9,
+                                        hires: 4,
+                                        offersSent: 32,
+                                        interviews: 34,
+                                      });
+                                      break;
+                                    case "week":
+                                      // Update dashboard with weekly data
+                                      updateDashboard({
+                                        applications: 180,
+                                        jobsPosted: 45,
+                                        hires: 20,
+                                        offersSent: 156,
+                                        interviews: 167,
+                                      });
+                                      break;
+                                    case "month":
+                                      // Update dashboard with monthly data
+                                      updateDashboard({
+                                        applications: 720,
+                                        jobsPosted: 180,
+                                        hires: 80,
+                                        offersSent: 624,
+                                        interviews: 668,
+                                      });
+                                      break;
+                                  }
+                                }
+
+                                // Example function to update dashboard numbers
+                                function updateDashboard(data) {
+                                  // Animate number changes
+                                  animateNumber(
+                                    "applications",
+                                    data.applications
+                                  );
+                                  animateNumber("jobsPosted", data.jobsPosted);
+                                  animateNumber("hires", data.hires);
+                                  animateNumber("offersSent", data.offersSent);
+                                  animateNumber("interviews", data.interviews);
+                                }
+
+                                // Function to animate number changes
+                                function animateNumber(elementId, target) {
+                                  const element =
+                                    document.getElementById(elementId);
+                                  if (!element) return;
+
+                                  const start = parseInt(element.textContent);
+                                  const duration = 1000; // 1 second
+                                  const steps = 60;
+                                  const increment = (target - start) / steps;
+                                  let current = start;
+                                  let step = 0;
+
+                                  const animation = setInterval(() => {
+                                    step++;
+                                    current += increment;
+                                    element.textContent = Math.round(current);
+
+                                    if (step >= steps) {
+                                      element.textContent = target;
+                                      clearInterval(animation);
+                                    }
+                                  }, duration / steps);
+                                }
+                              }
+                            );
+
+                            let userType = "user"; // Default to user
+
+                            document.addEventListener(
+                              "DOMContentLoaded",
+                              function () {
+                                const filterBtns =
+                                  document.querySelectorAll(".filter-btn");
+
+                                filterBtns.forEach((btn) => {
+                                  btn.addEventListener("click", function () {
+                                    // Remove active class from all buttons
+                                    filterBtns.forEach((b) =>
+                                      b.classList.remove("active")
+                                    );
+
+                                    // Add active class to clicked button
+                                    this.classList.add("active");
+
+                                    userType = this.textContent
+                                      .toLowerCase()
+                                      .trim();
+                                  });
+                                });
+                              }
+                            );
+
+                            function submitRegistration() {
+                              // Here you would typically validate the form and send the data to your server
+                              // For this example, we'll just redirect based on the user type
+                              if (userType === "admin") {
+                                window.location.href = "./admin-portal/index.html";
+                              } else {
+                                window.location.href = "./user-portal/index.html";
+                              }
+                            }
+                          </script>
+                          <button class="btn social-login hover-up mb-20">
+                            <img
+                              src="assets/imgs/template/icons/icon-google.svg"
+                              alt="jobbox"
+                            /><strong>Sign up with Google</strong>
+                          </button>
+                          <div class="divider-text-center">
+                            <span>Or continue with</span>
+                          </div>
+                        </div>
+                        <form
+                          class="login-register text-start mt-20"
+                          action="#"
+                          onsubmit="event.preventDefault(); submitRegistration();"
+                        >
+                          <div class="form-group">
+                            <label class="form-label" for="input-1"
+                              >Full Name *</label
+                            >
+                            <input
+                              class="form-control"
+                              id="input-1"
+                              type="text"
+                              required=""
+                              name="fullname"
+                              placeholder="Steven Job"
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label class="form-label" for="input-2"
+                              >Email *</label
+                            >
+                            <input
+                              class="form-control"
+                              id="input-2"
+                              type="email"
+                              required=""
+                              name="emailaddress"
+                              placeholder="stevenjob@gmail.com"
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label class="form-label" for="input-3"
+                              >Username *</label
+                            >
+                            <input
+                              class="form-control"
+                              id="input-3"
+                              type="text"
+                              required=""
+                              name="username"
+                              placeholder="stevenjob"
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label class="form-label" for="input-4"
+                              >Password *</label
+                            >
+                            <input
+                              class="form-control"
+                              id="input-4"
+                              type="password"
+                              required=""
+                              name="password"
+                              placeholder="************"
+                            />
+                          </div>
+                          <div class="form-group">
+                            <label class="form-label" for="input-5"
+                              >Re-Password *</label
+                            >
+                            <input
+                              class="form-control"
+                              id="input-5"
+                              type="password"
+                              required=""
+                              name="re-password"
+                              placeholder="************"
+                            />
+                          </div>
+                          <div
+                            class="login_footer form-group d-flex justify-content-between"
+                          >
+                            <label class="cb-container">
+                              <input type="checkbox" required /><span
+                                class="text-small"
+                                >Agree our terms and policy</span
+                              ><span class="checkmark"></span>
+                            </label>
+                            <a class="text-muted" href="#">Learn more</a>
+                          </div>
+                          <div class="form-group">
+                            <button
+                              class="btn btn-brand-1 hover-up w-100"
+                              type="submit"
+                              name="login"
+                            >
+                              Submit &amp; Register
+                            </button>
+                          </div>
+                          <div class="text-muted text-center">
+                            Already have an account?
+                            <a href="login.html">Sign in</a>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="assets/js/vendor/modernizr-3.6.0.min.js"></script>
+    <script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/vendor/jquery-migrate-3.3.0.min.js"></script>
+    <script src="assets/js/vendor/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/plugins/waypoints.js"></script>
+    <script src="assets/js/plugins/magnific-popup.js"></script>
+    <script src="assets/js/plugins/perfect-scrollbar.min.js"></script>
+    <script src="assets/js/plugins/select2.min.js"></script>
+    <script src="assets/js/plugins/swiper-bundle.min.js"></script>
+    <script src="assets/js/plugins/jquery.circliful.js"></script>
+    <script src="assets/js/main.js?v=4.1"></script>
+  </body>
+</html>
