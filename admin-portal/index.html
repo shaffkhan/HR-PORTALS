@@ -21,74 +21,80 @@
     />
     <link href="assets/css/style.css?version=4.1" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/12.1.2/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <title>Jobbox Dashboard - Job Portal HTML Template</title>
     <style>
       body {
-          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-          margin: 0;
-          padding: 20px;
-          background-color: #f0f2f5;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f0f2f5;
       }
       .container {
-          max-width: 1000px;
-          margin: 0 auto;
+        max-width: 1000px;
+        margin: 0 auto;
       }
       #funnel-container {
-          width: 100%;
-          height: 60vh;
-          min-height: 400px;
-          margin: 0;
+        width: 100%;
+        height: 60vh;
+        min-height: 400px;
+        margin: 0;
       }
       .panel-white {
-          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-          border-radius: 8px;
-          overflow: hidden;
-          width: 100%;
-          background: white;
-          padding: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        overflow: hidden;
+        width: 100%;
+        background: white;
+        padding: 20px;
       }
       .select-wrapper {
-          position: relative;
-          display: inline-block;
-          width: 100%;
-          margin-bottom: 20px;
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        margin-bottom: 20px;
       }
       #position-select {
-          width: 100%;
-          padding: 12px 36px 12px 16px;
-          border: 1px solid #ccc;
-          border-radius: 6px;
-          font-size: 20px;
-          background-color: white;
-          cursor: pointer;
-          appearance: none;
-          -webkit-appearance: none;
-          -moz-appearance: none;
+        width: 100%;
+        padding: 12px 36px 12px 16px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 20px;
+        background-color: white;
+        cursor: pointer;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
       }
       .select-wrapper::after {
-          content: "▼";
-          font-size: 21px;
-          color: #666;
-          position: absolute;
-          right: 14px;
-          top: 50%;
-          transform: translateY(-50%);
-          pointer-events: none;
+        content: "▼";
+        font-size: 2px;
+        color: #666;
+        position: absolute;
+        right: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none;
       }
       #position-select:focus {
-          outline: none;
-          border-color: #3C65F5;
-          box-shadow: 0 0 0 2px rgba(60, 101, 245, 0.1);
+        outline: none;
+        border-color: #3c65f5;
+        box-shadow: 0 0 0 2px rgba(60, 101, 245, 0.1);
       }
       @media (max-width: 768px) {
-          #funnel-container {
-              height: 50vh;
-          }
-          .panel-white {
-              padding: 14px;
-          }
+        #funnel-container {
+          height: 50vh;
+        }
+        .panel-white {
+          padding: 14px;
+        }
       }
-  </style>
+    </style>
   </head>
   <body>
     <div id="preloader-active">
@@ -896,6 +902,392 @@
             <div class="section-box">
               <div class="container">
                 <div class="panel-white">
+                  <div id="boxplot-container"></div>
+                </div>
+              </div>
+            </div>
+
+            <style>
+              #boxplot-container {
+                min-width: 310px;
+                width: full;
+                height: 400px;
+                margin: 0 auto;
+              }
+            </style>
+            <script>
+              document.addEventListener("DOMContentLoaded", function () {
+                // Data for the box plot
+                const data = [
+                  {
+                    name: "Frontend Developer",
+                    low: 30000,
+                    q1: 50000,
+                    median: 70000,
+                    q3: 90000,
+                    high: 110000,
+                    outliers: [20000, 120000],
+                  },
+                  {
+                    name: "Backend Developer",
+                    low: 40000,
+                    q1: 60000,
+                    median: 80000,
+                    q3: 100000,
+                    high: 130000,
+                    outliers: [35000, 140000],
+                  },
+                  {
+                    name: "Data Scientist",
+                    low: 60000,
+                    q1: 80000,
+                    median: 120000,
+                    q3: 150000,
+                    high: 200000,
+                  },
+                  {
+                    name: "Project Manager",
+                    low: 70000,
+                    q1: 90000,
+                    median: 110000,
+                    q3: 140000,
+                    high: 190000,
+                  },
+                  {
+                    name: "CTO",
+                    low: 150000,
+                    q1: 180000,
+                    median: 200000,
+                    q3: 230000,
+                    high: 250000,
+                  },
+                  {
+                    name: "UI/UX Developer",
+                    low: 40000,
+                    q1: 60000,
+                    median: 80000,
+                    q3: 100000,
+                    high: 120000,
+                  },
+                  {
+                    name: "Web Designer",
+                    low: 25000,
+                    q1: 40000,
+                    median: 60000,
+                    q3: 80000,
+                    high: 100000,
+                  },
+                  {
+                    name: "Intern",
+                    low: 10000,
+                    q1: 15000,
+                    median: 20000,
+                    q3: 25000,
+                    high: 30000,
+                  },
+                ];
+
+                // Create the chart
+                Highcharts.chart("boxplot-container", {
+                  chart: {
+                    type: "boxplot",
+                  },
+                  title: {
+                    text: "Expected Salary Ranges for Various Job Roles",
+                  },
+                  legend: {
+                    enabled: false,
+                  },
+                  xAxis: {
+                    categories: data.map((item) => item.name),
+                    title: {
+                      text: "Job Roles",
+                    },
+                  },
+                  yAxis: {
+                    title: {
+                      text: "Salary (USD)",
+                    },
+                    min: 0,
+                  },
+                  series: [
+                    {
+                      name: "Salary",
+                      data: data.map((item) => {
+                        return {
+                          low: item.low,
+                          q1: item.q1,
+                          median: item.median,
+                          q3: item.q3,
+                          high: item.high,
+                          outliers: item.outliers || [],
+                        };
+                      }),
+                      tooltip: {
+                        headerFormat: "<em>Job Role: {point.key}</em><br/>",
+                      },
+                    },
+                  ],
+                  tooltip: {
+                    pointFormat:
+                      "<strong>{series.name}</strong><br/>" +
+                      "Minimum: ${point.low:,.0f}<br/>" +
+                      "Q1: ${point.q1:,.0f}<br/>" +
+                      "Median: ${point.median:,.0f}<br/>" +
+                      "Q3: ${point.q3:,.0f}<br/>" +
+                      "Maximum: ${point.high:,.0f}<br/>" +
+                      "{#each point.outliers}<br/>Outlier: ${.:,.0f}{/each}",
+                  },
+                  responsive: {
+                    rules: [
+                      {
+                        condition: {
+                          maxWidth: 500,
+                        },
+                        chartOptions: {
+                          chart: {
+                            height: 600,
+                          },
+                          yAxis: {
+                            labels: {
+                              align: "left",
+                              x: 0,
+                              y: -5,
+                            },
+                            title: {
+                              text: null,
+                            },
+                          },
+                          subtitle: {
+                            text: null,
+                          },
+                          credits: {
+                            enabled: false,
+                          },
+                        },
+                      },
+                    ],
+                  },
+                });
+              });
+            </script>
+
+            <div class="section-box">
+              <div class="container">
+                <div class="panel-white">
+                  <div id="stacked-bar-container"></div>
+                </div>
+              </div>
+            </div>
+            <div class="section-box">
+              <div class="container">
+                <div class="panel-white">
+                  <div id="job-trends-container"></div>
+                </div>
+              </div>
+            </div>
+            <style>
+              #stacked-bar-container,
+              #job-trends-container {
+                min-width: 310px;
+                width: full;
+                height: full;
+                margin: 1em auto;
+              }
+            </style>
+           <script>
+            // Stacked Bar Chart for Diversity Categories
+            Highcharts.chart('stacked-bar-container', {
+                chart: {
+                    type: 'bar'
+                },
+                title: {
+                    text: 'Diversity Categories Breakdown'
+                },
+                xAxis: {
+                    categories: ['Gender Diversity', 'Language Diversity', 'Regional Diversity', 'Age Diversity']
+                },
+                yAxis: {
+                    min: 0,
+                    max: 100,
+                    title: {
+                        text: 'Percentage'
+                    }
+                },
+                legend: {
+                    reversed: true
+                },
+                plotOptions: {
+                    series: {
+                        stacking: 'normal'
+                    }
+                },
+                // Data for each diversity category
+                series: [{
+                    name: 'Male',
+                    data: [60, 0, 0, 0],
+                    color: '#0D47A1'
+                }, {
+                    name: 'Female',
+                    data: [40, 0, 0, 0],
+                    color: '#1976D2'
+                }, {
+                    name: 'English',
+                    data: [0, 50, 0, 0],
+                    color: '#2196F3'
+                }, {
+                    name: 'Spanish',
+                    data: [0, 30, 0, 0],
+                    color: '#42A5F5'
+                }, {
+                    name: 'Other Languages',
+                    data: [0, 20, 0, 0],
+                    color: '#64B5F6'
+                }, {
+                    name: 'North America',
+                    data: [0, 0, 40, 0],
+                    color: '#90CAF9'
+                }, {
+                    name: 'Europe',
+                    data: [0, 0, 35, 0],
+                    color: '#BBDEFB'
+                }, {
+                    name: 'Asia',
+                    data: [0, 0, 25, 0],
+                    color: '#E3F2FD'
+                }, {
+                    name: '18-25',
+                    data: [0, 0, 0, 30],
+                    color: '#0D47A1'
+                }, {
+                    name: '26-35',
+                    data: [0, 0, 0, 40],
+                    color: '#1976D2'
+                }, {
+                    name: '36-50',
+                    data: [0, 0, 0, 20],
+                    color: '#2196F3'
+                }, {
+                    name: '50+',
+                    data: [0, 0, 0, 10],
+                    color: '#42A5F5'
+                }],
+                tooltip: {
+                    pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.y}%</b><br/>',
+                    shared: true
+                },
+                // Responsive rules for smaller screens
+                responsive: {
+                    rules: [{
+                        condition: {
+                            maxWidth: 500
+                        },
+                        chartOptions: {
+                            legend: {
+                                align: 'center',
+                                verticalAlign: 'bottom',
+                                layout: 'horizontal'
+                            },
+                            yAxis: {
+                                labels: {
+                                    align: 'left',
+                                    x: 0,
+                                    y: -5
+                                },
+                                title: {
+                                    text: null
+                                }
+                            },
+                            subtitle: {
+                                text: null
+                            },
+                            credits: {
+                                enabled: false
+                            }
+                        }
+                    }]
+                }
+            });
+    
+            // Line Chart for Job Posting Trends
+            Highcharts.chart('job-trends-container', {
+                chart: {
+                    type: 'line'
+                },
+                title: {
+                    text: 'Job Posting Trends Over Time'
+                },
+                xAxis: {
+                    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+                },
+                yAxis: {
+                    title: {
+                        text: 'Number of Jobs Posted'
+                    }
+                },
+                plotOptions: {
+                    line: {
+                        dataLabels: {
+                            enabled: true
+                        },
+                        enableMouseTracking: true
+                    }
+                },
+                // Data for job postings over time
+                series: [{
+                    name: 'Jobs Posted',
+                    data: [120, 150, 170, 200, 240, 300, 400, 350, 320, 280, 220, 180],
+                    color: '#1976D2'
+                }],
+                tooltip: {
+                    formatter: function () {
+                        return '<b>' + this.x + ' 2023</b><br/>' +
+                            'Jobs Posted: ' + this.y;
+                    }
+                },
+                // Annotations for highest and lowest points
+                annotations: [{
+                    labels: [{
+                        point: { x: 6, y: 400 },
+                        text: 'Highest<br>400 jobs',
+                        backgroundColor: 'rgba(25, 118, 210, 0.8)',
+                        style: {
+                            color: '#FFFFFF'
+                        }
+                    }, {
+                        point: { x: 0, y: 120 },
+                        text: 'Lowest<br>120 jobs',
+                        backgroundColor: 'rgba(25, 118, 210, 0.8)',
+                        style: {
+                            color: '#FFFFFF'
+                        }
+                    }],
+                    labelOptions: {
+                        borderColor: '#1976D2',
+                        borderWidth: 1
+                    }
+                }],
+                // Responsive rules for smaller screens
+                responsive: {
+                    rules: [{
+                        condition: {
+                            maxWidth: 500
+                        },
+                        chartOptions: {
+                            legend: {
+                                layout: 'horizontal',
+                                align: 'center',
+                                verticalAlign: 'bottom'
+                            }
+                        }
+                    }]
+                }
+            });
+        </script>
+
+            <div class="section-box">
+              <div class="container">
+                <div class="panel-white">
                   <div class="panel-head">
                     <h5>Latest Jobs</h5>
                     <a
@@ -1205,173 +1597,178 @@
             <div class="section-box">
               <div class="container">
                 <div class="panel-white">
-                    <div class="select-wrapper">
-                        <select id="position-select">
-                            <option value="frontend">Frontend Developer</option>
-                            <option value="backend">Backend Developer</option>
-                            <option value="data">Data Scientist</option>
-                            <option value="pm">Project Manager</option>
-                            <option value="cto">CTO</option>
-                            <option value="uiux">UI/UX Developer</option>
-                            <option value="webdesigner">Web Designer</option>
-                            <option value="intern">Intern</option>
-                        </select>
-                    </div>
-                    <div id="funnel-container"></div>
+                  <div class="select-wrapper">
+                    <select id="position-select">
+                      <option value="frontend">Frontend Developer</option>
+                      <option value="backend">Backend Developer</option>
+                      <option value="data">Data Scientist</option>
+                      <option value="pm">Project Manager</option>
+                      <option value="cto">CTO</option>
+                      <option value="uiux">UI/UX Developer</option>
+                      <option value="webdesigner">Web Designer</option>
+                      <option value="intern">Intern</option>
+                    </select>
+                  </div>
+                  <div id="funnel-container"></div>
                 </div>
-            </div>
-        
-            <script>
+              </div>
+
+              <script>
                 document.addEventListener("DOMContentLoaded", function () {
-                    const positionData = {
-                        frontend: [
-                            { name: "Total Applicants", y: 1000 },
-                            { name: "Technical Assessment", y: 700 },
-                            { name: "Speech & Personality Assessment", y: 400 },
-                            { name: "Qualified", y: 250 },
-                        ],
-                        backend: [
-                            { name: "Total Applicants", y: 900 },
-                            { name: "Technical Assessment", y: 600 },
-                            { name: "Speech & Personality Assessment", y: 300 },
-                            { name: "Qualified", y: 200 },
-                        ],
-                        data: [
-                            { name: "Total Applicants", y: 1200 },
-                            { name: "Technical Assessment", y: 800 },
-                            { name: "Speech & Personality Assessment", y: 500 },
-                            { name: "Qualified", y: 300 },
-                        ],
-                        pm: [
-                            { name: "Total Applicants", y: 800 },
-                            { name: "Technical Assessment", y: 550 },
-                            { name: "Speech & Personality Assessment", y: 350 },
-                            { name: "Qualified", y: 200 },
-                        ],
-                        cto: [
-                            { name: "Total Applicants", y: 500 },
-                            { name: "Technical Assessment", y: 300 },
-                            { name: "Speech & Personality Assessment", y: 200 },
-                            { name: "Qualified", y: 100 },
-                        ],
-                        uiux: [
-                            { name: "Total Applicants", y: 700 },
-                            { name: "Technical Assessment", y: 500 },
-                            { name: "Speech & Personality Assessment", y: 300 },
-                            { name: "Qualified", y: 150 },
-                        ],
-                        webdesigner: [
-                            { name: "Total Applicants", y: 750 },
-                            { name: "Technical Assessment", y: 550 },
-                            { name: "Speech & Personality Assessment", y: 350 },
-                            { name: "Qualified", y: 180 },
-                        ],
-                        intern: [
-                            { name: "Total Applicants", y: 2000 },
-                            { name: "Technical Assessment", y: 1500 },
-                            { name: "Speech & Personality Assessment", y: 1000 },
-                            { name: "Qualified", y: 500 },
-                        ],
-                    };
-        
-                    function createChart(data) {
-                        Highcharts.chart("funnel-container", {
-                            chart: {
-                                type: "funnel",
-                                style: {
-                                    fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
-                                },
+                  const positionData = {
+                    frontend: [
+                      { name: "Total Applicants", y: 1000 },
+                      { name: "Technical Assessment", y: 700 },
+                      { name: "Speech & Personality Assessment", y: 400 },
+                      { name: "Qualified", y: 250 },
+                    ],
+                    backend: [
+                      { name: "Total Applicants", y: 900 },
+                      { name: "Technical Assessment", y: 600 },
+                      { name: "Speech & Personality Assessment", y: 300 },
+                      { name: "Qualified", y: 200 },
+                    ],
+                    data: [
+                      { name: "Total Applicants", y: 1200 },
+                      { name: "Technical Assessment", y: 800 },
+                      { name: "Speech & Personality Assessment", y: 500 },
+                      { name: "Qualified", y: 300 },
+                    ],
+                    pm: [
+                      { name: "Total Applicants", y: 800 },
+                      { name: "Technical Assessment", y: 550 },
+                      { name: "Speech & Personality Assessment", y: 350 },
+                      { name: "Qualified", y: 200 },
+                    ],
+                    cto: [
+                      { name: "Total Applicants", y: 500 },
+                      { name: "Technical Assessment", y: 300 },
+                      { name: "Speech & Personality Assessment", y: 200 },
+                      { name: "Qualified", y: 100 },
+                    ],
+                    uiux: [
+                      { name: "Total Applicants", y: 700 },
+                      { name: "Technical Assessment", y: 500 },
+                      { name: "Speech & Personality Assessment", y: 300 },
+                      { name: "Qualified", y: 150 },
+                    ],
+                    webdesigner: [
+                      { name: "Total Applicants", y: 750 },
+                      { name: "Technical Assessment", y: 550 },
+                      { name: "Speech & Personality Assessment", y: 350 },
+                      { name: "Qualified", y: 180 },
+                    ],
+                    intern: [
+                      { name: "Total Applicants", y: 2000 },
+                      { name: "Technical Assessment", y: 1500 },
+                      { name: "Speech & Personality Assessment", y: 1000 },
+                      { name: "Qualified", y: 500 },
+                    ],
+                  };
+
+                  function createChart(data) {
+                    Highcharts.chart("funnel-container", {
+                      chart: {
+                        type: "funnel",
+                        style: {
+                          fontFamily:
+                            '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+                        },
+                      },
+                      title: {
+                        text: "Hiring Process Funnel",
+                        style: {
+                          fontSize: "18px",
+                          fontWeight: "500",
+                        },
+                      },
+                      plotOptions: {
+                        funnel: {
+                          neckWidth: "35%",
+                          neckHeight: "25%",
+                          width: "95%",
+                          dataLabels: {
+                            enabled: true,
+                            inside: true,
+                            align: "center",
+                            verticalAlign: "middle",
+                            format: "{point.percentage:.0f}%<br>{point.name}",
+                            softConnector: false,
+                            style: {
+                              fontSize: "13px",
+                              fontWeight: "500",
+                              textAlign: "center",
+                              color: "white",
+                              textOutline: "none",
+                              lineHeight: "16px",
+                              width: "120%",
                             },
-                            title: {
-                                text: "Hiring Process Funnel",
-                                style: {
-                                    fontSize: "18px",
-                                    fontWeight: "500",
-                                },
+                          },
+                        },
+                      },
+                      series: [
+                        {
+                          name: "Candidates",
+                          data: data.map((item, index, arr) => ({
+                            ...item,
+                            percentage: Math.round((item.y / arr[0].y) * 100),
+                          })),
+                          colors: ["#3C65F5", "#4B79F6", "#5E8DF7", "#70A1F8"],
+                        },
+                      ],
+                      responsive: {
+                        rules: [
+                          {
+                            condition: {
+                              maxWidth: 500,
                             },
-                            plotOptions: {
+                            chartOptions: {
+                              plotOptions: {
                                 funnel: {
-                                    neckWidth: "35%",
-                                    neckHeight: "25%",
-                                    width: "95%",
-                                    dataLabels: {
-                                        enabled: true,
-                                        inside: true,
-                                        align: "center",
-                                        verticalAlign: "middle",
-                                        format: "{point.percentage:.0f}%<br>{point.name}",
-                                        softConnector: false,
-                                        style: {
-                                            fontSize: "13px",
-                                            fontWeight: "500",
-                                            textAlign: "center",
-                                            color: "white",
-                                            textOutline: "none",
-                                            lineHeight: "16px",
-                                            width: "120%"
-                                        },
+                                  width: "100%",
+                                  dataLabels: {
+                                    style: {
+                                      fontSize: "11px",
                                     },
+                                  },
                                 },
+                              },
                             },
-                            series: [
-                                {
-                                    name: "Candidates",
-                                    data: data.map((item, index, arr) => ({
-                                        ...item,
-                                        percentage: Math.round((item.y / arr[0].y) * 100),
-                                    })),
-                                    colors: ["#3C65F5", "#4B79F6", "#5E8DF7", "#70A1F8"],
-                                },
-                            ],
-                            responsive: {
-                                rules: [
-                                    {
-                                        condition: {
-                                            maxWidth: 500,
-                                        },
-                                        chartOptions: {
-                                            plotOptions: {
-                                                funnel: {
-                                                    width: "100%",
-                                                    dataLabels: {
-                                                        style: {
-                                                            fontSize: "11px",
-                                                        },
-                                                    },
-                                                },
-                                            },
-                                        },
-                                    },
-                                ],
-                            },
-                            tooltip: {
-                                headerFormat: "",
-                                pointFormat: "<b>{point.name}</b>: <b>{point.y}</b> candidates",
-                            },
-                        });
-                    }
-        
-                    createChart(positionData.frontend);
-        
-                    document.getElementById("position-select").addEventListener("change", function() {
-                        const selectedPosition = this.value;
-                        createChart(positionData[selectedPosition]);
+                          },
+                        ],
+                      },
+                      tooltip: {
+                        headerFormat: "",
+                        pointFormat:
+                          "<b>{point.name}</b>: <b>{point.y}</b> candidates",
+                      },
                     });
-        
-                    function handleResize() {
-                        const chart = Highcharts.charts[0];
-                        if (chart) {
-                            chart.setSize(
-                                document.getElementById("funnel-container").offsetWidth,
-                                document.getElementById("funnel-container").offsetHeight,
-                                false
-                            );
-                        }
+                  }
+
+                  createChart(positionData.frontend);
+
+                  document
+                    .getElementById("position-select")
+                    .addEventListener("change", function () {
+                      const selectedPosition = this.value;
+                      createChart(positionData[selectedPosition]);
+                    });
+
+                  function handleResize() {
+                    const chart = Highcharts.charts[0];
+                    if (chart) {
+                      chart.setSize(
+                        document.getElementById("funnel-container").offsetWidth,
+                        document.getElementById("funnel-container")
+                          .offsetHeight,
+                        false
+                      );
                     }
-        
-                    window.addEventListener("resize", handleResize);
+                  }
+
+                  window.addEventListener("resize", handleResize);
                 });
-            </script>
+              </script>
             </div>
             <div class="section-box">
               <div class="container">
