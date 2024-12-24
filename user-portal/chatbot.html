@@ -607,6 +607,186 @@
         askNextQuestion();
       };
     </script>
+    <div
+      id="interviewModal"
+      style="
+        display: none;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+      "
+    >
+      <div
+        style="
+          background-color: white;
+          margin: 15% auto;
+          padding: 20px;
+          border-radius: 8px;
+          width: 90%;
+          max-width: 500px;
+        "
+      >
+        <h2 style="font-size: 24px; margin-bottom: 20px">Congratulations!</h2>
+        <p style="margin-bottom: 20px">
+          Yay! You have passed the initial chatbot interview.
+        </p>
+        <p style="margin-bottom: 20px">
+          To move forward please select your interview type!
+        </p>
+
+        <div style="margin-bottom: 20px">
+          <div
+            style="
+              display: flex;
+              gap: 10px;
+              background: #f3f4f6;
+              padding: 4px;
+              border-radius: 20px;
+              width: fit-content;
+            "
+          >
+            <button
+              onclick="selectInterviewType('virtual')"
+              id="virtualBtn"
+              style="
+                padding: 8px 16px;
+                border-radius: 16px;
+                border: none;
+                cursor: pointer;
+                transition: all 0.3s;
+              "
+            >
+              VIRTUAL
+            </button>
+            <button
+              onclick="selectInterviewType('physical')"
+              id="physicalBtn"
+              style="
+                padding: 8px 16px;
+                border-radius: 16px;
+                border: none;
+                cursor: pointer;
+                transition: all 0.3s;
+              "
+            >
+              PHYSICAL
+            </button>
+          </div>
+        </div>
+
+        <div
+          id="datePickerContainer"
+          style="display: none; margin-bottom: 20px"
+        >
+          <input
+            type="date"
+            id="interviewDate"
+            style="
+              width: 100%;
+              padding: 8px;
+              border: 1px solid #e5e7eb;
+              border-radius: 6px;
+            "
+          />
+        </div>
+
+        <button
+          onclick="submitInterview()"
+          style="
+            background: #3b82f6;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+          "
+          window.location.href="my-job-list.html"
+        >
+          Submit
+        </button>
+      </div>
+    </div>
+
+    <!-- Modify the existing script section by adding these functions -->
+    <script>
+      // Add these variables at the top of your script
+      let selectedInterviewType = "";
+
+      // Modify your existing askNextQuestion function to show modal when questions are complete
+      function askNextQuestion() {
+        if (currentQuestion < questions.length) {
+          setTimeout(() => {
+            addMessage(questions[currentQuestion]);
+            updateProgress();
+          }, 500);
+        } else {
+          setTimeout(() => {
+            addMessage(
+              "Thank you for completing the interview! Please select your preferred interview type."
+            );
+            showModal();
+          }, 500);
+        }
+      }
+
+      // Add these new functions
+      function showModal() {
+        document.getElementById("interviewModal").style.display = "block";
+        resetModalState();
+      }
+
+      function resetModalState() {
+        selectedInterviewType = "";
+        document.getElementById("virtualBtn").style.background = "transparent";
+        document.getElementById("physicalBtn").style.background = "transparent";
+        document.getElementById("datePickerContainer").style.display = "none";
+        document.getElementById("interviewDate").value = "";
+      }
+
+      function selectInterviewType(type) {
+        selectedInterviewType = type;
+        document.getElementById("virtualBtn").style.background =
+          type === "virtual" ? "#3b82f6" : "transparent";
+        document.getElementById("virtualBtn").style.color =
+          type === "virtual" ? "white" : "black";
+        document.getElementById("physicalBtn").style.background =
+          type === "physical" ? "#3b82f6" : "transparent";
+        document.getElementById("physicalBtn").style.color =
+          type === "physical" ? "white" : "black";
+        document.getElementById("datePickerContainer").style.display =
+          type === "physical" ? "block" : "none";
+      }
+
+      function submitInterview() {
+        if (!selectedInterviewType) {
+          alert("Please select an interview type");
+          return;
+        }
+
+        if (selectedInterviewType === "physical") {
+          const date = document.getElementById("interviewDate").value;
+          if (!date) {
+            alert("Please select a date for your physical interview");
+            return;
+          }
+        }
+
+        // Here you can handle the submission with the selected type and date
+        const date = document.getElementById("interviewDate").value;
+        addMessage(
+          `Interview preference submitted: ${selectedInterviewType}${
+            date ? " on " + date : ""
+          }`
+        );
+        document.getElementById("interviewModal").style.display = "none";
+        window.location.href = "my-job-list.html";
+      }
+    </script>
     <script src="assets/js/vendor/modernizr-3.6.0.min.js"></script>
     <script src="assets/js/vendor/jquery-3.6.0.min.js"></script>
     <script src="assets/js/vendor/jquery-migrate-3.3.0.min.js"></script>
